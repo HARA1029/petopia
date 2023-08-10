@@ -3,10 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title> MAIN </title>
 </head>
-<body>
+<%@ include file="/layout/top.jsp" %>
 
-</body>
-</html>
+
+
+
+
+<%@ include file="/layout/bottom.jsp" %>

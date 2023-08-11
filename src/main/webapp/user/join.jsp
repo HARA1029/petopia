@@ -10,25 +10,29 @@
 <%@ include file="/layout/top.jsp" %>
 
 	<div class="signup">
-		<form name="loginForm" action="userConn.jsp" method="post">
+		<form name="signupForm" action="controller.jsp" method="post">
 			<div>
+				<input type="hidden" name="action" value="signup">
+			
 				이름 : <br>
-				<input type="text" size = "16" name="userNAME"><br><br>
+				<input type="text" size = "16" name="uname"><br><br>
 				
 				아이디 : <br>
-				<input type="text" size = "16" name="userID"><br><br>
+				<input type="text" size = "16" name="id"><br><br>
 			
 				비밀번호 : <br> 
-				<input type="password" size = "16" name="userPW"><br><br>
+				<input type="password" size = "16" name="pw"><br><br>
 				
 				이메일 : <br>
-				<input type="email" size="30" name="userMAIL"><br><br>
+				<input type="email" size="30" name="mail"><br><br>
 				
 				주소 : <br>
-				<input type="text" size = "16" name="userADDR"><br><br>
+				<input type="text" size = "16" name="addr"><br><br>
 				
 				번호 : <br>
-				<input type="text" size = "16" name="userTEL"><br><br>
+				<input type="text" size = "16" name="tel"><br><br>
+				
+				<input type="hidden" name="grade" value="C">
 				
 				
 			</div>

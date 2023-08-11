@@ -8,8 +8,8 @@ footer {
 	bottom: 0;
 	margin-top: 100px;
     padding: 20px 0px;
-    height: 250px;
-    background-color: #1e1e1e;
+    height: 150px;
+    background-color: silver;
     display: block;
     position: fixed;
     width: 100%;
@@ -17,7 +17,6 @@ footer {
 
 .footer-division-1 {
 	padding-bottom: 30px;
-	border-bottom: 1px solid #333;
 }
 
 .footer-division-2 {
@@ -25,14 +24,14 @@ footer {
 }
 
 .footer-tel {
-	color: white;
-	font-size: 32px;
+	color: black;
+	font-size: 24px;
 	margin-bottom: 10px;
 	font-weight: bold;
 }
 
 .footer-text {
-	color: #e2e2e2;
+	color: black;
 	font-size: 13px; 
 	opacity: 0.56;
 	font-weight: 500;
@@ -40,9 +39,10 @@ footer {
 
 .footer-link-company {
 	margin-top: 10px;
-	color: white;
+	color: black;
 	font-weight: bold;
 	font-size: 18px;
+	text-decoration: none;
 }
 
 .footer-sep {

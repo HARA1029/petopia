@@ -26,7 +26,11 @@
         	
             out.println("회원가입 성공!");
             
+            request.setAttribute("u_name", u_name);
             request.setAttribute("u_id", u_id);
+            request.setAttribute("u_mail", u_mail);
+            request.setAttribute("u_addr", u_addr);
+            request.setAttribute("u_tel", u_tel);
             
             request.getRequestDispatcher("joinSuccess.jsp").forward(request, response);
             

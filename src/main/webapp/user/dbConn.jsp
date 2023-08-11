@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
 <%
 	   Connection conn = null;
@@ -8,10 +10,10 @@
 	   Boolean connect = false;
 	   
 	   try {
-	      //DriverManagerr 객체 생성, 등록
+	      //DriverManagerr ê°ì²´ ìì±, ë±ë¡
 	      Class.forName(driver);
 	      
-	      //오라클 계정 id, 비밀번호 입력
+	      //ì¤ë¼í´ ê³ì  id, ë¹ë°ë²í¸ ìë ¥
 	      conn = DriverManager.getConnection(url, "petopia", "cat");
 	      
 	      connect = true;

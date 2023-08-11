@@ -18,7 +18,7 @@
        conn = DriverManager.getConnection(url, "petopia", "cat");
        
        connect = true;
-       conn.close();
+       //conn.close();
        
     } catch(Exception e) {
        connect = false;

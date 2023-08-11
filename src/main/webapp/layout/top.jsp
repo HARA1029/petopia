@@ -6,16 +6,16 @@
 		<header id=header>
 			<div class=container>
 				<div>
-				 	<a href="main.jsp"><img src="../image/logo.png"></a>
+				 	<a href="../main.jsp"><img src="../image/logo.png"></a>
 			 	</div>
 			 
 			 	<div>
-					<form action="login.jsp" method="post">
+					<form action="../user/login.jsp" method="post">
 						<input id="login" type="submit" value=" 로그인 "> &emsp;
 					</form>
 				</div>
 				<div>
-					<form action="join.jsp" method="post">
+					<form action="../user/signup.jsp" method="post">
 						<input id="join" type="submit" value=" 회원가입 ">
 					</form>
 				</div>

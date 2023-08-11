@@ -11,6 +11,11 @@
 	
 	.container > .list {
 		background:lightcoral;
+		color:white;
+		padding-top: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 40px;
 	}
 	
 		.container > .ment {

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+	.container {
+			display: flex;
+	    flex-wrap: wrap;
+	    align-content: center;
+	    flex-direction: row;
+	    justify-content: space-around;
+	    align-items: center;
+		}	
+	
+	.container > .list {
+		background:lightcoral;
+	}
+	
+		.container > .ment {
+		background:lightcoral;
+		color:white;
+		padding-top: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 40px;
+	}
+	
+	
+	section {
+	    padding-top: 60px;
+	}
+	a:link
+	{
+		color:white;
+		text-decoration:none;
+	}
+	a:visited
+	{
+		color:white;
+		text-decoration:none;
+	}
+	a:active
+	{
+		color:white;
+		text-decoration:none;
+	}
+	a:hover
+	{
+		color:#000000;
+		text-decoration:underline;
+	}

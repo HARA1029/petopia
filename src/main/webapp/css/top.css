@@ -1,88 +1,135 @@
 @charset "UTF-8";
 
-	.container {
+.container {
 		display: flex;
     flex-wrap: wrap;
     align-content: center;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-	}	
+}	
 	
-	header{
+header{
 	padding-top:1px;
 	height:100px;
-
-	}
+}
 	
-	nav{
+nav{
     padding-top: 10px;
     padding-left: 50px;
     height: 40px;
     color: white;
     background: lightcoral;
-	}
+}
 
-	 img {
+img {
 		display: block;
     width: 400px;
     height: 100px;
     /* margin-left: auto; */
     margin-right: auto;
     padding-left: 275px;
-	}
+}
 	
-	#login {
-		text-align:center;
-		color:white;
-		background:lightcoral;
-		width:150px;
-		height:30px;
-	}
-
-	#join {
-		text-align:center;
-		color:white;
-		background:lightcoral;
-		width:150px;
-		height:30px;
-	}
 	
-	#search {
+#search {
     color: white;
     background: white;
     text-align: center;
     width: 250px;
     height: 30px;
-	}
+}
 	
-	#search-btn {
+#search-btn {
 		text-align:center;
 		color:white;
 		background:lightcoral;
 		width:150px;
 		height:30px;
 	
-	}
+}
 
 
-	a:link
-	{
-		color:white;
-		text-decoration:none;
-	}
-	a:visited
-	{
-		color:white;
-		text-decoration:none;
-	}
-	a:active
-	{
-		color:white;
-		text-decoration:none;
-	}
-	a:hover
-	{
-		color:#000000;
-		text-decoration:underline;
-	}
+a:link {
+	color:white;
+	text-decoration:none;
+}
+a:visited {
+	color:white;
+	text-decoration:none;
+}
+a:active {
+	color:white;
+	text-decoration:none;
+}
+a:hover {
+	color:#000000;
+	text-decoration:underline;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info .user {
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-info form {
+    margin: 0;
+}
+
+.user-info button {
+    color: white;
+    background: lightcoral;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: inline-block; /* 추가: 버튼 가로 배열을 위해 inline-block으로 설정 */
+    margin: 0; /* 추가: 기본 마진 제거 */
+    margin-right: 10px;
+}
+
+.user-info button:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.ment {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fdcaae;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+}
+
+.list {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fdcaae;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+}
+
+/* list 내부 링크 스타일 */
+.list a {
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+}
+
+/* list 내부 링크에 호버 효과 스타일 */
+.list a:hover {
+    text-decoration: underline;
+}

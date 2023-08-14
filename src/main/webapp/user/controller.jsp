@@ -1,8 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
 <%@ include file="dbConn.jsp" %>
-<script src="../js/loginerror.js"></script>
+<script src="../js/function.js"></script>
 <%
+	request.setCharacterEncoding("UTF-8");
+
+ 	// 아이디 중복 확인
+	 if (request.getParameter("action") != null && request.getParameter("action").equals("checkID")){
+		 String u_id = request.getParameter("id");
+		 
+		 String sql = "SELECT * FROM customer WHERE id = ?";
+		    PreparedStatement sm = conn.prepareStatement(sql);
+		    sm.setString(1, u_id);
+		    ResultSet rs = sm.executeQuery();
+		
+		    if (rs.next()) {
+		    	out.println("중복된 id입니다.");
+		    }
+		    else{
+		    	 out.println("사용 가능한 id입니다.");
+		    }
+		 
+		    sm.close();
+	        conn.close();
+	        return;
+	 }
+
     // 회원 가입 처리
     if (request.getParameter("action") != null && request.getParameter("action").equals("signup")) {
         out.println("회원가입 처리 시작");
@@ -61,18 +83,30 @@
 	        if (dbPW.equals(u_pw)) { // 로그인 성공 -> 세션에 저장
 	        	
 	            session.setAttribute("userID", u_id);
+	        
+	            String name = rs.getString("uname");
+	            session.setAttribute("userName", name);	    
+	            
+	            String grade = rs.getString("grade");
+	            session.setAttribute("userGrade", grade);	  
 	            
 	            response.sendRedirect("main.jsp");
-	        } else {
+	        } else { // 비번 틀림
 	        	out.println("<script>loginerror1();</script>");
 	        }
-	    } else {
+	    } else { // 존재하지 않는 아이디
 	    	out.println("<script>loginerror2();</script>");
 	    }
 	
 	    sm.close();
 	    conn.close();
 	}
+	
+	// 로그아웃 처리
+	if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
+        session.invalidate();
+        response.sendRedirect("main.jsp"); // Redirect to the main page after logout
+    }
 	
 	// 세션 test
 	if (request.getParameter("action") != null && request.getParameter("action").equals("test")) {

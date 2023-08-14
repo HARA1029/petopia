@@ -80,15 +80,16 @@
 	    if (rs.next()) {
 	        String dbPW = rs.getString("pw"); // db에 저장된 비밀번호 가져오기
 	
-	        if (dbPW.equals(u_pw)) { // 로그인 성공 -> 세션에 저장
+	        if (dbPW.equals(u_pw)) { // 로그인 성공 
 	        	
-	            session.setAttribute("userID", u_id);
+	        	// 저장한 정보 top.jsp에서 사용
+	            session.setAttribute("userID", u_id); // 세션에 id 저장
 	        
 	            String name = rs.getString("uname");
-	            session.setAttribute("userName", name);	    
+	            session.setAttribute("userName", name);	// 세션에 이름 저장    
 	            
 	            String grade = rs.getString("grade");
-	            session.setAttribute("userGrade", grade);	  
+	            session.setAttribute("userGrade", grade); // 세션에 등급 저장
 	            
 	            response.sendRedirect("main.jsp");
 	        } else { // 비번 틀림
@@ -108,23 +109,5 @@
         response.sendRedirect("main.jsp"); // Redirect to the main page after logout
     }
 	
-	// 세션 test
-	if (request.getParameter("action") != null && request.getParameter("action").equals("test")) {
-		
-		String sessionID = (String) session.getAttribute("userID");
-		
-		String sql = "SELECT id, pw, uname FROM customer WHERE id = ?";
-		PreparedStatement sm = conn.prepareStatement(sql);
-    	sm.setString(1, sessionID);
-	    ResultSet rs = sm.executeQuery();
-	     
-	    String str ="";
-	    if (rs.next()){
-	    	str = rs.getString("id") + " / " + rs.getString("pw") + " / " + rs.getString("uname");
-	    }	    
-		
-	    out.print(str);
-		
-	}
-	
+
 %>

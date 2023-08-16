@@ -32,11 +32,25 @@
         String u_name = request.getParameter("uname");
         String u_id = request.getParameter("id");
         String u_pw = request.getParameter("pw");
-        String u_mail = request.getParameter("mail");
         String u_addr = request.getParameter("addr");
-        String u_tel = request.getParameter("tel");
         String u_grade = request.getParameter("grade");
+        
+        String u_tel1 = request.getParameter("tel1");
+        String u_tel2 = request.getParameter("tel2");
+        String u_tel3 = request.getParameter("tel3");
+        String u_tel = u_tel1 + "-" + u_tel2 + "-" + u_tel3;
 
+        String u_mail1 = request.getParameter("mail1");
+        String u_mail2 = request.getParameter("mail2");
+        String u_emailDomain = request.getParameter("emailDomain");
+        
+        String u_mail;
+        if (!u_emailDomain.equals("직접입력")) {
+            u_mail = u_mail1 + "@" + u_emailDomain;
+        }else{
+        	u_mail = u_mail1 + "@" + u_mail2;
+        }
+        
         String sql = "INSERT INTO customer VALUES";
         sql += "(CUSTOMER_SEQ.NEXTVAL,'" + u_name + "','" + u_id + "','" + u_pw + "','" + u_mail + "','" + u_addr + "','" + u_tel + "','" + u_grade + "')";
 
@@ -109,5 +123,106 @@
         response.sendRedirect("main.jsp"); // Redirect to the main page after logout
     }
 	
+	// 공지사항 조회수
+	if (request.getParameter("action") != null && request.getParameter("action").equals("viewNotice")) {
+    String postNumberParam = request.getParameter("postNumber");
+
+	    if (postNumberParam != null) {
+	        int postNumber = Integer.parseInt(postNumberParam);
+	
+	        String sql = "UPDATE notice SET ncount = ncount + 1 WHERE no = ?";
+	        
+	        PreparedStatement smUpdateViews = conn.prepareStatement(sql);
+	        smUpdateViews.setInt(1, postNumber);
+	        
+	        int Count = smUpdateViews.executeUpdate();
+	
+	        if (Count > 0) {
+	            out.println("조회수 증가 처리 완료");
+	        }
+	        
+	        response.sendRedirect("../notice/notice_detail.jsp?postNumber=" + postNumber);
+	    }
+	}
+	
+	// 공지사항 등록 처리
+	if (request.getParameter("action") != null && request.getParameter("action").equals("noticeWrite")) {
+        out.println("공지사항 등록 처리 시작");
+        
+        String n_title = request.getParameter("title");
+        String n_content = request.getParameter("content");
+        n_content = n_content.replace("\n", "<br>");
+        
+
+        String sql = "INSERT INTO notice VALUES";
+        sql += "(NOTICE_SEQ.NEXTVAL,'" + n_title + "','" + n_content + "', 0 , sysdate)";
+        
+        PreparedStatement sm = conn.prepareStatement(sql);
+        
+        int count = sm.executeUpdate();
+
+        if (count == 1) {
+            out.println("공지사항 등록 성공!");
+            response.sendRedirect("../notice/notice.jsp"); // 공지사항 목록 페이지로 리다이렉트
+        } else {
+            out.println("공지사항 등록 실패!");
+        }
+        sm.close();
+        conn.close();
+    }
+	
+	// 공지사항 수정 처리
+	if (request.getParameter("action") != null && request.getParameter("action").equals("noticeEdit")) {
+        out.println("공지사항 수정 처리 시작");
+
+        int postNumber = Integer.parseInt(request.getParameter("postNumber"));
+        String n_title = request.getParameter("title");
+        String n_content = request.getParameter("content");
+        n_content = n_content.replace("\n", "<br>");
+
+        String updateSql = "UPDATE notice SET ntitle = ?, ncontent = ? WHERE no = ?";
+        PreparedStatement updateStatement = conn.prepareStatement(updateSql);
+        updateStatement.setString(1, n_title);
+        updateStatement.setString(2, n_content);
+        updateStatement.setInt(3, postNumber);
+
+        int updateCount = updateStatement.executeUpdate();
+
+        if (updateCount == 1) {
+            out.println("공지사항 수정 성공!");
+            response.sendRedirect("../notice/notice.jsp"); 
+        } else {
+            out.println("공지사항 수정 실패!");
+        }
+
+        updateStatement.close();
+    }
+	
+	// 공지사항 삭제 처리
+	if (request.getParameter("action") != null && request.getParameter("action").equals("noticeDelete")) {
+	    out.println("공지사항 삭제 처리 시작");
+	
+	    String postNumberParam = request.getParameter("postNumber");
+	
+	    if (postNumberParam != null) {
+	        int postNumber = Integer.parseInt(postNumberParam);
+	
+	        String deleteSql = "DELETE FROM notice WHERE no = ?";
+	        PreparedStatement deleteSm = conn.prepareStatement(deleteSql);
+	        deleteSm.setInt(1, postNumber);
+	        int deleteResult = deleteSm.executeUpdate();
+	
+	        if (deleteResult > 0) {
+	            out.println("공지사항 삭제 성공!");
+	            response.sendRedirect("../notice/notice.jsp"); // 공지사항 목록 페이지로 리다이렉트
+	        } else {
+	            out.println("공지사항 삭제 실패: 해당 공지사항을 찾을 수 없습니다.");
+	        }
+	
+	        deleteSm.close();
+	    } else {
+	        out.println("잘못된 요청입니다.");
+	    }
+	}
 
 %>

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .container {
-		display: flex;
+	display: flex;
     flex-wrap: wrap;
     align-content: center;
     flex-direction: row;
@@ -22,8 +22,8 @@ nav{
     background: lightcoral;
 }
 
-img {
-		display: block;
+.topImg {
+	display: block;
     width: 400px;
     height: 100px;
     /* margin-left: auto; */
@@ -41,11 +41,11 @@ img {
 }
 	
 #search-btn {
-		text-align:center;
-		color:white;
-		background:lightcoral;
-		width:150px;
-		height:30px;
+	text-align:center;
+	color:white;
+	background:lightcoral;
+	width:150px;
+	height:30px;
 	
 }
 
@@ -85,6 +85,17 @@ a:hover {
 .user-info form {
     margin: 0;
 }
+
+.user-info .user .name {
+      margin-top: 20px;
+    padding: 10px;
+    background-color: #b1c8f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: navy;
+}
+
 
 .user-info button {
     color: white;

@@ -9,7 +9,7 @@ footer {
   padding: 20px 0px;
   height: 150px;
   background-color: silver;
-  position: relative; 
+  position: fixed; 
   width: 100%;
 }
 

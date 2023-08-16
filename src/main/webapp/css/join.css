@@ -1,4 +1,12 @@
-/* Whole page styles */
+@charset "EUC-KR";
+
+section {
+    width: 100%;
+    height: calc(100vh - (460px));
+    overflow-y: scroll;
+    position: relative;
+}
+
 body {
   background-color: #f7f7f7;
   margin: 0;
@@ -17,16 +25,50 @@ body {
 
 /* Form input styles */
 .signup input[type="text"],
-.signup input[type="password"],
-.signup input[type="email"] {
-  width: 90%;
+.signup input[type="password"] {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.signup input[type="text"].email-input1 {
+  width: 28%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
+.signup input[type="text"].email-input2 {
+  width: 35%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup select{
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup input[type="tel"]{
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+
 /* Submit buttons */
+.signup button,
 .signup input[type="reset"],
 .signup input[type="submit"] {
   background-color: lightcoral;

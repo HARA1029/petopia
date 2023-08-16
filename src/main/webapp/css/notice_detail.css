@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+section {
+    width: 100%;
+    height: calc(100vh - (460px));
+    overflow-y: scroll;
+    position: relative;
+}
+
+.notice-detail {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+h1 {
+    padding: 20px;
+}
+
+.button-container {
+    text-align: right;
+    margin-top: 20px;
+    display: flex; 
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.button-container form {
+    display: flex; /* form 요소를 가로 정렬하기 위해 추가 */
+    align-items: center; /* 세로 정렬을 위한 추가 */
+    margin-left: 10px; /* 버튼 사이의 간격을 설정 */
+}
+
+.button-container input[type="submit"] {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin: 0; /* 버튼 사이의 간격을 설정 */
+}
+
+
+.info {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.create-date,
+.views {
+    margin-right: 20px;
+}
+
+.content {
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #f9f9f9;
+}

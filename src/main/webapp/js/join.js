@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const checkIdButton = document.getElementById("checkId");
     let isIdChecked = false;
     
+    // 아이디 중복 버튼 처리
     checkIdButton.addEventListener("click", function() {
         const idInput = form.querySelector("input[name='id']");
         const id = idInput.value.trim();
@@ -36,7 +37,21 @@ document.addEventListener("DOMContentLoaded", function() {
         };
         xhr.send();
     });
-
+    
+    // 비밀번호 & 비밀번호 확인 일치 처리
+    var pwInput = document.getElementById("pw");
+	var pw2Input = document.getElementById("pw2");
+	var passwordMismatchMsg = document.getElementById("passwordMismatch");
+	
+	pw2Input.addEventListener("keyup", function () {
+	    if (pwInput.value === pw2Input.value) {
+	        passwordMismatchMsg.style.display = "none";
+	    } else {
+	        passwordMismatchMsg.style.display = "block";
+	    }
+	});
+	
+	// 가입하기 눌렀을 때 처리
     form.addEventListener("submit", function(event) {
         
         // 아이디 중복 확인 버튼 실행 확인
@@ -88,24 +103,62 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // 이메일 검증
-        const emailInput = form.querySelector("input[name='mail']");
-        const email = emailInput.value.trim();
-        if (!email.includes("@")) {
-            alert("유효한 이메일 주소를 입력해주세요.");
-            emailInput.focus();
-            event.preventDefault();
-            return;
-        }
+        /// 이메일 검증
+		const emailInput = form.querySelector("input[name='mail1']");
+		const emailInput2 = form.querySelector("input[name='mail2']");
+		const email1 = emailInput.value.trim();
+		const email2 = emailInput2.value.trim();
+		const email = email1 + "@" + email2;
+		
+		const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+		if (!emailPattern.test(email)) {
+		    alert("유효한 이메일 주소를 입력해주세요.");
+		    emailInput.focus();
+		    event.preventDefault();
+		    return;
+		}
 
         // 전화번호 검증
-        const telInput = form.querySelector("input[name='tel']");
-        const tel = telInput.value.trim();
-        if (!/^01[0-1]-\d{3,4}-\d{4}$/.test(tel)) {
-            alert("유효한 전화번호 형식을 입력해주세요. (예: 010-1234-5678)");
-            telInput.focus();
-            event.preventDefault();
-            return;
-        }
+		const telInput1 = form.querySelector("select[name='tel1']");
+		const telInput2 = form.querySelector("input[name='tel2']");
+		const telInput3 = form.querySelector("input[name='tel3']");
+		const tel1 = telInput1.value;
+		const tel2 = telInput2.value.trim();
+		const tel3 = telInput3.value.trim();
+		
+		if (!tel1) {
+		    alert("전화번호 첫 번째 부분을 선택해주세요.");
+		    telInput1.focus();
+		    event.preventDefault();
+		    return;
+		}
+		
+		if (!/^[0-9]{3,4}$/.test(tel2)) {
+		    alert("유효한 전화번호 형식을 입력해주세요. (3자리 또는 4자리)");
+		    telInput2.focus();
+		    event.preventDefault();
+		    return;
+		}
+		
+		if (!/^[0-9]{4}$/.test(tel3)) {
+		    alert("유효한 전화번호 형식을 입력해주세요. (4자리)");
+		    telInput3.focus();
+		    event.preventDefault();
+		    return;
+		}
+
     });
+
 });
+
+// 이메일 셀렉트에서 설정한 값으로 변경하기
+function changeEmailDomain(selectElement) {
+    var emailInput2 = document.getElementsByName("mail2")[0];
+    var selectedDomain = selectElement.value;
+    
+    if (selectedDomain === "직접입력") {
+        emailInput2.value = "";
+    } else {
+        emailInput2.value = selectedDomain;
+    }
+}

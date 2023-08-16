@@ -1,50 +1,146 @@
 @charset "UTF-8";
 
-footer {
-	bottom: 0;
+.container {
+	display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}	
+	
+header{
+	padding-top:1px;
+	height:100px;
+}
+	
+nav{
+    padding-top: 10px;
+    padding-left: 50px;
+    height: 40px;
+    color: white;
+    background: lightcoral;
 }
 
-.footer-black {
-	bottom: 0;
-	margin-top: 100px;
-    padding: 20px 0px;
-    height: 250px;
-    background-color: #1e1e1e;
-    display: block;
-    position: fixed;
-    width: 100%;
+.topImg {
+	display: block;
+    width: 400px;
+    height: 100px;
+    /* margin-left: auto; */
+    margin-right: auto;
+    padding-left: 275px;
+}
+	
+	
+#search {
+    color: white;
+    background: white;
+    text-align: center;
+    width: 250px;
+    height: 30px;
+}
+	
+#search-btn {
+	text-align:center;
+	color:white;
+	background:lightcoral;
+	width:150px;
+	height:30px;
+	
 }
 
-.footer-division-1 {
-	padding-bottom: 30px;
-	border-bottom: 1px solid #333;
+
+a:link {
+	color:white;
+	text-decoration:none;
+}
+a:visited {
+	color:white;
+	text-decoration:none;
+}
+a:active {
+	color:white;
+	text-decoration:none;
+}
+a:hover {
+	color:#000000;
+	text-decoration:underline;
 }
 
-.footer-division-2 {
-	padding-top: 30px;
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.footer-tel {
-	color: white;
-	font-size: 32px;
-	margin-bottom: 10px;
-	font-weight: bold;
+.user-info .user {
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
-.footer-text {
-	color: #e2e2e2;
-	font-size: 13px; 
-	opacity: 0.56;
-	font-weight: 500;
+.user-info form {
+    margin: 0;
 }
 
-.footer-link-company {
-	margin-top: 10px;
-	color: white;
-	font-weight: bold;
-	font-size: 18px;
+.user-info .user .name {
+      margin-top: 20px;
+    padding: 10px;
+    background-color: #b1c8f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: navy;
 }
 
-.footer-sep {
-	font-size: 13px;
+
+.user-info button {
+    color: white;
+    background: lightcoral;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: inline-block; /* 추가: 버튼 가로 배열을 위해 inline-block으로 설정 */
+    margin: 0; /* 추가: 기본 마진 제거 */
+    margin-right: 10px;
+}
+
+.user-info button:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.ment {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #b1c8f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #00147b;
+}
+
+.list {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #b1c8f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #00147b;
+}
+
+/* list 내부 링크 스타일 */
+.list a {
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+}
+
+/* list 내부 링크에 호버 효과 스타일 */
+.list a:hover {
+    text-decoration: underline;
 }

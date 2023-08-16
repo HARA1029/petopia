@@ -5,178 +5,102 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 <title>상품등록</title>
-
-<style>
-.registerTitle {
-	color: blue; /* 글씨 색상을 파란색으로 지정 */
-  font-weight: bold; /* 글씨를 진하게 만듦 */
-  text-align : center; /* 글씨 위치 센터*/
-}
-
-/* 상품등록 컨테이너(제일 바깥) */
-.register-container {
-    width: 100%; /* 전체 너비를 100%로 설정 */
-    max-width: 100%; /* 최대 너비 설정 (원하는 최대 크기로 조절) */
-    margin: 0 auto; /* 가운데 정렬을 위한 margin 설정 */
-    padding: 0 15px; /* 양쪽 여백을 15px로 설정 */
-    border : 2px solid red; /*지울거*/
-}
-
-/* 내용 컨테이너 스타일링 */
-.register-content {
-		border : 2px solid black;
-    width: 100%; /* 전체 컨테이너 크기의 70%를 사용 */
-    margin: 0 auto; /* 가운데 정렬을 위한 margin 설정 */
-    padding: 5% 5%;
-}
-
-/*가져온거 지울지 보고 지우는 방향으로*/
-* {
-  box-sizing: border-box;
-} 
-
-/* input 설정 */
-.pname, .price, .stock, .cateno {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-.r-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-.r-col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-  text-align : center;
-}
-
-.r-col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
-/* 열(column)들 이후에 float를 해제(clear)합니다 */
-.registerRow::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* 반응형 레이아웃 - 화면 너비가 600px 미만일 때, 두 열을 나란히 배치하는 대신 서로 위에 쌓도록 설정 */
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
-
-/* 상품등록 버튼 */
-.rbutton {
-	background-color : #4CAF50;
-	border : none;
-  font-size: 18px;
-  cursor: pointer;
-  color: white;
-  padding: 10px 17px;/*버튼이라는 글자의 상하좌우 여백설정*/
-  float: right; /* 버튼을 오른쪽으로 배치 */
-}
-</style>
+<link rel="stylesheet" href="../css/register.css">
 
 </head>
 
 <body>
+<!-- top -->
+<%@ include file="/layout/top.jsp" %>
 
-<div class="register-container">
-
-		<h1 class="registerTitle">상품 등록</h1>
-
-		<div class="register-content">
+<main>
+	<div class="register-container">
 	
-	  <form action="../Controller/ManagerController.jsp?submit=register" method="post" id="rForm" enctype="multipart/form-data">
-	  
-		  <div class="registerRow">
-		    <div class="r-col-25">
-		      <label class="r-label" for="p_name">상품 이름</label>
-		    </div>
-		    <div class="r-col-75">
-		      <input type="text" class="pname" id="p_name" name="pname" placeholder="상품명..">
-		      <b><span id="p_name1"></span></b>
-		    </div>
-		  </div>
-		  
-		  <div class="registerRow">
-		    <div class="r-col-25">
-		      <label class="r-label" for="p_price">상품 가격</label>
-		    </div>
-		    <div class="r-col-75">
-		      <input type="text" class="price" id="p_price" name="price" placeholder="1,000~100,000">
-		    </div>
-		  </div>
-		  
-		  <div class="registerRow">
-		    <div class="r-col-25">
-		      <label class="r-label" for="p_stock">상품 재고</label>
-		    </div>
-		    <div class="r-col-75">
-		      <select id="p_stock" class="stock" onchange="stockSelect()">
-		      	<option value="0">직접입력</option>
-		        <option value="10">10</option>
-		        <option value="20">20</option>
-		        <option value="30">30</option>
-		      </select>
-		      <input id="p_stock_input" type="text" name="stock">
-		   </div>
-		  </div>
-		  
-		  <div class="registerRow">
-		    <div class="r-col-25">
-		      <label class="r-label">상품 사진</label>
-		    </div>
-		    <div class="r-col-75">
-		      <input id="p_img" type="file" name="img">
-		    </div>
-		  </div>
-		  
-		  <div class="registerRow">
-		    <div class="r-col-25">
-		      <label class="r-label">카테 고리</label>
-		    </div>
-		    <div class="r-col-75">
-		      <select id="p_cateno" class="cateno" name="cateno">
-		      	<option value="1">목욕</option>
-		        <option value="2">배변/위생</option>
-		        <option value="3">미용/케어</option>
-		        <option value="4">홈/리빙</option>
-		        <option value="5">산책/놀이</option>
-		        <option value="6">간식/영양제</option>
-		        <option value="7">의류/악세서리</option>
-		      </select>
-		    </div>
-		  </div> <br>
-		  
-		  <div class="registerRow">
-		  	<!--
-		    <input id="registerBtn" class="rbutton" type="button" name="submit" value="등록">
-		  	-->
-		  	<button id="registerBtn" class="rbutton" onclick="">등록</button>
-		  </div>
-	  
-	  </form>
+			<h1 class="registerTitle">상품 등록</h1>
+	
+			<div class="register-content">
 		
+		  <form action="../Controller/ManagerController.jsp?submit=register" method="post" id="rForm" enctype="multipart/form-data">
+		  
+			  <div class="registerRow">
+			    <div class="r-col-25">
+			      <label class="r-label" for="p_name">상품 이름</label>
+			    </div>
+			    <div class="r-col-75">
+			      <input type="text" class="pname" id="p_name" name="pname" placeholder="상품명..">
+			      <b><span id="p_name1"></span></b>
+			    </div>
+			  </div>
+			  
+			  <div class="registerRow">
+			    <div class="r-col-25">
+			      <label class="r-label" for="p_price">상품 가격</label>
+			    </div>
+			    <div class="r-col-75">
+			      <input type="text" class="price" id="p_price" name="price" placeholder="1,000~100,000">
+			    </div>
+			  </div>
+			  
+			  <div class="registerRow">
+			    <div class="r-col-25">
+			      <label class="r-label" for="p_stock">상품 재고</label>
+			    </div>
+			    <div class="r-col-75">
+			      <select id="p_stock" class="stock" onchange="stockSelect()">
+			      	<option value="0">직접입력</option>
+			        <option value="10">10</option>
+			        <option value="20">20</option>
+			        <option value="30">30</option>
+			      </select>
+			      <input id="p_stock_input" type="text" name="stock">
+			   </div>
+			  </div>
+			  
+			  <div class="registerRow">
+			    <div class="r-col-25">
+			      <label class="r-label">상품 사진</label>
+			    </div>
+			    <div class="r-col-75">
+			      <input id="p_img" type="file" name="img">
+			    </div>
+			  </div>
+			  
+			  <div class="registerRow">
+			    <div class="r-col-25">
+			      <label class="r-label">카테 고리</label>
+			    </div>
+			    <div class="r-col-75">
+			      <select id="p_cateno" class="cateno" name="cateno">
+			      	<option value="1">목욕</option>
+			        <option value="2">배변/위생</option>
+			        <option value="3">미용/케어</option>
+			        <option value="4">홈/리빙</option>
+			        <option value="5">산책/놀이</option>
+			        <option value="6">간식/영양제</option>
+			        <option value="7">의류/악세서리</option>
+			      </select>
+			    </div>
+			  </div> <br>
+			  
+			  <div class="registerRow">
+			  	<!--
+			    <input id="registerBtn" class="rbutton" type="button" name="submit" value="등록">
+			  	-->
+			  	<button id="registerBtn" class="rbutton" onclick="">등록</button>
+			  </div>
+		  
+		  </form>
+			
+			
+		</div>
 		
 	</div>
-	
-</div>
+</main>
 
+<!-- bottom -->
+<%@ include file="/layout/bottom.jsp" %>
 
 <script>
 //전체적인 모든요소 체크(이게 최종적으로 true가 되어야 제출가능) + 아이디 중복체크까지

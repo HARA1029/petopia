@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+section {
+    padding-top: 60px;
+    width: 100%;
+    height: calc(100vh - (460px));
+    overflow-y: scroll;
+    position: relative;
+}
+
+
+.notice-write {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+h1 {
+    padding: 20px;
+}
+
+form.noticeform {
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea {
+    width: 95%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+textarea {
+    height: 600px;
+    resize: none; 
+}
+
+
+.button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input[type="reset"],
+input[type="submit"] {
+    background-color: #333; 
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}

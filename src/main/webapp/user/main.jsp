@@ -8,8 +8,6 @@
 </head>
 <%@ include file="/layout/top.jsp" %>
 
-
-
-
+	MAIN
 
 <%@ include file="/layout/bottom.jsp" %>

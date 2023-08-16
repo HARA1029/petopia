@@ -15,7 +15,7 @@ public class ManagerDao implements MDao {
 	
 	OracleConn DBconn = new OracleConn();
 	Connection conn = DBconn.getConn();
-	
+
 	//상품등록
 	@Override
 	public int register(Product pd) {
@@ -31,11 +31,16 @@ public class ManagerDao implements MDao {
 			pst.setString(4, pd.getImg());
 			pst.setInt(5, pd.getCateno());
 			
+			pst.close();
+	        conn.close();
+			
 			return pst.executeUpdate(); //오라클 product테이블에 데이터 전송(성공하면 1 return)
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+
 		return -1;
 	}
 	
@@ -50,6 +55,9 @@ public class ManagerDao implements MDao {
 			Statement sm = conn.createStatement();
 			ResultSet rs = sm.executeQuery(sql);
 			check = rs.next() ? check : 1; //0 : 중복. 1: 중복x(기존에 없음)
+			
+			sm.close();
+	        conn.close();
 			
 		} catch(Exception e) { e.printStackTrace(); }
 		return check;
@@ -70,6 +78,7 @@ public class ManagerDao implements MDao {
 		
 		ArrayList<Product> list = new ArrayList<>(); 
 		System.out.println("list생성");
+		
 		try {
 			
 			Statement sm = conn.createStatement();
@@ -84,8 +93,11 @@ public class ManagerDao implements MDao {
 				pd.setCateno(rs.getInt(5));
 				list.add(pd);
 			}
+			sm.close();
+	        conn.close();
 			
 		} catch(Exception e) { e.printStackTrace(); }
+		
 		
 		return list;
 	}

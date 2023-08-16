@@ -1,41 +1,81 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품상세목록</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<!-- 카테고리 메뉴바 css -->
+<link rel="stylesheet" type="text/css" href="../css/categorybar.css">
+
+
+<style>
+/* Reset some default styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+  
+/* Set up the main layout */
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Header styles */
+header {
+  background-color: #333;
+  color: white;
+  /* padding: 20px; */
+  text-align: center;
+  border-bottom: 1px solid #999;
+}
+  
+/* Content styles */
+.content {
+  padding: 3% 7%;
+  box-sizing: border-box;
+  border : 5px solid blue;
+}
+  
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+
 </head>
 <body>
-<h1> 테스트 메인 페이지</h1>
-
-<button onclick="goToPage('signup')">회원가입</button> &nbsp;&nbsp;
-<button onclick="goToPage('userList')">회원정보</button> &nbsp;&nbsp;
-<button onclick="goToPage('register')">상품등록</button> &nbsp;&nbsp;
-<button onclick="goToPage('pList')">상품목록</button> &nbsp;&nbsp;
-
-
-<script>
-function goToPage(page) {
-	  switch (page) {
-	    case 'signup':
-	      window.location.href = 'signup_view.jsp'; // 회원가입 페이지 URL
-	      break;
-	    case 'userList':
-		      window.location.href = '../Controller/UserController.jsp?submit=userlist'; // 회원정보 페이지 URL submit라는 파라메터의 값 = list
-		      break;
-	    case 'register':
-	      window.location.href = 'ProductRegister_view.jsp'; // 상품등록 페이지 URL
-	      break;
-	    case 'pList':
-	      window.location.href = '../Controller/ManagerController.jsp?submit=pList&cateno=0'; // 상품정보 페이지 URL
-	      break;
-	    default:
-	      break;
-	  }
-	}
-</script>
+<div class="wrapper">
+	<!-- 헤더 카테고리 메뉴바 -->
+	<header>
+		<%@ include file="categoryBar.jsp" %>
+	</header>
+	
+	<!-- 본문 내용 -->
+	<div class="content">
+		<%@ include file="pDetail_view.jsp" %>
+	</div>
+	
+	<!-- 푸터 -->
+	<footer>
+		<p>푸터입니다.</p>
+		<p>푸터입니다.</p>
+		<p>푸터입니다.</p>
+	</footer>
+</div>
 
 </body>
 </html>

@@ -100,21 +100,24 @@
 				</div>		 	
 	        </div>
 		</header>
-	
+		
 		<nav id=nav>
 			<div class=container>
 				<a href="/petopia/user/main.jsp" >메인</a>&emsp;
 				<a href="../Controller/ManagerController.jsp?submit=pList&cateno=0" >상품목록</a> &emsp;
 				<a href="/petopia/notice/notice.jsp" >공지사항</a> &emsp;
+				<form action="../Controller/ManagerController.jsp">
 				<table>
-	               <tr>
-	                  <td>
-	                     &emsp;<input id="search" type="search" placeholder="검색어를 입력해주세요"  >&emsp;
-	                  </td>
-	                  <td>
-	                     <input id="search-btn" type="submit" value="search">
-	                  </td>
-	               </tr>
-	            </table>
+            <tr>
+               <td>
+                  &emsp;<input id="search" type="search" placeholder="검색어를 입력해주세요"  name="pname" style="color:black;">&emsp;
+               </td>
+               <td>
+                  <input id="search-btn" type="submit" name="submit"value="search">
+               </td>
+            </tr>
+         </table>
+         </form>
 			</div>
 		</nav>
+		<main>

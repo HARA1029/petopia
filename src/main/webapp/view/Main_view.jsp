@@ -66,7 +66,8 @@ footer {
 	
 	<!-- 본문 내용 -->
 	<div class="content">
-		<%@ include file="pDetail_view.jsp" %>
+		<p>11111111111111111</p>
+	
 	</div>
 	
 	<!-- 푸터 -->

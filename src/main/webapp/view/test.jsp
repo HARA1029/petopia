@@ -30,11 +30,13 @@
 
 /* 상품 이미지 */
 .column1 {
-	/* border : 2px solid red; */
+	border : 5px solid red;
+	width: 500px;
+  height: 500px;
+	position: relative;
   float: left;
-  width: 500px;
-  height: 500px; /* Should be removed. Only for demonstration */
- 	margin : 2% 0 0 7%;
+  margin : 2% 0 0 7%;
+  /* object-fit:cover; */
 }
 
 /* 상품 구매 선택 */
@@ -124,10 +126,10 @@ color : lightcoral;
 
 .Detail-container1 {
   /* background-color: #333; */
-  /* margin : 5%;
+	margin : 7%;
   overflow: auto;
   white-space: nowrap;
-  padding: 10px; */
+  /* padding: 10px; */
   display: flex;
   flex-direction: column;
   
@@ -184,10 +186,110 @@ color : lightcoral;
 @media (max-width: 600px) {
   .column {
     width: 100%; 
+    
   }
 }
 
+<!-- ------------ -->
 
+
+.mySlides img {
+	/* width:100%;
+	height:100%; */
+	object-fit:cover;
+}
+
+.column img {
+	vertical-align: middle;
+	width : 100%;
+ 	height : 100px;
+}
+
+/* Hide the images by default */
+.mySlides {/* 
+  display: none; */
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.mySlides img {
+	width:100%;
+	height:100%;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 20%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
 
 </style>
 </head>
@@ -201,8 +303,60 @@ color : lightcoral;
 <div style="margin:0 10%;">
 
 	<div class="Detail-row"><!-- display:flex -->
-	 	<div class="column1">
-	 		<img class="dImg" src="../image/샤워기.jpg" style="width: 100%; height:100%;">
+	 	<div class="column1">	 	
+	 		<div class="mySlides">
+		    <div class="numbertext">1 / 5</div>
+		    <img class="img1" src="../image/상세정보/샤워기1.jpg" >
+  		</div>
+
+		  <div class="mySlides">
+		    <div class="numbertext">2 / 5</div>
+		    <img class="img1" src="../image/상세정보/샤워기2.jpg" >
+		  </div>
+		
+		  <div class="mySlides">
+		    <div class="numbertext">3 / 5</div>
+		    <img class="img1" src="../image/상세정보/샤워기3.jpg" >
+		  </div>
+		    
+		  <div class="mySlides">
+		    <div class="numbertext">4 / 5</div>
+		    <img class="img1" src="../image/상세정보/샤워기4.jpg" >
+		  </div>
+		
+		  <div class="mySlides">
+		    <div class="numbertext">5 / 5</div>
+		    <img class="img1" src="../image/상세정보/샤워기5.jpg" >
+		  </div>
+    
+		  <a class="prev" onclick="plusSlides(-1)">❮</a>
+		  <a class="next" onclick="plusSlides(1)">❯</a>
+
+
+		  <div class="row">
+		    <div class="column">
+		      <img class="demo cursor" src="../image/상세정보/샤워기1.jpg" onclick="currentSlide(1)" alt="The Woods">
+		    </div>
+		    
+		    <div class="column">
+		      <img class="demo cursor" src="../image/상세정보/샤워기2.jpg" onclick="currentSlide(2)" alt="Cinque Terre">
+		    </div>
+		    
+		    <div class="column">
+		      <img class="demo cursor" src="../image/상세정보/샤워기3.jpg" onclick="currentSlide(3)" alt="Mountains and fjords">
+		    </div>
+		    
+		    <div class="column">
+		      <img class="demo cursor" src="../image/상세정보/샤워기4.jpg" onclick="currentSlide(4)" alt="Northern Lights">
+		    
+		    </div>
+		    
+		    <div class="column">
+		      <img class="demo cursor" src="../image/상세정보/샤워기5.jpg" onclick="currentSlide(5)" alt="Nature and sunrise">
+		    </div>
+		    
+		  </div>
+	 	
 	 	</div>
 	 	
 	  <div class="column2">
@@ -301,6 +455,36 @@ for (i = 0; i < coll.length; i++) {
       content.style.maxHeight = content.scrollHeight + "px";
     } 
   });
+}
+
+///////////////////
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
 }
 </script>
 </body>

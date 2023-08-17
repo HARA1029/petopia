@@ -14,4 +14,7 @@ public interface MDao {
 	//상품목록
 	public ArrayList<Product> pList(int cateno);
 	
+	//상품검색
+	public ArrayList<Product> sList(String pname);
+	
 }

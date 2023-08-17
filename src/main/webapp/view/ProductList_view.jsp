@@ -28,6 +28,20 @@ function myFunction() {
   }
 }
 
+//이미지 요소를 선택합니다.
+var pImg = document.getElementById("pimg");
+var pNo = document.getElementById("pno").value;
+
+//이미지 클릭 시 이벤트 핸들러를 추가합니다.
+pImg.addEventListener("click", function() {
+	alert("이동");
+ // 이동할 페이지의 URL을 지정합니다.
+ var url = "../Controller/ManagerController.jsp?submit=detail&pno="+pNo;
+ 
+ // 페이지를 이동합니다.
+ window.location.href = url;
+});
+
 // DOMContentLoaded 이벤트 리스너를 사용하여 페이지 내용이 로드되면 myFunction() 실행
 document.addEventListener("DOMContentLoaded", myFunction);
 </script>
@@ -38,12 +52,12 @@ document.addEventListener("DOMContentLoaded", myFunction);
 <!-- 카테고리 메뉴바 -->
 <%@ include file="categoryBar.jsp" %>
 
-<main>
 	<div class="plist-container">
 		<c:forEach items="${plist}" var="dto">
 	  	<div class="plist">
-	  		<img class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
 	  		<p>${dto.pname} : <fmt:formatNumber value="${dto.price}" type="number" pattern="###,###,###원"/></p>
+	  		<input type="hidden" id="pno" value="${dto.pno}">
 	  	</div>
 	  </c:forEach>
 	  
@@ -53,7 +67,6 @@ document.addEventListener("DOMContentLoaded", myFunction);
 		  
 	</div>
 
-</main>
 
 
 <!-- bottom -->

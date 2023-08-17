@@ -2,29 +2,19 @@
 
 footer {
 	bottom: 0;
-}
-
-.footer-black {
-  margin-top: 20px; 
-  padding: 20px 0px;
-  height: 150px;
+	background-color: silver;
+	margin-top: 20px;	
   background-color: silver;
-  position: fixed;
+  position: absoulte;/*  8월 17일 수정(성민) */
   width: 100%;
 }
 
-.footer-division-1 {
-	padding-bottom: 30px;
-}
-
-.footer-division-2 {
-	padding-top: 30px;
-}
 
 .footer-tel {
+	padding-bottom : 15px;
 	color: black;
 	font-size: 24px;
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 	font-weight: bold;
 }
 

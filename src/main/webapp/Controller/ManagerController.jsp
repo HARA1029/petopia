@@ -86,6 +86,25 @@
 			
 			break;
 			
+		case "detail" :
+			int pno = Integer.parseInt(request.getParameter("pno"));
+			System.out.println("pno : " + pno);
+			
+			break;
+			
+		case "search" :
+			String sname = request.getParameter("pname");
+			System.out.println("sname : " + sname);
+			
+			mdao = new ManagerDao();
+			ArrayList<Product> slist = mdao.sList(sname); //카테고리별 목록 출력()
+			
+			request.setAttribute("plist", slist);
+			/* RequestDispatcher */ dispatcher = request.getRequestDispatcher("../view/ProductList_view.jsp");
+			dispatcher.forward(request, response);
+				
+			break; 
+			
 		default :
 			break;
 	}

@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-main{
-  display: flex; /* 플렉스 컨테이너로 설정 */
-  align-items: center;
-  /*border : 10px solid yellow;  지우기 */
-}
-
 .plist-container {
 	width: 100%; /* 화면 너비에 맞춰 설정 */
 	text-align : center;

@@ -31,8 +31,7 @@ public class ManagerDao implements MDao {
 			pst.setString(4, pd.getImg());
 			pst.setInt(5, pd.getCateno());
 			
-			pst.close();
-	        conn.close();
+	        //conn.close();
 			
 			return pst.executeUpdate(); //오라클 product테이블에 데이터 전송(성공하면 1 return)
 			
@@ -56,8 +55,7 @@ public class ManagerDao implements MDao {
 			ResultSet rs = sm.executeQuery(sql);
 			check = rs.next() ? check : 1; //0 : 중복. 1: 중복x(기존에 없음)
 			
-			sm.close();
-	        conn.close();
+	        //conn.close();
 			
 		} catch(Exception e) { e.printStackTrace(); }
 		return check;
@@ -69,10 +67,10 @@ public class ManagerDao implements MDao {
 		
 		String sql="";
 		if(cateno==0) { //전체보기
-			sql = "SELECT pno, pname, price, img, cateno FROM PRODUCT ORDER BY pno";
+			sql = "SELECT * FROM PRODUCT ORDER BY pno";
 		}
 		else { //카테고리별 목록 출력
-			sql = "SELECT pno, pname, price, img, cateno FROM PRODUCT WHERE CATENO=";
+			sql = "SELECT * FROM PRODUCT WHERE CATENO=";
 			sql+= cateno + "ORDER BY cateno";
 		}
 		
@@ -89,16 +87,47 @@ public class ManagerDao implements MDao {
 				pd.setPno(rs.getInt(1));
 				pd.setPname(rs.getString(2));//또는 rs.getString("pname");
 				pd.setPrice(rs.getInt(3));
-				pd.setImg(rs.getString(4));
-				pd.setCateno(rs.getInt(5));
+				pd.setPrice(rs.getInt(4));
+				pd.setImg(rs.getString(5));
+				pd.setCateno(rs.getInt(6));
 				list.add(pd);
 			}
-			sm.close();
-	        conn.close();
+	       //conn.close();
 			
 		} catch(Exception e) { e.printStackTrace(); }
 		
 		
+		return list;
+	}
+	
+	//상품검색
+	@Override
+	public ArrayList<Product> sList(String pname) {
+		
+		String sql = "SELECT * FROM PRODUCT WHERE PNAME LIKE '%" + pname + "%'";
+		System.out.println("sp; : "+ sql);
+		ArrayList<Product> list = new ArrayList<>(); 
+		
+		try {
+			
+			Statement sm = conn.createStatement();
+			ResultSet rs = sm.executeQuery(sql);
+			
+			while(rs.next()) {
+				Product pd = new Product();
+				pd.setPno(rs.getInt(1));
+				pd.setPname(rs.getString(2));//또는 rs.getString("pname");
+				pd.setPrice(rs.getInt(3));
+				pd.setPrice(rs.getInt(4));
+				pd.setImg(rs.getString(5));
+				pd.setCateno(rs.getInt(6));
+				list.add(pd);
+			}
+			
+			//conn.close();
+		} catch(Exception e) { e.printStackTrace(); }
+		
+		System.out.println("list : " + list);
 		return list;
 	}
 

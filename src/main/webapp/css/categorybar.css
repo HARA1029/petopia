@@ -1,14 +1,16 @@
 @charset "UTF-8";
 /* 카테고리 바*/
-.btn-group button {
-	background-color: white; /* Green background */
-	border: 1px solid #EAEAEA; /* Green border */
-	color: black; /* White text */
-	padding: 20px; /* Some padding */
-	cursor: pointer; /* Pointer/hand icon */
-	float: left; /* Float the buttons side by side */
+.cbtn-group .cbtn {
+	background-color: white; /* 배경색을 흰색으로 설정 */
+	border: 1px solid #EAEAEA; /* 테두리 선을 연한 회색으로 설정 */
+	color: black; /* 글자 색을 검정색으로 설정 */
+	padding: 20px; /* 패딩 설정 */
+	cursor: pointer; /* 커서 모양을 손가락으로 설정 */
+	float: left; /* 버튼을 왼쪽으로 배치 */
 }
-.btn-group button:hover {
-	background-color:#474747;
-	color:#FBFBFB;
+
+/* 카테고리 버튼 호버 상태 */
+.cbtn-group .cbtn:hover {
+	background-color: #474747; /* 배경색을 어두운 회색으로 변경 */
+	color: #FBFBFB; /* 글자 색을 밝은 회색으로 변경 */
 }

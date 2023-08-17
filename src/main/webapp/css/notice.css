@@ -1,31 +1,28 @@
 @charset "EUC-KR";
 
-section {
-    width: 100%;
-    height: calc(100vh - (460px));
-    overflow-y: scroll;
-    position: relative;
-}
-
 h1 {
     text-align: center;
     padding: 20px;
 }
+.menu {
+	width: 90%;
+	margin : 0 auto;
+	text-align: right;
+}
 
-.button-container {
+.write-button {
     text-align: right;
     margin-top: 20px;
     margin-right: 80px;
 }
 
 
-.button-container  input[type="submit"] {
+.write-button  input[type="submit"] {
     background-color: #333; 
     color: white;
     padding: 5px 10px;
     border: none;
     cursor: pointer;
-    margin-right: 10px;
 }
 
 .search-container {
@@ -52,13 +49,13 @@ h1 {
     padding: 5px 10px;
     border: none;
     cursor: pointer;
-    margin-right: 10px;
 }
 
 .noticeTable {
     width: 80%;
     border-collapse: collapse;
     margin: 20px auto;
+    
 }
 
 .noticeTable th {
@@ -70,7 +67,7 @@ h1 {
 }
 
 .noticeTable td {
-    padding: 10px;
+    padding: 10px; 
     text-align: center;
     border: 1px solid #ddd;
 }
@@ -99,15 +96,3 @@ a.title {
 a.title:hover {
    color: #888;
 }
-
-
-.search-menu {
-    text-align: right;
-    margin-top: 20px;
-}
-
-.search-form {
-    display: inline-block;
-    padding: 5px;
-}
-

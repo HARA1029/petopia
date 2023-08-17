@@ -106,15 +106,21 @@
 				<a href="/petopia/user/main.jsp" >메인</a>&emsp;
 				<a href="#" >상품목록</a> &emsp;
 				<a href="/petopia/notice/notice.jsp" >공지사항</a> &emsp;
-				<table>
+				<form action="search_result.jsp" method="get">
+	                <input id="search" type="search" name="search" placeholder="검색어를 입력해주세요">&emsp;
+	                <input id="search-btn" type="submit" value="search">
+	            </form>
+				
+				<!-- <table>
 	               <tr>
 	                  <td>
-	                     &emsp;<input id="search" type="search" placeholder="검색어를 입력해주세요"  >&emsp;
+	                     <input id="search" type="search" placeholder="검색어를 입력해주세요" >&emsp;
 	                  </td>
 	                  <td>
 	                     <input id="search-btn" type="submit" value="search">
 	                  </td>
 	               </tr>
-	            </table>
+	            </table> -->
 			</div>
 		</nav>
+		<main>

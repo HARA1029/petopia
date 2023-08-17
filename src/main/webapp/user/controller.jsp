@@ -32,8 +32,6 @@
         String u_name = request.getParameter("uname");
         String u_id = request.getParameter("id");
         String u_pw = request.getParameter("pw");
-        String u_addr = request.getParameter("addr");
-        String u_grade = request.getParameter("grade");
         
         String u_tel1 = request.getParameter("tel1");
         String u_tel2 = request.getParameter("tel2");
@@ -44,6 +42,13 @@
         String u_mail2 = request.getParameter("mail2");
         String u_emailDomain = request.getParameter("emailDomain");
         
+        String u_zipcode = request.getParameter("zipcode");
+        String u_addr1 = request.getParameter("addr1");
+        String u_addr2 = request.getParameter("addr2");
+        String u_addr = u_addr1 + " " + u_addr2;
+        
+        String u_grade = request.getParameter("grade");
+               
         String u_mail;
         if (!u_emailDomain.equals("직접입력")) {
             u_mail = u_mail1 + "@" + u_emailDomain;
@@ -52,7 +57,7 @@
         }
         
         String sql = "INSERT INTO customer VALUES";
-        sql += "(CUSTOMER_SEQ.NEXTVAL,'" + u_name + "','" + u_id + "','" + u_pw + "','" + u_mail + "','" + u_addr + "','" + u_tel + "','" + u_grade + "')";
+        sql += "(CUSTOMER_SEQ.NEXTVAL,'" + u_name + "','" + u_id + "','" + u_pw + "','" + u_mail + "','" + u_addr + "','" + u_tel + "','" + u_grade + "','" + u_zipcode + "')";
 
         Statement sm = conn.createStatement();
 
@@ -180,7 +185,7 @@
         String n_content = request.getParameter("content");
         n_content = n_content.replace("\n", "<br>");
 
-        String updateSql = "UPDATE notice SET ntitle = ?, ncontent = ? WHERE no = ?";
+        String updateSql = "UPDATE notice SET ntitle = ?, ncontent = ?, ndate = sysdate WHERE no = ?";
         PreparedStatement updateStatement = conn.prepareStatement(updateSql);
         updateStatement.setString(1, n_title);
         updateStatement.setString(2, n_content);

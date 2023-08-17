@@ -162,3 +162,40 @@ function changeEmailDomain(selectElement) {
         emailInput2.value = selectedDomain;
     }
 }
+
+// 주소 API 사용
+function click_searchAddress() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                var addr = '';
+                var extraAddr = '';
+
+                if (data.userSelectedType === 'R') {
+                    addr = data.roadAddress;
+                } else {
+                    addr = data.jibunAddress;
+                }
+
+                if (data.userSelectedType === 'R') {
+                    if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                        extraAddr += data.bname;
+                    }
+                    if (data.buildingName !== '' && data.apartment === 'Y') {
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    if (extraAddr !== '') {
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                }
+
+                var fullAddress = addr;
+                if (extraAddr !== '') {
+                    fullAddress += extraAddr;
+                }
+
+                document.getElementById('zipcode').value = data.zonecode;
+                document.getElementById("addr1").value = fullAddress;
+                document.getElementById("addr2").value = ''; // 상세 주소 필드 초기화
+            }
+        }).open();
+    }

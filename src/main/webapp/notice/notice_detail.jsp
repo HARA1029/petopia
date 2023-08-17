@@ -9,7 +9,6 @@
     <title>공지사항 상세 내용</title>
     <link rel="stylesheet" href="../css/notice_detail.css">
 </head>
-<section> 
     <div class="notice-detail">
         <%
             String postNumberParam = request.getParameter("postNumber");
@@ -24,7 +23,7 @@
                 
                 if (rs.next()) {
                     String title = rs.getString("ntitle");
-                    Date createDate = rs.getDate("ndate");
+                    String createDate = rs.getString("ndate");
                     int views = rs.getInt("ncount");
                     String content = rs.getString("ncontent");
         %>
@@ -40,11 +39,11 @@
 				        <input type="hidden" name="postNumber" value="<%= postNumber %>">
 				        <input type="submit" value="수정하기">
 				    </form>
-				    <form action="/petopia/user/controller.jsp" method="get">
-				        <input type="hidden" name="action" value="noticeDelete">	
-				        <input type="hidden" name="postNumber" value="<%= postNumber %>">	
-				        <input type="submit" value="삭제하기">
-				    </form>
+				    <form name="noticeDeleteForm" method="get">
+					    <input type="hidden" name="action" value="noticeDelete">	
+					    <input type="hidden" name="postNumber" value="<%= postNumber %>">
+					    <input type="submit" value="삭제하기" onclick="deleteNotice(event)">
+					</form>
 				</div>
 	        <% } %>                   
 	    </div>
@@ -74,5 +73,5 @@
             }
         %>
     </div>
-</section> 
+    <script src="../js/function.js"></script>
 <%@ include file="../layout/bottom.jsp" %>

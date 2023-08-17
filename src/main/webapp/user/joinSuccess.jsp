@@ -16,11 +16,11 @@
 
 	<div class="user-information">
 	    <h3>저장된 회원 정보</h3>
-	    <p>이름: <%= request.getAttribute("u_name") %></p>
-	    <p>아이디: <%= request.getAttribute("u_id") %></p>
-	    <p>이메일: <%= request.getAttribute("u_mail") %></p>
-	    <p>주소: <%= request.getAttribute("u_addr") %></p>
-	    <p>전화번호: <%= request.getAttribute("u_tel") %></p>
+	    <p>이름 : <%= request.getAttribute("u_name") %></p>
+	    <p>아이디 : <%= request.getAttribute("u_id") %></p>
+	    <p>이메일 : <%= request.getAttribute("u_mail") %></p>
+	    <p>주소 : <%= request.getAttribute("u_addr") %></p>
+	    <p>전화번호 : <%= request.getAttribute("u_tel") %></p>
 	</div>
 	
 	<div class="button-container">

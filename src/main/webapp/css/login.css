@@ -1,15 +1,9 @@
 @charset "EUC-KR";
 
-/* Whole page styles */
-body {
-  background-color: #f7f7f7;
-  margin: 0;
-  padding: 0;
-}
 
 /* Login form container */
 .login {
-  background-color: #fff;
+  background-color: #f7f7f7;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

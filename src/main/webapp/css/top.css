@@ -1,19 +1,25 @@
 @charset "UTF-8";
 
+main {
+   position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+   
+}
 .container {
-	display: flex;
+      display: flex;
     flex-wrap: wrap;
     align-content: center;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-}	
-	
+}   
+   
 header{
-	padding-top:1px;
-	height:100px;
+   padding-top:1px;
+   height:100px;
 }
-	
+   
 nav{
     padding-top: 10px;
     padding-left: 50px;
@@ -23,48 +29,57 @@ nav{
 }
 
 .topImg {
-	display: block;
-    width: 400px;
+    display: block;
+    width: 450px;
     height: 100px;
     /* margin-left: auto; */
     margin-right: auto;
-    padding-left: 275px;
+    padding-left: 150px;
 }
-	
-	
+   
+   
 #search {
-    color: white;
     background: white;
     text-align: center;
     width: 250px;
     height: 30px;
 }
-	
+   
 #search-btn {
-	text-align:center;
-	color:white;
-	background:lightcoral;
-	width:150px;
-	height:30px;
-	
+     text-align:center;
+     color:white;
+     background:lightcoral;
+     width:90px;
+     height:30px;
+     border-radius: 4px;
+     cursor: pointer;
+     margin-right: 10px;
 }
 
+#search-btn:hover {
+    background-color: #ff6b6b;
+}
 
+a {
+   overflow:hidden;
+   background-color : inherit;
+}
 a:link {
-	color:white;
-	text-decoration:none;
+   color:white;
+   text-decoration:none;
 }
 a:visited {
-	color:white;
-	text-decoration:none;
+   color:white;
+   text-decoration:none; 
 }
+
 a:active {
-	color:white;
-	text-decoration:none;
+   color:white;
+   text-decoration:none;
 }
 a:hover {
-	color:#000000;
-	text-decoration:underline;
+   color:#000000;
+   text-decoration:underline;
 }
 
 .user-info {
@@ -80,22 +95,22 @@ a:hover {
     gap: 10px;
     align-items: center;
     justify-content: center;
+    
+}
+
+.user-info .user .name {
+          margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #00147b;
 }
 
 .user-info form {
     margin: 0;
 }
-
-.user-info .user .name {
-      margin-top: 20px;
-    padding: 10px;
-    background-color: #b1c8f1;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    color: navy;
-}
-
 
 .user-info button {
     color: white;
@@ -106,41 +121,14 @@ a:hover {
     display: inline-block; /* 추가: 버튼 가로 배열을 위해 inline-block으로 설정 */
     margin: 0; /* 추가: 기본 마진 제거 */
     margin-right: 10px;
+    width:90px;
+    text-align:center;
+      height:30px;
+     border-radius: 4px;
+     cursor: pointer;
+    
 }
 
 .user-info button:hover {
-    color: #000000;
-    text-decoration: underline;
-}
-
-.ment {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #b1c8f1;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #00147b;
-}
-
-.list {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #b1c8f1;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #00147b;
-}
-
-/* list 내부 링크 스타일 */
-.list a {
-    text-decoration: none;
-    color: white;
-    margin-right: 10px;
-}
-
-/* list 내부 링크에 호버 효과 스타일 */
-.list a:hover {
-    text-decoration: underline;
+    background-color: #ff6b6b;
 }

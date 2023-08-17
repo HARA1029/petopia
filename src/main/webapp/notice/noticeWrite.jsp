@@ -9,7 +9,6 @@
     <title>공지사항 작성</title>
     <link rel="stylesheet" href="../css/noticeWrite.css">
 </head>
-<section>    
     <div class="notice-write">
         <h1>공지사항 작성</h1>
         
@@ -30,5 +29,4 @@
             </div>
         </form>
     </div>
-</section>  
 <%@ include file="../layout/bottom.jsp" %>

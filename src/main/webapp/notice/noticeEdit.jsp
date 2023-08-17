@@ -8,8 +8,7 @@
     <meta charset="UTF-8">
     <title>공지사항 수정</title>
     <link rel="stylesheet" href="../css/noticeEdit.css">
-</head>
-<section>      
+</head>  
     <div class="notice-edit">
         <h1>공지사항 수정</h1>
         
@@ -60,5 +59,4 @@
             }
         %>
     </div>
-</section>
 <%@ include file="../layout/bottom.jsp" %>

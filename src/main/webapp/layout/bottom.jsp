@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" href="../css/bottom.css">
 
+</main>
 <footer class="footer-black">
 	
 	<div class="frame">

@@ -9,14 +9,13 @@
     <title>공지사항</title>
     <link rel="stylesheet" href="../css/notice.css">
 </head>
-<section>
     <h1>공지사항</h1>
     
     <div class="menu">
         <% 
         if (sessionID != null && sessionID.equals("kosa")) {
         %>
-            <form class="button-container" action="noticeWrite.jsp" method="get">
+            <form class="write-button" action="noticeWrite.jsp" method="get">
                 <input type="submit" value="글쓰기">
             </form>
         <% } %>                   
@@ -55,7 +54,7 @@
 			        }
 			    }
 			
-			    sql += " ORDER BY no DESC";
+			    sql += " ORDER BY ndate DESC";
 			
 			    if (connect) {
 			        System.out.println("db연결성공");
@@ -65,7 +64,7 @@
 			        while (rs.next()) {
 			            int postNumber = rs.getInt("no");
 			            String title = rs.getString("ntitle");
-			            Date createDate = rs.getDate("ndate");
+			            String createDate = rs.getString("ndate");
 			            int views = rs.getInt("ncount");
 			%>
             <tr>
@@ -86,5 +85,4 @@
             %>
         </table>
     </div>
-</section>
 <%@ include file="../layout/bottom.jsp" %>

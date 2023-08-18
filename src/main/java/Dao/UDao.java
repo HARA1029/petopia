@@ -5,10 +5,10 @@ import Dto.*;
 
 public interface UDao {
 	
-	//회원가입
-	public int insert(Customer cus);
+	//장바구니 담기
+	public int addCart(Cart cart);
 	
-	//회원목록
-	public ArrayList<Customer> list();
+	//장바구니 목록
+	public ArrayList<Cart> cartList();
 
 }

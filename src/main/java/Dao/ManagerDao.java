@@ -31,7 +31,8 @@ public class ManagerDao implements MDao {
 			pst.setString(4, pd.getImg());
 			pst.setInt(5, pd.getCateno());
 			
-	        //conn.close();
+			//pst.close();
+	        conn.close();
 			
 			return pst.executeUpdate(); //오라클 product테이블에 데이터 전송(성공하면 1 return)
 			
@@ -55,7 +56,8 @@ public class ManagerDao implements MDao {
 			ResultSet rs = sm.executeQuery(sql);
 			check = rs.next() ? check : 1; //0 : 중복. 1: 중복x(기존에 없음)
 			
-	        //conn.close();
+			sm.close();
+	        conn.close();
 			
 		} catch(Exception e) { e.printStackTrace(); }
 		return check;
@@ -87,12 +89,14 @@ public class ManagerDao implements MDao {
 				pd.setPno(rs.getInt(1));
 				pd.setPname(rs.getString(2));//또는 rs.getString("pname");
 				pd.setPrice(rs.getInt(3));
-				pd.setPrice(rs.getInt(4));
+				pd.setStock(rs.getInt(4));
 				pd.setImg(rs.getString(5));
 				pd.setCateno(rs.getInt(6));
 				list.add(pd);
 			}
-	       //conn.close();
+			
+			sm.close();
+			conn.close();
 			
 		} catch(Exception e) { e.printStackTrace(); }
 		
@@ -118,17 +122,49 @@ public class ManagerDao implements MDao {
 				pd.setPno(rs.getInt(1));
 				pd.setPname(rs.getString(2));//또는 rs.getString("pname");
 				pd.setPrice(rs.getInt(3));
-				pd.setPrice(rs.getInt(4));
+				pd.setStock(rs.getInt(4));
 				pd.setImg(rs.getString(5));
 				pd.setCateno(rs.getInt(6));
 				list.add(pd);
 			}
 			
-			//conn.close();
+			sm.close();
+			conn.close();
+			
 		} catch(Exception e) { e.printStackTrace(); }
 		
 		System.out.println("list : " + list);
 		return list;
+	}
+
+	//상품상세정보
+	@Override
+	public Product pInfo(int pno) {
+		
+		System.out.println("dao는 들어옴");
+		String sql = "SELECT * FROM PRODUCT WHERE PNO =" + pno;
+		
+		Product pd = new Product();
+		
+		try {
+			
+			Statement sm = conn.createStatement();
+			ResultSet rs = sm.executeQuery(sql);
+			while(rs.next()) {
+				pd.setPno(rs.getInt(1));
+				pd.setPname(rs.getString(2));//또는 rs.getString("pname");
+				pd.setPrice(rs.getInt(3));
+				pd.setStock(rs.getInt(4));
+				pd.setImg(rs.getString(5));
+				pd.setCateno(rs.getInt(6));
+			}
+			sm.close();
+			conn.close();
+		} catch(Exception e) { e.printStackTrace(); }
+		
+		System.out.println("일단 성공함");
+		
+		return pd;
 	}
 
 

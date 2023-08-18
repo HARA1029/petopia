@@ -15,7 +15,7 @@
 <!-- top -->
 <%@ include file="/layout/top.jsp" %>
 
-<main>
+
 	<div class="register-container">
 	
 			<h1 class="registerTitle">상품 등록</h1>
@@ -85,10 +85,7 @@
 			  </div> <br>
 			  
 			  <div class="registerRow">
-			  	<!--
-			    <input id="registerBtn" class="rbutton" type="button" name="submit" value="등록">
-			  	-->
-			  	<button id="registerBtn" class="rbutton" onclick="">등록</button>
+			  	<button type="button" id="registerBtn" class="rbutton" >등록</button>
 			  </div>
 		  
 		  </form>
@@ -97,7 +94,7 @@
 		</div>
 		
 	</div>
-</main>
+
 
 <!-- bottom -->
 <%@ include file="/layout/bottom.jsp" %>
@@ -130,7 +127,7 @@ Inputpname.addEventListener("blur", function() {
 	
 	//ajax로 상품중복체크
 	var xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
-  xhr.open("POST", "../Controller/ManagerController.jsp", true); // POST 메서드로 "check.jsp"에 연결
+  xhr.open("POST", "../Controller/ManagerController.jsp", true); // POST 메서드로 "check"에 연결
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // 요청 헤더 설정
   
   xhr.onreadystatechange = function() {
@@ -140,11 +137,11 @@ Inputpname.addEventListener("blur", function() {
 							var result = parseInt(xhr.responseText); // 받은 값을 숫자로 변환
               
 							if (result === 0) {
-								Inputpname1.style.color = "red";
-            	  	Inputpname1.innerHTML ="이미 존재하는 상품입니다.";
-                  Inputpname.value = ""; // 입력 내용 지우기
-                  Inputpname.focus(); // 입력 필드에 포커스 이동
-                  return;
+									Inputpname1.style.color = "red";
+	           	  	Inputpname1.innerHTML ="이미 존재하는 상품입니다.";
+	                Inputpname.value = ""; // 입력 내용 지우기
+	                Inputpname.focus(); // 입력 필드에 포커스 이동
+	                return;
               } else if (result === 1) {
 	            	  Inputpname1.style.color = "green";
             	  	Inputpname1.innerHTML ="등록 가능한 상품입니다.";
@@ -179,16 +176,19 @@ registerBtn.addEventListener("click", function() {
 				if (!Inputprice.value) { 
 			        alert("상품가격을 입력하지 않았습니다.");
 			        Inputprice.focus();
-			        return;
+			        //event.preventDefault(); // 기본 동작(폼 제출) 막기
+			        return ;
 			  }
 				if (!Inputstock.value) { 
 			        alert("상품재고를 입력하지 않았습니다.");
 			        Inputstock.focus();
+			        //event.preventDefault(); // 기본 동작(폼 제출) 막기
 			        return;
 			  }
 				if (!Inputimg.value) { 
 			        alert("상품이미지를 업로드하지 않았습니다.");
 			        Inputimg.focus();
+			        //event.preventDefault(); // 기본 동작(폼 제출) 막기
 			        return;
 			  }
 				
@@ -209,7 +209,7 @@ registerBtn.addEventListener("click", function() {
 				}
 		}
 		
-		else { //무조건 상품중복체크가 먼저
+		if(!formcheck) { //무조건 상품중복체크가 먼저
 			alert("상품중복체크를 해주세요.")
 			Inputpname.focus(); //버튼에 focus가는 걸로 수정
 			event.preventDefault(); // 기본 동작(폼 제출) 막기

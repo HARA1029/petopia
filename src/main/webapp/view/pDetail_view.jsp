@@ -10,238 +10,143 @@
 <head>
 <meta charset="UTF-8">
 <title>상품상세정보</title>
+<!-- pDetail.css -->
+<link rel="stylesheet" href="../css/pDetail.css">
+
 <!-- 아이콘 사용 링크 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-<style>
-/* 맨위 상품이미지, 주문선택 공간*/
-.Detail-row {
-	/* border : 10px solid blue; */
-	margin : 0 auto;
-	/* height : 650px; */
-}
-
-.Detail-row:after {
-  content: "";
-  display: table;
-  clear: both;
-  /* margin : 10px; */
-}
-
-/* 상품 이미지 */
-.column1 {
-	/* border : 2px solid red; */
-  float: left;
-  width: 500px;
-  height: 500px; /* Should be removed. Only for demonstration */
- 	margin : 2% 0 0 7%;
-}
-
-/* 상품 구매 선택 */
-.column2 {
-	/* border : 2px solid red; */
-  float: right;
-  width: 500px;
-  height: 500px; 
-  display: flex;
-  flex-direction: column;
-  margin : 2% 7% 0 0;
-}
-
-.column2 > h2 {
-	width:100%;
-	height:10%;
-	/* border:5px solid red; */
-	text-align : left;
-	font-size : 45px;
-	/* padding : 25px 0; */
-}
-
-.dprice {
-	/* border : 5px solid black; */
-	width : 100%;
-	height : 20%;
-	padding : 20% 0 0 0;
-	font-size : 25px;
-	font-weight: bold; /* 글씨를 진하게 만듦 */
-}
-
-.c2 { /* 상품명 체크박스 상품가격  */
-	/* border : 5px solid black; */
-	width : 100%;
-	height : 20%;
-  align-items: center; /* 수직 가운데 정렬 */
-}
-
-.count::-webkit-inner-spin-button,
-.count::-webkit-outer-spin-button {
-	-webkit-appearance: none;
-	appearance: none;
-}
-.count {
-	width:30px;
-  text-align: center; /* 텍스트를 가운데 정렬합니다. */
-}
-.c2-items {
-	display: flex;
-}
-
-.material-symbols-outlined {
-	cursor: pointer; /* 커서 모양을 손가락으로 설정 */
-}
-
-.totoal-price {
-		/* border : 5px solid black; */
-		width : 100%;
-		height : 20%;
-		padding : 30px 0 0 0; 
-}
-
-/* 버튼 */
-.dbtn-group {
-	/* border : 5px solid black; */
-	width : 100%;
-/* 	bottom : 0; */
-}
-.dbtn-group .dbtn {
-  background-color: lightcoral; /* Green */
-  width:50%;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  float: left;
-  bottom : 0:
-}
-
-#dbtn1 {
-background-color : white;
-color : lightcoral;
-}
-
-.Detail-container1 {
-  /* background-color: #333; */
-  /* margin : 5%;
-  overflow: auto;
-  white-space: nowrap;
-  padding: 10px; */
-  display: flex;
-  flex-direction: column;
-  
-}
-
-.Detail-container1 img {
-  /* padding: 10px; */
-  margin: 0 auto;
-  margin-top : 3%;
-  margin-bottom : 3%;
-  vertical-align: middle;
-  align-items: center; 
-}
-
-
-/* Style the 주의사항 */
-.collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.collapsible:after {
-  content: '\002B';
-  color: white;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\2212";
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .column {
-    width: 100%; 
-  }
-}
-
-
-
-</style>
 </head>
 <body>
 <!-- top -->
 <%@ include file="/layout/top.jsp" %>
 
-<!-- 카테고리 메뉴바 -->
-<%@ include file="categoryBar.jsp" %>
-
 <div style="margin:0 10%;">
 
-	<div class="Detail-row"><!-- display:flex -->
-	 	<div class="column1">
-	 		<img class="dImg" src="../image/샤워기.jpg" style="width: 100%; height:100%;">
+	<form id="dForm" action="../Controller/User	Controller.jsp" method="post">
+	
+	<!-- 객체를 JSTL 변수에 할당 -->
+	<c:set var="product" value="${product}" />
+	<input id="pno" type="hidden" value=${product.pno}>
+	<input id="stock" type="hidden" value=${product.stock}>
+	<input id="submit" name="submit" type="hidden" value="order">
+	
+	<div id="nosold" class="Detail-row"><!-- display:flex -->
+	 	
+	 	<!-- 품절화면 -->
+		<c:if test="${product.stock == 0}">
+			<div id="sold" class="sold-container">
+				<img src="../image/${product.img}" alt="사진없음">
+		  	<div class="comment">품절된 상품입니다.</div>
+			</div>
+		</c:if>
+	 	
+	 	<!-- 품절 아닌 화면 -->
+	 	<c:if test="${product.stock > 0}">
+	 	
+	 	<div class="column1">	 	
+	 		<div class="mySlides">
+		    <div class="numbertext">1 / 5</div>
+		    <img class="img1" src="../image/${product.img}" alt="사진없음" >
+  		</div>
+
+		  <div class="mySlides">
+		    <div class="numbertext">2 / 5</div>
+		    <img class="img1" src="../image/상세정보/2_${product.img}" alt="사진없음">
+		  </div>
+		
+		  <div class="mySlides">
+		    <div class="numbertext">3 / 5</div>
+		    <img class="img1" src="../image/상세정보/3_${product.img}" alt="사진없음">
+		  </div>
+		    
+		  <div class="mySlides">
+		    <div class="numbertext">4 / 5</div>
+		    <img class="img1" src="../image/상세정보/4_${product.img}" alt="사진없음">
+		  </div>
+		
+		  <div class="mySlides">
+		    <div class="numbertext">5 / 5</div>
+		    <img class="img1" src="../image/상세정보/5_${product.img}" alt="사진없음">
+		  </div>
+    
+		  <!-- <a class="prev" onclick="plusSlides(-1)">❮</a>
+		  <a class="next" onclick="plusSlides(1)">❯</a> -->
+
+
+		  <div class="row">
+		    <div class="column">
+		      <img class="demo cursor" src="../image/${product.img}" onclick="currentSlide(1)" alt="사진없음">
+		    </div>
+		    
+		    <div class="column">
+		      <img class="demo cursor" src="../image/상세정보/2_${product.img}" onclick="currentSlide(2)" alt="사진없음">
+		    </div>
+		    
+		    <div class="column">
+		      <img class="demo cursor" src="../image/상세정보/3_${product.img}" onclick="currentSlide(3)" alt="사진없음">
+		    </div>
+		    
+		    <div class="column">
+		      <img class="demo cursor" src="../image/상세정보/4_${product.img}" onclick="currentSlide(4)" alt="사진없음">
+		    
+		    </div>
+		    
+		    <div class="column">
+		      <img class="demo cursor" src="../image/상세정보/5_${product.img}" onclick="currentSlide(5)" alt="사진없음">
+		    </div>
+		    
+		  </div>
+	 	
 	 	</div>
+	 	
 	 	
 	  <div class="column2">
 	  	
-	  	<h2 style="margin:0 auto;">상품명</h2>
+	  	<h2 style="margin:0 auto;">${product.pname}</h2>
 	  	
-	  	<p class="dprice">10,000원</p>
+	  	<p class="dprice"><fmt:formatNumber value="${product.price}" type="number" pattern="###,###,###원"/></p>
 	  	
 	  	<hr>
 	  	
 	  	<div class="c2">
-		  	<b class="c2-items">상품명</b>
+		  	<b class="c2-items">${product.pname}</b><br>
+		  	<!-- 상품 수량 버튼 -->
 		  	<div class="c2-items">
-		  		<span class="material-symbols-outlined">indeterminate_check_box</span>
-					<input class="count" type="number" value="1">
-					<span class="material-symbols-outlined">add_box</span>
+		  		<span id="minus" class="material-symbols-outlined">indeterminate_check_box</span>
+					<input id="count" name="count" class="count" type="number" value="1"> <!-- 주문 상품수량 이 값을 전송-->
+					<span id="plus" class="material-symbols-outlined">add_box</span>
+					<!--
 					<span class="material-symbols-outlined">disabled_by_default</span>
-		  	</div>
-		  	<b class="c2-items">상품가격</b>
+					-->
+		  	</div><br>
+		  	<b class="c2-items"><fmt:formatNumber value="${product.price}" type="number" pattern="###,###,###원"/></b>
 	  	</div>
 	  	
 	  	
-	  	<p class="totoal-price">총 상품 금액(수량)</p>
+	  	<p class="totoal-price">총 상품 금액(수량) 
+	  		<fmt:formatNumber value="${product.price}" type="number" pattern="###,###,###원"/>
+	  		(<span id="totalcount">1</span>개)
+ 	  	</p> 
 	  	
 	  	
 	  	<div class="dbtn-group">
-		  	<button id="dbtn1" class="dbtn">ADD TO CART</button>
-		  	<button class="dbtn">BUY NOW</button>
+		  	<button id="addCart" class="dbtn" type="button">ADD TO CART</button>
+		  	<button id="order" class="dbtn" type="button">BUY NOW</button>
 			</div>
 	  </div>
 	  
+	  </c:if>
+	  
 	</div>
+	</form>
 	
 	<div class="Detail-container1">
-	  <img src="../image/상세정보/샤워기1.jpg" alt="jpg1" width="600" height="400">
-	  <img src="../image/상세정보/샤워기2.jpg" alt="jpg2" width="600" height="400">
-	  <img src="../image/상세정보/샤워기3.jpg" alt="jpg3" width="600" height="400">
-	  <img src="../image/상세정보/샤워기4.jpg" alt="jpg4" width="600" height="400">
-	  <img src="../image/상세정보/샤워기5.jpg" alt="jpg5" width="600" height="400">
+	  <img src="../image/상세정보/1_샤워기.jpg" alt="jpg1" width="500" height="500">
+	  <img src="../image/상세정보/2_샤워기.jpg" alt="jpg2" width="500" height="500">
+	  <img src="../image/상세정보/3_샤워기.jpg" alt="jpg3" width="500" height="500">
+	  <img src="../image/상세정보/4_샤워기.jpg" alt="jpg4" width="500" height="500">
+	  <img src="../image/상세정보/5_샤워기.jpg" alt="jpg5" width="500" height="500">
 	</div>
 	
 	<div class="Detail-container2">
@@ -288,6 +193,89 @@ color : lightcoral;
 <%@ include file="/layout/bottom.jsp" %>
 
 <script>
+
+/* 상품수량 증가&감소 */
+var minusBtn = document.getElementById("minus");
+var plusBtn = document.getElementById("plus");
+var pCount = document.getElementById("count"); //주문할 상품 수량
+var stock = document.getElementById("stock").value; //상품재고수량
+var tCount = document.getElementById("totalcount"); //충 구매수량(이건 보여주는것만)
+
+/* 상품수량 감소 */
+minusBtn.addEventListener("click", function() {
+	pCount.value--;
+	if(pCount.value<1) {
+		alert("최소 구매 수량은 1개 입니다.");
+		pCount.value=1;
+		pCount.focus();
+	}
+	tCount.textContent=pCount.value;//증가,감소 보여주는 구매수량도 바로 적용
+});
+
+/* 상품수량 증가 */
+plusBtn.addEventListener("click", function() {
+	pCount.value++;
+	if(pCount.value>stock) {
+		alert("재고가 부족합니다.");
+		--pCount.value;
+		pCount.focus();
+	}
+	tCount.textContent=pCount.value;
+}); 
+
+var addBtn = document.getElementById("addCart");
+var pno = document.getElementById("pno").value;
+var count = document.getElementById("count").value;
+
+addBtn.addEventListener("click", function() {
+	alert("장바구니로 이동?"); // submit 필드 추가
+	document.getElementById("submit").value = "cart";
+	
+	var xhr = new XMLHttpRequest();
+	
+	xhr.open("POST", "../Controller/UserController.jsp", true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // 요청 헤더 설정
+	
+	var data = "submit=addCart&pno="+ pno + "&count=" + count;
+	
+	xhr.send(data);
+
+
+});
+/* 장바구니에 담기 
+var addBtn = document.getElementById("addCart");
+
+addBtn.addEventListener("click", function() {
+	
+	alert("장바구니에 담기");	
+	
+	var pno = document.getElementById("pno").value; // 상품번호
+  var count = document.getElementById("count").value; // 주문 수량
+    
+  // AJAX 요청 생성
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "../Controller/ManagerController.jsp", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+    // 요청 완료 후 실행될 콜백 함수
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // 서버에서 반환한 응답 처리
+            alert(장바구니 페이지로 이동하시겠습니까?);
+        }
+    };
+    
+    // POST 데이터 생성
+    var data = "submit=addCart&uno=1&pno=" + encodeURIComponent(pno) + "&count=" + encodeURIComponent(count);
+    
+    // 요청 전송
+    xhr.send(data);
+	
+
+	
+});*/
+
+//주의사항(이게 먼저와야됨)
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -301,6 +289,37 @@ for (i = 0; i < coll.length; i++) {
       content.style.maxHeight = content.scrollHeight + "px";
     } 
   });
+}
+
+
+/* 상품이미지 선택시 보여주기 */
+let slideIndex = 1;
+showSlides(slideIndex);
+
+/* function plusSlides(n) {
+  showSlides(slideIndex += n);
+} */
+
+function currentSlide(n) {
+  showSlides(slideIndex = n); 
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  //captionText.innerHTML = dots[slideIndex-1].alt;
 }
 </script>
 </body>

@@ -86,9 +86,16 @@
 			
 			break;
 			
-		case "detail" :
+		case "pDetailList" : 
 			int pno = Integer.parseInt(request.getParameter("pno"));
 			System.out.println("pno : " + pno);
+			
+			mdao = new ManagerDao();
+			Product pInfo = mdao.pInfo(pno); //카테고리별 목록 출력()
+			
+			request.setAttribute("product",pInfo);
+			dispatcher = request.getRequestDispatcher("../view/pDetail_view.jsp");
+			dispatcher.forward(request, response);
 			
 			break;
 			

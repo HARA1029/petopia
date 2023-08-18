@@ -9,54 +9,39 @@ public class UserDao implements UDao {
 	
 	OracleConn DBconn = new OracleConn();
 	Connection conn = DBconn.getConn();
-
+	
+	//장바구니 담기
 	@Override
-	public int insert(Customer cus) {
-		String sql = "INSERT INTO CUSTOMER VALUES(CUSTOMER_SEQ.NEXTVAL,?,?,?,?,?,?,?)";
-		//String sql = "INSERT INTO CUSTOMER VALUES"; 위와 같은 방식
-		//sql += "(CUSTOMER_SEQ.NEXTVAL,'" + u.getUname() + "','" + u.getId() + "','" +
-		//		 u.getPw() + "','" + u.getMail() + "','" + u.getAddr() + "','" + u.getTel() + "','" + u.getGrade() + "')";
-		 		
+	public int addCart(Cart cart) {
+		System.out.println("cartDao들어옴");
+		
+		String sql = "INSERT INTO CART VALUES(CART_SEQ.NEXTVAL,?,?,?)";
+		
 		try {
+			
 			PreparedStatement pst = conn.prepareStatement(sql);
 			
-			pst.setString(1, cus.getUname());
-			pst.setString(2, cus.getId());
-			pst.setString(3, cus.getPw());
-			pst.setString(4, cus.getMail());
-			pst.setString(5, cus.getAddr());
-			pst.setString(6, cus.getTel());
-			pst.setString(7, cus.getGrade());
+			pst.setInt(1, cart.getUno()); //회원번호
+			pst.setInt(2, cart.getPno()); //상품번호
+			pst.setInt(3, cart.getCount()); //총 주문수량
 			
-			return pst.executeUpdate();
+			conn.close();
 			
+			return pst.executeUpdate(); //오라클 product테이블에 데이터 전송(성공하면 1 return)
 			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+
 		return -1;
 	}
-
+	
+	//장바구니 목록
 	@Override
-	public ArrayList<Customer> list() {
-		String sql = "SELECT uname, id FROM CUSTOMER ORDER BY UNO";
-		ArrayList<Customer> list = new ArrayList<>();
-		
-		try {
-			Statement sm = conn.createStatement();
-			ResultSet rs = sm.executeQuery(sql);
-			while(rs.next()) {
-				Customer cus = new Customer();
-				cus.setUname(rs.getString(1)); //또는 rs.getString("uname");
-				cus.setId(rs.getString(2));
-				list.add(cus);
-			}
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return list;
+	public ArrayList<Cart> cartList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 
 }

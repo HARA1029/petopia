@@ -17,4 +17,7 @@ public interface MDao {
 	//상품검색
 	public ArrayList<Product> sList(String pname);
 	
+	//상품상세정보
+	public Product pInfo(int pno);
+	
 }

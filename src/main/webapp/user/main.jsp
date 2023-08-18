@@ -7,6 +7,7 @@
 	<title> MAIN </title>
 	<link rel="stylesheet" href="../css/main.css">
 </head>
+
 <%@ include file="/layout/top.jsp" %>
 
 	<!-- Slideshow container -->
@@ -102,6 +103,6 @@
 	  	</div>	  		  
 	</div>
 	
-	<script src="../js/test.js"></script>
+	<script src="../js/main.js"></script>
 
 <%@ include file="/layout/bottom.jsp" %>

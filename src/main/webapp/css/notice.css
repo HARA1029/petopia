@@ -88,11 +88,12 @@ h1 {
 }
 
 
-a.title {
-    color: #333;
+.notice-title {
+    color: black;
     text-decoration: none;
 }
 
-a.title:hover {
+.notice-title:hover {
    color: #888;
+   text-decoration: underline;
 }

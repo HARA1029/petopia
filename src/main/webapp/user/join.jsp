@@ -8,6 +8,7 @@
 	<title> 회원가입 </title>
 	<link rel="stylesheet" href="../css/join.css">
 </head>
+
 <%@ include file="/layout/top.jsp" %>
 		<div class="signup">
 			<form name="signupForm" action="controller.jsp" method="post" accept-charset="UTF-8">

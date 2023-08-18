@@ -5,9 +5,10 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title> 회원가입 </title>
+	<title> 회원가입성공 </title>
 	<link rel="stylesheet" href="../css/joinSucess.css">
 </head>
+
 <%@ include file="/layout/top.jsp" %>
 
 	<div class="congratulations">

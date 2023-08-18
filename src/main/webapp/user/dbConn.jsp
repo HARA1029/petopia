@@ -4,9 +4,11 @@
 
 <%
 	   Connection conn = null;
-	
+	   PreparedStatement pstmt = null;
+	   ResultSet rs = null;
+	   
 	   String driver ="oracle.jdbc.driver.OracleDriver";
-	   String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	   String url = "jdbc:oracle:thin:@localhost:1521:orcl?useUnicode=true&characterEncoding=UTF-8";
 	   
 	   Boolean connect = false;
 	   

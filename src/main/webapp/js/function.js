@@ -1,3 +1,4 @@
+//login
 function loginerror1() {
     alert('로그인에 실패하였습니다.');
     location.href = 'login.jsp';
@@ -8,6 +9,7 @@ function loginerror2() {
     location.href = 'login.jsp';
 }
 
+// 회원가입 완료 후 버튼
 function goLogin() {
       window.location.href = "login.jsp";
 }
@@ -16,11 +18,7 @@ function goMain() {
       window.location.href = "main.jsp";
 }
 
-function goProductView() {
-      window.location.href = "#";
-}
-
-
+// 공지 삭제 alert
 function deleteNotice(event) {
 	event.preventDefault();
 	

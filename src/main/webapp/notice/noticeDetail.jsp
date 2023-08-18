@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../user/dbConn.jsp" %>
-<%@ include file="/layout/top.jsp" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>공지사항 상세 내용</title>
-    <link rel="stylesheet" href="../css/notice_detail.css">
+    <link rel="stylesheet" href="../css/noticeDetail.css">
 </head>
+
+<%@ include file="/layout/top.jsp" %>
     <div class="notice-detail">
         <%
             String postNumberParam = request.getParameter("postNumber");
@@ -17,9 +18,9 @@
                 int postNumber = Integer.parseInt(postNumberParam);
                 
                 String sql = "SELECT * FROM notice WHERE no = ?";
-                PreparedStatement sm = conn.prepareStatement(sql);
-                sm.setInt(1, postNumber);
-                ResultSet rs = sm.executeQuery();
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, postNumber);
+                rs = pstmt.executeQuery();
                 
                 if (rs.next()) {
                     String title = rs.getString("ntitle");
@@ -65,7 +66,7 @@
                 }
                 
                 rs.close();
-                sm.close();
+                pstmt.close();
             } else {
         %>
         <p>잘못된 요청입니다.</p>

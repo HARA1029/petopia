@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../user/dbConn.jsp" %>
-<%@ include file="/layout/top.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,6 +8,8 @@
     <title>공지사항 작성</title>
     <link rel="stylesheet" href="../css/noticeWrite.css">
 </head>
+
+<%@ include file="/layout/top.jsp" %>
     <div class="notice-write">
         <h1>공지사항 작성</h1>
         

@@ -9,9 +9,9 @@
 		 String u_id = request.getParameter("id");
 		 
 		 String sql = "SELECT * FROM customer WHERE id = ?";
-		    PreparedStatement sm = conn.prepareStatement(sql);
-		    sm.setString(1, u_id);
-		    ResultSet rs = sm.executeQuery();
+		    pstmt = conn.prepareStatement(sql);
+		    pstmt.setString(1, u_id);
+		    rs = pstmt.executeQuery();
 		
 		    if (rs.next()) {
 		    	out.println("중복된 id입니다.");
@@ -20,7 +20,7 @@
 		    	 out.println("사용 가능한 id입니다.");
 		    }
 		 
-		    sm.close();
+		    pstmt.close();
 	        conn.close();
 	        return;
 	 }
@@ -59,9 +59,9 @@
         String sql = "INSERT INTO customer VALUES";
         sql += "(CUSTOMER_SEQ.NEXTVAL,'" + u_name + "','" + u_id + "','" + u_pw + "','" + u_mail + "','" + u_addr + "','" + u_tel + "','" + u_grade + "','" + u_zipcode + "')";
 
-        Statement sm = conn.createStatement();
-
-        int count = sm.executeUpdate(sql);
+		pstmt = conn.prepareStatement(sql);
+        
+        int count = pstmt.executeUpdate();
 
         if (count == 1) {
         	
@@ -77,9 +77,9 @@
             
         } else {
             out.println("회원가입 실패!");
-            //response.sendRedirect("signup.jsp");
+            response.sendRedirect("main.jsp");
         }
-        sm.close();
+        pstmt.close();
         conn.close();
     }
 
@@ -92,9 +92,9 @@
 	
 	    // 입력한 아이디와 일치하는 사용자 조회
 	    String sql = "SELECT * FROM customer WHERE id = ?";
-	    PreparedStatement sm = conn.prepareStatement(sql);
-	    sm.setString(1, u_id);
-	    ResultSet rs = sm.executeQuery();
+	    pstmt = conn.prepareStatement(sql);
+	    pstmt.setString(1, u_id);
+	    rs = pstmt.executeQuery();
 	
 	    if (rs.next()) {
 	        String dbPW = rs.getString("pw"); // db에 저장된 비밀번호 가져오기
@@ -110,6 +110,7 @@
 	            String grade = rs.getString("grade");
 	            session.setAttribute("userGrade", grade); // 세션에 등급 저장
 	            
+	            
 	            response.sendRedirect("main.jsp");
 	        } else { // 비번 틀림
 	        	out.println("<script>loginerror1();</script>");
@@ -118,7 +119,7 @@
 	    	out.println("<script>loginerror2();</script>");
 	    }
 	
-	    sm.close();
+	    pstmt.close();
 	    conn.close();
 	}
 	
@@ -128,26 +129,29 @@
         response.sendRedirect("main.jsp"); // Redirect to the main page after logout
     }
 	
-	// 공지사항 조회수
+	// 공지사항 제목 클릭 -> 조회수 증가 -> 상세페이지이동
 	if (request.getParameter("action") != null && request.getParameter("action").equals("viewNotice")) {
-    String postNumberParam = request.getParameter("postNumber");
+    	String postNumberParam = request.getParameter("postNumber");
 
 	    if (postNumberParam != null) {
 	        int postNumber = Integer.parseInt(postNumberParam);
 	
 	        String sql = "UPDATE notice SET ncount = ncount + 1 WHERE no = ?";
 	        
-	        PreparedStatement smUpdateViews = conn.prepareStatement(sql);
-	        smUpdateViews.setInt(1, postNumber);
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setInt(1, postNumber);
 	        
-	        int Count = smUpdateViews.executeUpdate();
+	        int count = pstmt.executeUpdate();
 	
-	        if (Count > 0) {
+	        if (count > 0) {
 	            out.println("조회수 증가 처리 완료");
 	        }
 	        
-	        response.sendRedirect("../notice/notice_detail.jsp?postNumber=" + postNumber);
+	        response.sendRedirect("../notice/noticeDetail.jsp?postNumber=" + postNumber);
 	    }
+	    
+	    pstmt.close();
+        conn.close();
 	}
 	
 	// 공지사항 등록 처리
@@ -156,15 +160,15 @@
         
         String n_title = request.getParameter("title");
         String n_content = request.getParameter("content");
-        n_content = n_content.replace("\n", "<br>");
+        n_content = n_content.replace("\n", "<br>"); // 엔터 저장
         
 
         String sql = "INSERT INTO notice VALUES";
         sql += "(NOTICE_SEQ.NEXTVAL,'" + n_title + "','" + n_content + "', 0 , sysdate)";
         
-        PreparedStatement sm = conn.prepareStatement(sql);
+        pstmt = conn.prepareStatement(sql);
         
-        int count = sm.executeUpdate();
+        int count = pstmt.executeUpdate();
 
         if (count == 1) {
             out.println("공지사항 등록 성공!");
@@ -172,7 +176,8 @@
         } else {
             out.println("공지사항 등록 실패!");
         }
-        sm.close();
+        
+        pstmt.close();
         conn.close();
     }
 	
@@ -185,22 +190,23 @@
         String n_content = request.getParameter("content");
         n_content = n_content.replace("\n", "<br>");
 
-        String updateSql = "UPDATE notice SET ntitle = ?, ncontent = ?, ndate = sysdate WHERE no = ?";
-        PreparedStatement updateStatement = conn.prepareStatement(updateSql);
-        updateStatement.setString(1, n_title);
-        updateStatement.setString(2, n_content);
-        updateStatement.setInt(3, postNumber);
+        String sql = "UPDATE notice SET ntitle = ?, ncontent = ?, ndate = sysdate WHERE no = ?";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, n_title);
+        pstmt.setString(2, n_content);
+        pstmt.setInt(3, postNumber);
 
-        int updateCount = updateStatement.executeUpdate();
+        int count = pstmt.executeUpdate();
 
-        if (updateCount == 1) {
+        if (count == 1) {
             out.println("공지사항 수정 성공!");
             response.sendRedirect("../notice/notice.jsp"); 
         } else {
             out.println("공지사항 수정 실패!");
         }
 
-        updateStatement.close();
+        pstmt.close();
+        conn.close();
     }
 	
 	// 공지사항 삭제 처리
@@ -228,6 +234,9 @@
 	    } else {
 	        out.println("잘못된 요청입니다.");
 	    }
+	    
+        pstmt.close();
+        conn.close();	       
 	}
 
 %>

@@ -8,6 +8,7 @@
 	<title>로그인</title>
 	<link rel="stylesheet" href="../css/login.css">
 </head>
+
 <%@ include file="/layout/top.jsp" %>
 	
 	<div class="login">

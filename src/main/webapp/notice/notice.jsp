@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../user/dbConn.jsp" %>
-<%@ include file="/layout/top.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,6 +8,8 @@
     <title>공지사항</title>
     <link rel="stylesheet" href="../css/notice.css">
 </head>
+
+<%@ include file="/layout/top.jsp" %>
     <h1>공지사항</h1>
     
     <div class="menu">
@@ -57,20 +58,19 @@
 			    sql += " ORDER BY ndate DESC";
 			
 			    if (connect) {
-			        System.out.println("db연결성공");
-			        PreparedStatement sm = conn.prepareStatement(sql);
-			        ResultSet rs = sm.executeQuery();
+			        pstmt = conn.prepareStatement(sql);
+			        rs = pstmt.executeQuery();
 			
 			        while (rs.next()) {
 			            int postNumber = rs.getInt("no");
 			            String title = rs.getString("ntitle");
-			            String createDate = rs.getString("ndate");
+			            String date = rs.getString("ndate");
 			            int views = rs.getInt("ncount");
 			%>
             <tr>
                 <td class="td_1"><%= postNumber %></td>
-                <td class="td_2"><a class="title" href="../user/controller.jsp?action=viewNotice&postNumber=<%= postNumber %>"><%= title %></a></td>
-                <td class="td_3"><%= createDate %></td>
+                <td class="td_2"><a class="notice-title" href="../user/controller.jsp?action=viewNotice&postNumber=<%= postNumber %>"><%= title %></a></td>
+                <td class="td_3"><%= date %></td>
                 <td class="td_4"><%= views %></td>
             </tr>
             <%

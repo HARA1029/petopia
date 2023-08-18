@@ -1,0 +1,67 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+.customerTable {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    
+}
+
+.customerTable th {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.customerTable td {
+    padding: 10px; 
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.td_1 /*고객번호*/{
+    width: 15%;
+}
+
+.td_2 /*고객명*/{
+    width: 15%;
+}
+
+.td_3 /*전화번호*/{
+    width: 15%;
+}
+.td_4 /*주소*/{
+   width: 45%;
+}
+
+.td_5 /*등급*/{
+   width: 10%;
+}
+
+
+a.title {
+    color: #333;
+    text-decoration: none;
+}
+
+a.title:hover {
+   color: #888;
+}
+
+
+.search-menu {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.search-form {
+    display: inline-block;
+    padding: 5px;
+}

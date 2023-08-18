@@ -1,49 +1,39 @@
 @charset "UTF-8";
 
 footer {
-	bottom: 0;
+   bottom: 0;
+   background-color: silver;
+   margin-top: 20px;
+/*   padding: 20px 0px; */
+  background-color: silver;
+  position: absoulte;/*  8월 17일 수정(성민) */
+  width: 100%;
 }
 
-.footer-black {
-		bottom: 0;
-		margin-top: 100px;
-    padding: 20px 0px;
-    height: 250px;
-    background-color: sliver;
-    display: block;
-    position: fixed;
-    width: 100%;
-}
-
-.footer-division-1 {
-	padding-bottom: 30px;
-	border-bottom: 1px solid #333;
-}
 
 .footer-tel {
-	color: black;
-	font-size: 32px;
-	margin-bottom: 10px;
-	font-weight: bold;
+   padding-bottom : 15px;
+   color: black;
+   font-size: 24px;
+   /* margin-bottom: 10px; */
+   font-weight: bold;
 }
 
 .footer-text {
-	color: black;
-	font-size: 13px; 
-	opacity: 0.56;
-	font-weight: 500;
+   color: black;
+   font-size: 13px; 
+   opacity: 0.56;
+   font-weight: 500;
 }
 
 .footer-link-company {
-	margin-top: 10px;
-	color: black;
-	font-weight: bold;
-	font-size: 18px;
-
+   margin-top: 10px;
+   color: black;
+   font-weight: bold;
+   font-size: 18px;
+   text-decoration: none;
 }
 
 .footer-sep {
-	font-size: 13px;
-	text-decoration:underline;
-	
+   font-size: 13px;
 }

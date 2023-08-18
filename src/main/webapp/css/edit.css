@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+
+	/* edit form container */
+.edit {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  margin: 20px auto;
+}
+		/* Form input styles */
+	.edit input[type="text"],
+	.edit input[type="password"],
+	.edit input[type="email"] {
+	  width: 90%;
+	  padding: 10px;
+	  margin-bottom: 10px;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	}
+	
+	/* Submit button */
+.edit .editButton {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.edit input[type="submit"],
+.edit input[type="reset"] {
+  background-color: lightcoral;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.edit input[type="submit"], 
+.edit input[type="reset"] :hover {
+  background-color: #ff6b6b;
+}

@@ -4,7 +4,7 @@ h1 {
     text-align: center;
 }
 
-.orderTable, .cartTable {
+.myListTable {
     width: 80%;
     border-collapse: collapse;
     margin: 20px auto;
@@ -12,7 +12,7 @@ h1 {
     
 }
 
-.orderTable th, .cartTable th {
+.myListTable th {
     background-color: #333;
     color: white;
     padding: 10px;
@@ -20,45 +20,30 @@ h1 {
     border: 1px solid #ddd;
 }
 
-.orderTable td, .cartTable td {
+.myListTable td {
     padding: 10px; 
     text-align: center;
     border: 1px solid #ddd;
 }
 
 .td_1 {
-    width: 15%;
+    width: 7%;
 }
 
 .td_2 {
-    width: 55%;
+    width: 15%;
 }
 
 .td_3 {
-    width: 15%;
+    width: 40%;
 }
 .td_4{
    width: 15%;
 }
-
-.ctd_1 {
-    width: 15%;
+.td_5 {
+    width: 8%;
 }
-
-.ctd_2 {
-    width: 40%;
-}
-
-.ctd_3 {
-    width: 10%;
-}
-.ctd_4{
-   width: 10%;
-}
-.ctd_5 {
-    width: 10%;
-}
-.ctd_6{
+.td_6{
    width: 15%;
 }
 
@@ -68,16 +53,14 @@ td button {
     align-items: center;
     background-color: lightcoral;
     color: #fff;
-
     border: none;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
-    width: 40%;
+    width: 50px;
     flex-wrap: nowrap;
     align-content: center;
 }
-
 
 td button:hover {
   background-color: #ff6b6b;

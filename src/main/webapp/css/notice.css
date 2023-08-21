@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+.menu {
+	width: 90%;
+	margin : 0 auto;
+	text-align: right;
+}
+
+.write-button {
+    text-align: right;
+    margin-top: 20px;
+    margin-right: 80px;
+}
+
+
+.write-button  input[type="submit"] {
+    background-color: #333; 
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-container {
+    text-align: right;
+    margin-right: 80px;
+}
+.search-container select{
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-container input[type="search"]{
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-container  input[type="submit"] {
+    background-color: #333; 
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.noticeTable {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    
+}
+
+.noticeTable th {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.noticeTable td {
+    padding: 10px; 
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.td_1 {
+    width: 15%;
+}
+
+.td_2 {
+    width: 55%;
+}
+
+.td_3 {
+    width: 15%;
+}
+.td_4{
+	width: 15%;
+}
+
+
+.notice-title {
+    color: black;
+    text-decoration: none;
+}
+
+.notice-title:hover {
+   color: #888;
+   text-decoration: underline;
+}

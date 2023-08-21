@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+main {
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+	
+}
+.container {
+		display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}	
+	
+header{
+	padding-top:1px;
+	height:100px;
+}
+	
+nav{
+    padding-top: 10px;
+    padding-left: 50px;
+    height: 40px;
+    color: white;
+    background: lightcoral;
+}
+
+.topImg {
+		display: block;
+    width: 450px;
+    height: 100px;
+    /* margin-left: auto; */
+    margin-right: auto;
+    padding-left: 150px;
+}
+	
+	
+#search {
+    color: white;
+    background: white;
+    text-align: center;
+    width: 250px;
+    height: 30px;
+}
+	
+#search-btn {
+		text-align:center;
+		color:white;
+		background:lightcoral;
+		width:90px;
+		height:30px;
+	  border-radius: 4px;
+	  cursor: pointer;
+	  margin-right: 10px;
+}
+
+#search-btn:hover {
+    background-color: #ff6b6b;
+}
+
+#nav a {
+	overflow:hidden;
+	background-color : inherit;
+}
+#nav a:link {
+	color:white;
+	text-decoration:none;
+}
+#nav a:visited {
+	color:white;
+	text-decoration:none; 
+}
+
+#nav a.active {
+	  color: #00147b;
+    font-weight: bold;
+    text-decoration: none;
+}
+#nav a:hover {
+	  color: #00147b;
+
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info .user {
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.user-info .user .name {
+	  margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #00147b;
+}
+
+.user-info form {
+    margin: 0;
+}
+
+.user-info button {
+    color: white;
+    background: lightcoral;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: inline-block; /* 추가: 버튼 가로 배열을 위해 inline-block으로 설정 */
+    margin: 0; /* 추가: 기본 마진 제거 */
+    margin-right: 10px;
+    width:90px;
+    text-align:center;
+		height:30px;
+	  border-radius: 4px;
+	  cursor: pointer;
+	 
+}
+
+.user-button:hover,
+.user-button.active {
+    background-color: #ff6b6b;
+    color: #00147b;
+    font-weight: bold;
+}

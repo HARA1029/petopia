@@ -37,9 +37,28 @@ h1 {
     width: 15%;
 }
 .td_4 /*리뷰내용*/{
-   width: 45%;
+   width: 30%;
 }
 
 .td_5 /*작성날짜*/{
    width: 15%;
+}
+
+.td_6 /*선택*/{
+   width: 15%;
+}
+
+button{
+	color: white;
+    background: lightcoral;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: inline-block; /* 추가: 버튼 가로 배열을 위해 inline-block으로 설정 */
+    margin: 0; /* 추가: 기본 마진 제거 */
+    margin-right: 5px;
+    width:60px;
+    text-align:center;
+	height:30px;
+	border-radius: 4px; 
 }

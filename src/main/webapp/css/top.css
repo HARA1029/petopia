@@ -126,10 +126,8 @@ a {
     margin-right: 10px;
     width:90px;
     text-align:center;
-		height:30px;
-	  border-radius: 4px;
-	  cursor: pointer;
-	 
+	height:30px;
+	border-radius: 4px; 
 }
 
 .user-info button:hover {

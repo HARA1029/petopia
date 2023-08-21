@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+h1 {
+    text-align: center;
+}
+
+.myListTable {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    border:1;
+    
+}
+
+.myListTable th {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.myListTable td {
+    padding: 10px; 
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.td_1 {
+    width: 7%;
+}
+
+.td_2 {
+    width: 15%;
+}
+
+.td_3 {
+    width: 40%;
+}
+.td_4{
+   width: 15%;
+}
+.td_5 {
+    width: 8%;
+}
+.td_6{
+   width: 15%;
+}
+
+td button {
+		display: inline-grid;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcoral;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: 50px;
+    flex-wrap: nowrap;
+    align-content: center;
+}
+
+td button:hover {
+  background-color: #ff6b6b;
+}
+
+textarea {
+		width: 350px;
+    height: 125px;
+    resize:none;
+	
+}

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="../css/bottom.css">
-
 </main>
 <footer class="footer-black">
 	
@@ -13,7 +12,7 @@
 			<div class="footer-text">점심시간 : PM 12:30 ~ PM 13:30</div>
 			<div class="footer-text">회사명 : (주)Petopia | 대표이사:KOSA | 사업자등록번호:000-00-00000 </div>
 			<div class="footer-text">주소 : (00000) 서울특별시 금천구</div>
-			<div class="footer-text">개인정보관리책임자 : </div>
+			<div class="footer-text">Copyright 2023 Petopia ⓒ.All Rights Reserved. </div>
 			<div class="footer-link-company">
 				<a>이용약관</a>
 				<span class="footer-sep">  |  </span>

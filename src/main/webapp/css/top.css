@@ -24,6 +24,7 @@ nav{
     padding-top: 10px;
     padding-left: 50px;
     height: 40px;
+    color: white;
     background: lightcoral;
 }
 
@@ -60,29 +61,27 @@ nav{
     background-color: #ff6b6b;
 }
 
-a {
+#nav a {
 	overflow:hidden;
 	background-color : inherit;
-	color: white;
-	text-decoration:none;
 }
-
-#nav a.link {
+#nav a:link {
 	color:white;
 	text-decoration:none;
 }
-#nav a.visited {
+#nav a:visited {
 	color:white;
 	text-decoration:none; 
 }
 
 #nav a.active {
-	color: black;
+	  color: #00147b;
     font-weight: bold;
     text-decoration: none;
 }
-#nav a.hover {
-	color:#000000;
+#nav a:hover {
+	  color: #00147b;
+
 }
 
 .user-info {
@@ -126,10 +125,15 @@ a {
     margin-right: 10px;
     width:90px;
     text-align:center;
-	height:30px;
-	border-radius: 4px; 
+		height:30px;
+	  border-radius: 4px;
+	  cursor: pointer;
+	 
 }
 
-.user-info button:hover {
+.user-button:hover,
+.user-button.active {
     background-color: #ff6b6b;
+    color: #00147b;
+    font-weight: bold;
 }

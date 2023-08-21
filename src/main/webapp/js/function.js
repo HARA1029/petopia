@@ -18,6 +18,11 @@ function goMain() {
       window.location.href = "main.jsp";
 }
 
+function goJoin() {
+      window.location.href = "join.jsp";
+}
+
+
 // 공지 삭제 alert
 function deleteNotice(event) {
 	event.preventDefault();
@@ -33,3 +38,16 @@ function deleteNotice(event) {
 		
 	}
 }
+
+function withdrawErrorPw() {
+      alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+      location.href = "withdrawal.jsp"
+      u_pw.focus();
+}
+
+function withdrawErrorId() {
+      alert("ID가 일치하지 않습니다. 다시 입력해주세요.");
+      location.href = "withdrawal.jsp"
+      u_id.focus();
+}
+

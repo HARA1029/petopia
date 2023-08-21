@@ -14,10 +14,16 @@
 <title>장바구니</title>
 
 </head>
-<body>
+
+<!-- top -->
+<%@ include file="../layout/top.jsp" %>
+
+<h1 style="text-align:center; padding: 5% 0 0 0;">장바구니</h1>
+<hr style="width:300px;">
+
 <table class="cart-table">
 	<!-- 목록1개 이걸 돌리기 -->
-	<c:forEach items="${cartlist}" var="cart">
+	<c:forEach items="${cartlist}" var="cart" varStatus="loop">
   <tr style="border : 5px solid black;">
 	  <td class="img-td">
 	  	 <img src="../image/${cart.img}" class="cart-img" style="width:100%;">
@@ -39,15 +45,19 @@
 	      </table>
 		</td>
 		<td class="cart-check">
-       <input type="checkbox">
+       <input type="checkbox" value="${cart.cno}" name="cno-${loop.index}">
     </td>
      <td class="cart-delete">
-       <button>삭제</button>
+       <button type="button" id="delete">삭제</button>
     </td>
   </tr>
   </c:forEach>
 </table>
+<div class="orderBtn">
+	<button id="order" type="button">주문</button>
+</div>
 
+<!-- bottom -->
+<%@ include file="../layout/bottom.jsp" %>
 
-</body>
 </html>

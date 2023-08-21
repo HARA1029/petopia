@@ -6,6 +6,13 @@
   width: 1000px;
   height : 150px;
 }
+
+.orderBtn {
+	width:1000px;
+	margin : 0 auto;
+	text-align : right;
+}
+
 .img-td {
 	width: 150px;
 	height: 150px;
@@ -26,4 +33,13 @@
 .cart-delete {
 	text-align : center;
 	width:75px;
+}
+
+/* 주문 버튼 */
+#order,#delete {
+	border : none;
+	width : 75px;
+	height :40px;
+	background-color : lightcoral;
+	color : white;
 }

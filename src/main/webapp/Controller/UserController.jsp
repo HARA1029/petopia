@@ -72,7 +72,7 @@
 			System.out.println("장바구니 다 담았다.");
 			
 			request.setAttribute("cartlist", cartlist);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../view/Cart_view.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../view/cart.jsp");
 			dispatcher.forward(request, response);
 			
 			break;

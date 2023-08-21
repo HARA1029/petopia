@@ -18,14 +18,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body>
+
 
 <!-- top -->
 <%@ include file="../layout/top.jsp" %>
 
 <!-- 카테고리 메뉴바 -->
 <%@ include file="categoryBar.jsp" %>
-
+	<button id="registerBtn" type="button" onclick="registerFunction()">상품등록</button>
 	<div class="plist-container">
 	
 			<!-- plist ArrayList가 비어있지 않을 때 실행할 내용 -->
@@ -54,5 +54,11 @@
 
 <!-- bottom -->
 <%@ include file="../layout/bottom.jsp" %>
-</body>
+
+<script>
+function registerFunction() {
+	location.href = '../view/ProductRegister_view.jsp';
+}
+</script>
+
 </html>

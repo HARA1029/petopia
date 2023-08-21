@@ -105,22 +105,24 @@
 				</div>		 	
 	        </div>
 		</header>
-	
+		
 		<nav id=nav>
 			<div class=container>
 				<a href="/petopia/user/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
-			    <a href="#" onclick="setActiveLink(this)">상품목록</a> &emsp;
+			    <a href="../Controller/ManagerController.jsp?submit=pList&cateno=0" >상품목록</a> &emsp;
 			    <a href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
-				<table>
-					<tr>
-						<td>
-							&emsp;<input id="search" type="search" placeholder="검색어를 입력해주세요"  >&emsp;
-						</td>
-						<td>
-							<input id="search-btn" type="submit" value="search">
-						</td>
-					</tr>
-				</table>
-			</div>
-		</nav>
-		<main>
+				<form action="../Controller/ManagerController.jsp">
+					<table>
+				<tr>
+				   <td>
+					  &emsp;<input id="search" type="search" placeholder="검색어를 입력해주세요"  name="pname" style="color:black;">&emsp;
+				   </td>
+				   <td>
+					  <input id="search-btn" type="submit" name="submit"value="search">
+				   </td>
+				</tr>
+			 </table>
+			 </form>
+				</div>
+			</nav>
+			<main>

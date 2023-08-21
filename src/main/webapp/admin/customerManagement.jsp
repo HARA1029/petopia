@@ -15,7 +15,7 @@
     <div>
         <table class="customerTable" border="1">
             <tr>
-                <th>고객번호</th>
+                <th>고객ID</th>
                 <th>고객명</th>
                 <th>전화번호</th>
                 <th>주소</th>
@@ -31,7 +31,7 @@
                  rs = sm.executeQuery();
 
                  while (rs.next()) {
-                     int customerNumber = rs.getInt("uno");
+                     String u_id = rs.getString("id");
                      String u_name = rs.getString("uname");
                      String u_tel = rs.getString("tel");
                      String u_addr = rs.getString("addr");
@@ -54,7 +54,7 @@
      	            }
          %>
             <tr>
-                <td class="td_1"><%= customerNumber %></td>
+                <td class="td_1"><%= u_id %></td>
                 <td class="td_2"><%= u_name %></td>
                 <td class="td_3"><%= u_tel %></td>
                 <td class="td_4"><%= u_addr %></td>

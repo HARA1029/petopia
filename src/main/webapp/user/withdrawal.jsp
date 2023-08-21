@@ -18,8 +18,7 @@
 			아이디 :
 			<br> <input type="text" size="16" name="userID"><br>
 			<br> 
-			비밀번호 : <br> <input type="password" size="16"
-				name="userPW"><br>
+			비밀번호 : <br> <input type="password" size="16" name="userPW"><br>
 			<br>
 			<div class="button-container">
 				<button class="withdrawal-button" onclick="withdrawal(event)">탈퇴하기</button>

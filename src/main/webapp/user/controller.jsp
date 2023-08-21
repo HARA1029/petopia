@@ -127,6 +127,7 @@
 	    String u_tel = request.getParameter("tel");
 	    String u_grade = request.getParameter("grade");
 
+
 	    try {
 	        String sql = "UPDATE customer SET pw = ?, uname = ?, mail = ?, addr = ?, tel = ?, grade = ? WHERE id = ?";
 	        PreparedStatement sm = conn.prepareStatement(sql);
@@ -134,6 +135,8 @@
 	        
 	     		// 기존 정보와 수정한 정보 비교 후 업데이트
 	        boolean hasUpdates = false; // 업데이트 여부 체크용 변수
+	        
+	       
 	        
 	        if (u_name != null) {
 	            sm.setString(2, u_name);

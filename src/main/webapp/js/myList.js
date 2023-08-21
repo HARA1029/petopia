@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const modalRows = document.querySelectorAll(".modal-row");
     const maxBytes = 100; // 최대 바이트 수
 
+    let originalText = {}; // 기존 텍스트를 저장할 객체
+
     // 페이지 로드 시에는 모든 모달 폼을 숨깁니다.
     modalRows.forEach(row => {
         row.style.display = "none";
@@ -12,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
             const rno = this.getAttribute("data-rno");
             const modalRow = document.querySelector(`.modal-row[data-rno="${rno}"]`);
+            const textarea = modalRow.querySelector(".review-textarea");
+
+            // 기존 텍스트를 저장
+            originalText[rno] = textarea.value;
 
             // 모든 모달 폼을 숨긴 후 선택한 모달 폼만 보이도록 설정합니다.
             modalRows.forEach(row => {
@@ -20,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
             modalRow.style.display = "table-row";
 
             // 수정 버튼 클릭 시 리뷰 내용의 바이트 길이를 표시
-            const textarea = modalRow.querySelector(".review-textarea");
             const charCount = modalRow.querySelector(".char-count");
             const currentCount = charCount.querySelector(".current-count");
             const text = textarea.value;
@@ -31,12 +36,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     modalRows.forEach(modalRow => {
         const closeButton = modalRow.querySelector(".close-btn");
+        const rno = modalRow.getAttribute("data-rno");
+        const textarea = modalRow.querySelector(".review-textarea");
 
         closeButton.addEventListener("click", function() {
+            const text = textarea.value;
+            const charCount = modalRow.querySelector(".char-count");
+            const currentCount = charCount.querySelector(".current-count");
+
+            // 기존 내용 복원
+            if (originalText.hasOwnProperty(rno)) {
+                textarea.value = originalText[rno];
+                const byteCount = getByteCount(text);
+                currentCount.textContent = byteCount;
+            }
+
             modalRow.style.display = "none";
         });
 
-        const textarea = modalRow.querySelector(".review-textarea");
         const charCount = modalRow.querySelector(".char-count");
         const currentCount = charCount.querySelector(".current-count");
 

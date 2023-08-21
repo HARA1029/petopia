@@ -66,8 +66,8 @@
                 <input type="hidden" name="rno" value="<%= number %>">
                 <label for="content_<%= number %>">리뷰 내용</label>
                 <br>
-                <textarea class="review-textarea" name="content" id="content_<%= number %>" rows="4" cols="50" maxlength="100">
-                <%= content %></textarea>
+                <textarea class="review-textarea" name="content" id="content_<%= number %>" 
+                rows="4" cols="50" maxlength="100"><%= content %></textarea>
                 <div class="char-count">
                     <span class="current-count">0</span>/<span class="max-count">100</span> bytes
                 </div>

@@ -14,7 +14,7 @@
 
 <section>
 	<div class="congratulations">
-	    <p>회원수정이 성공적으로 완료되었습니다.</p>
+	    <p><b>회원수정이 성공적으로 완료되었습니다.</b></p>
 	</div>
 <form name="editForm" action="controller.jsp" method="post" accept-charset="UTF-8">
 			<div>

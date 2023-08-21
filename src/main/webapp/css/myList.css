@@ -65,3 +65,10 @@ td button {
 td button:hover {
   background-color: #ff6b6b;
 }
+
+textarea {
+		width: 350px;
+    height: 125px;
+    resize:none;
+	
+}

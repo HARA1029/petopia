@@ -61,26 +61,26 @@ nav{
     background-color: #ff6b6b;
 }
 
-a {
+#nav a {
 	overflow:hidden;
 	background-color : inherit;
 }
-a:link {
+#nav a:link {
 	color:white;
 	text-decoration:none;
 }
-a:visited {
+#nav a:visited {
 	color:white;
 	text-decoration:none; 
 }
 
 #nav a.active {
-		color: black;
+	  color: #00147b;
     font-weight: bold;
     text-decoration: none;
 }
-a:hover {
-	color:#000000;
+#nav a:hover {
+	  color: #00147b;
 
 }
 
@@ -131,7 +131,9 @@ a:hover {
 	 
 }
 
-.user-info button:hover {
+.user-button:hover,
+.user-button.active {
     background-color: #ff6b6b;
+    color: #00147b;
+    font-weight: bold;
 }
-

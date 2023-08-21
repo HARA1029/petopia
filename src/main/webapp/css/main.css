@@ -1,0 +1,120 @@
+@charset "EUC-KR";
+
+/* 광고 슬라이드*/
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  margin-top: 30px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  margin-bottom: 30px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.dot:active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+/* 상품 리스트 */
+h1 {
+    text-align: center;
+    margin: 0px;
+    margin-top:70px;
+    padding: 10px;
+}
+
+.button-container {
+	width: 90%;
+	margin : 0 auto;
+	text-align : right;
+	padding: 5px;
+}
+.more-button {
+	cursor: pointer;
+	text-align : right;
+	background-color: white;
+    border: none;
+    font-size : 1.0em;
+}
+
+.plist-container {
+	width: 90%; /* 화면 너비에 맞춰 설정 */
+	text-align : center;
+	margin : 0 auto; /*가운데 정렬*/
+	display: flex; /* 플렉스 컨테이너로 설정 */
+  	border : 3px solid black;
+  	/* flex-wrap: wrap; 넘칠 경우 줄바꿈 */
+}
+
+.plist {
+  height: 50px;
+  width: calc(19.8% - 40px); /* 화면을 5등분해서 각 항목의 너비 설정 (여백 고려) */
+  margin: 10px;
+  border : 3px solid lightblue;
+}
+
+.plist-container > div {
+  height : 100%; 
+  margin: 10px; /* 항목 사이 간격 설정 */
+  padding: 10px; /* 내부 여백 설정 */
+  font-size: 15px; /* 글꼴 크기 설정 */
+}
+.pImg {
+  max-width: 100%;
+  max-height: 100%;
+}

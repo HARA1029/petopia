@@ -87,12 +87,12 @@
 				    	<table>
 				    		<tr>
 				    			<td>
-						        <form action="login.jsp" method="get">
+						        <form action="/petopia/user/login.jsp" method="get">
 						            <button type="submit" onclick="setActiveLink(this)">로그인</button>
 						        </form>
 				        	</td>
 				        	<td>
-						        <form action="join.jsp" method="get">
+						        <form action="/petopia/user/join.jsp" method="get">
 						            <button type="submit" onclick="setActiveLink(this)">회원가입</button>
 						        </form>
 						        </td>

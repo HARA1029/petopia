@@ -13,7 +13,7 @@
 <title>상품목록</title>
 
 <!-- productList.css -->
-<link rel="stylesheet" href="../css/productList.css">
+<link rel="stylesheet" href="../css/productList.css"> 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +21,7 @@
 <body>
 
 <!-- top -->
-<%@ include file="/layout/top.jsp" %>
+<%@ include file="../layout/top.jsp" %>
 
 <!-- 카테고리 메뉴바 -->
 <%@ include file="categoryBar.jsp" %>
@@ -53,6 +53,6 @@
 
 
 <!-- bottom -->
-<%@ include file="/layout/bottom.jsp" %>
+<%@ include file="../layout/bottom.jsp" %>
 </body>
 </html>

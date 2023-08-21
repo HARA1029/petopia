@@ -15,8 +15,9 @@
 	
 	ManagerDao mdao;
 	
-	switch(action) {
+	switch(action) { 
 		
+		//상품등록
 		case "register" :
 			System.out.println("상품등록에 들어옴");// 지울거
 			
@@ -41,19 +42,20 @@
 			
 			Product pd = new Product(0, pname, price, stock, img, cateno);
 			
-			ManagerDao md = new ManagerDao();
+			mdao = new ManagerDao();
 			
-			int result = md.register(pd);
+			int result = mdao.register(pd);
 			
-			if(result == 1) {
-				response.sendRedirect("ManagerController.jsp?submit=pList&cateno=0"); //해당정보만 띄우는 페이지 만들어서 변경해야함
+			if(result == -1) { //상품등록 실패
+				response.sendRedirect("ManagerController.jsp?submit=pList&cateno=0");
 			}
 			else {
-				response.sendRedirect("ManagerController.jsp?submit=pList&cateno=0");
+				response.sendRedirect("ManagerController.jsp?submit=pList&cateno=0");//해당정보만 띄우는 페이지 만들어서 변경해야함
 			}
 			
 			break;
 			
+		//상품 중복체크	
 		case "pCheck" :
 			System.out.println("상품중복체크 들어옴");
 			String pName = request.getParameter("pname");
@@ -70,14 +72,16 @@
 				System.out.println("같은상품이 존재X.");
 				response.getWriter().write("1");
 			}  
-		break;	
+			break;	
 		
+		//상품목록
 		case "pList" :
 			
 			int category = Integer.parseInt(request.getParameter("cateno"));
 			System.out.println("상품목록에 들어옴 카테고리 넘버는 : " + category);
 			
 			mdao = new ManagerDao();
+			
 			ArrayList<Product> plist = mdao.pList(category); //카테고리별 목록 출력()
 			
 			request.setAttribute("plist", plist);
@@ -86,12 +90,14 @@
 			
 			break;
 			
+		//상품상세목록
 		case "pDetailList" : 
+			
 			int pno = Integer.parseInt(request.getParameter("pno"));
 			System.out.println("pno : " + pno);
 			
 			mdao = new ManagerDao();
-			Product pInfo = mdao.pInfo(pno); //카테고리별 목록 출력()
+			Product pInfo = mdao.pInfo(pno); //
 			
 			request.setAttribute("product",pInfo);
 			dispatcher = request.getRequestDispatcher("../view/pDetail_view.jsp");
@@ -99,7 +105,9 @@
 			
 			break;
 			
+		//상품검색
 		case "search" :
+			
 			String sname = request.getParameter("pname");
 			System.out.println("sname : " + sname);
 			
@@ -111,6 +119,63 @@
 			dispatcher.forward(request, response);
 				
 			break; 
+			
+			
+		//상품수정페이지
+		case "pModify_veiw" :
+			System.out.println("상품수정페이지 들어옴");
+			int mpno = Integer.parseInt(request.getParameter("pno"));
+			//System.out.println("mpno : " + mpno);
+			
+			mdao = new ManagerDao();
+			Product mpInfo = mdao.pInfo(mpno); //
+			
+			request.setAttribute("product",mpInfo);
+			dispatcher = request.getRequestDispatcher("../view/ProductModify.jsp");
+			dispatcher.forward(request, response);
+			
+			break;
+			
+		//상품수정
+		case "pModify" :
+			System.out.println("상품 수정하기");
+			//파일 경로 및 크기,인코딩 설정
+			String oldImg = request.getParameter("oldImg");
+			
+			//파일삭제
+			directory = "C:/Eclipse-Jsp-workspace/petopia/src/main/webapp/image/";
+			File file = new File(directory+oldImg);
+			file.delete();
+			//새로운 파일 업로드
+			size = 10 * 1024 * 1024;
+			encoding = "UTF-8";
+			
+			policy = new DefaultFileRenamePolicy();
+		  multipartRequest = new MultipartRequest(request, directory, size, encoding, policy); //이 부분이 파일을 업로드
+		  System.out.println("파일 이미지 이름 : " + multipartRequest.getParameter("img"));
+		  //업로드한 파일 얻기
+			uploadedFile = multipartRequest.getFile("img"); //form에서 input type="file" name값을 입력, 업로드한 파일이름을 가져오기 위해 파일을 가져옴
+			
+			System.out.println("여기까지는 되나?");
+			//DB 전송
+			//String mpname = multipartRequest.getParameter("pname");
+			int m_pno = Integer.parseInt(multipartRequest.getParameter("pno"));
+			int mprice = Integer.parseInt(multipartRequest.getParameter("price"));
+			int mstock = Integer.parseInt(multipartRequest.getParameter("stock"));
+			String mimg = uploadedFile.getName();//파일 이미지명은 이렇게 받아야 한다.
+			int mcateno = Integer.parseInt(multipartRequest.getParameter("cateno"));
+			
+			pd = new Product(m_pno, "", mprice, mstock, mimg, mcateno);
+			
+			mdao = new ManagerDao();
+			mdao.productModify(pd);			
+			
+			String alertScript = "<script>alert('상품수정완료'); location.href='ManagerController.jsp?submit=pModify_veiw&pno="+m_pno+"';</script>";
+			out.print(alertScript); // out은 JSP 페이지에서 사용 가능한 객체
+			
+			break;
+		
+		//상품삭제
 			
 		default :
 			break;

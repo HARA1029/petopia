@@ -1,0 +1,29 @@
+@charset "UTF-8";
+.cart-table {
+	/* border : 1px solid black; */
+	margin: 0 auto;
+	margin-top: 10%;
+  width: 1000px;
+  height : 150px;
+}
+.img-td {
+	width: 150px;
+	height: 150px;
+}
+.product-table {
+	padding : 0 0 0 50px;
+}
+.cart-list {
+	width: 500px;
+	height: 100%;
+}
+
+.cart-check {
+	text-align : center;
+	width:75px;
+}
+
+.cart-delete {
+	text-align : center;
+	width:75px;
+}

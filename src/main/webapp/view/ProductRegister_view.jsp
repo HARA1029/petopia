@@ -13,7 +13,7 @@
 
 <body>
 <!-- top -->
-<%@ include file="/layout/top.jsp" %>
+<%@ include file="../layout/top.jsp" %>
 
 
 	<div class="register-container">
@@ -97,7 +97,7 @@
 
 
 <!-- bottom -->
-<%@ include file="/layout/bottom.jsp" %>
+<%@ include file="../layout/bottom.jsp" %>
 
 <script>
 //전체적인 모든요소 체크(이게 최종적으로 true가 되어야 제출가능) + 아이디 중복체크까지
@@ -234,10 +234,3 @@ function stockSelect() {
 </script>
 </body>
 </html>
-
-<!--페이지 로드 시 실행
-window.onload = function() {
-    // 버튼에 표시되는 텍스트 변경
-    document.getElementById("submitButton").value = "등록";
-};
--->

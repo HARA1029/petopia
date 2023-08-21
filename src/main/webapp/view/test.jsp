@@ -46,32 +46,8 @@ table {
 <body>
 <table class="cart-table">
 
-	<!-- 목록1개 이걸 돌리기 -->
-  <tr>
-	  <td class="img-td" style="border:5px solid red"></td>
-		<td class="product-table">
-	      <table class="cart-list">
-	        <tr>
-	          <td>상품명</td>
-	        </tr>
-	        <tr>
-	          <td>상품가격</td>
-	        </tr>
-	        <tr>
-	          <td>수량</td>
-	        </tr>
-	        <tr>
-	          <td>총주문가격</td>
-	        </tr>
-	      </table>
-		</td>
-		<td class="cart-check">
-       <input type="checkbox">
-    </td>
-     <td class="cart-delete">
-       <button>삭제</button>
-    </td>
-  </tr>
+<!-- 목록1개 이걸 돌리기 -->
+<a href="asdfsdfasdf.jsp">장바구니</a> 
   
   
 </table>

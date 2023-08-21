@@ -19,18 +19,28 @@
 </head>
 <body>
 <!-- top -->
-<%@ include file="/layout/top.jsp" %>
+<%@ include file="../layout/top.jsp" %>
 
 <div style="margin:0 10%;">
-
-	<form id="dForm" action="../Controller/User	Controller.jsp" method="post">
 	
 	<!-- 객체를 JSTL 변수에 할당 -->
 	<c:set var="product" value="${product}" />
-	<input id="pno" type="hidden" value=${product.pno}>
-	<input id="stock" type="hidden" value=${product.stock}>
-	<input id="submit" name="submit" type="hidden" value="order">
 	
+	<input id="stock" type="hidden" value="${product.stock}"><!-- 상품재고 -->
+	<!--
+	<input id="img" type="hidden" value="${product.img}">상품이미지
+	<input id="pname" type="hidden" value="${product.pname}">상품명
+	<input id="price" type="hidden" value="${product.price}">상품가격
+	<input id="pno" type="hidden" value="${product.pno}"> 상품번호
+	<input id="uno" type="hidden" value="21"> 회원번호
+	-->
+	
+	<input id="pno" type="hidden" value="${product.pno}"> <!-- 상품번호 -->
+	<input id="uno" type="hidden" value=7> <!-- 회원번호 -->
+	<div class="btn-container" style="text-align:right; margin-top:35px;">
+		<button id="modify" type="button" onclick="modifyFunction()">상품수정</button>
+		<button id="delete" type="button">상품삭제</button>
+	</div>
 	<div id="nosold" class="Detail-row"><!-- display:flex -->
 	 	
 	 	<!-- 품절화면 -->
@@ -69,10 +79,6 @@
 		    <div class="numbertext">5 / 5</div>
 		    <img class="img1" src="../image/상세정보/5_${product.img}" alt="사진없음">
 		  </div>
-    
-		  <!-- <a class="prev" onclick="plusSlides(-1)">❮</a>
-		  <a class="next" onclick="plusSlides(1)">❯</a> -->
-
 
 		  <div class="row">
 		    <div class="column">
@@ -131,15 +137,15 @@
 	  	
 	  	
 	  	<div class="dbtn-group">
-		  	<button id="addCart" class="dbtn" type="button">ADD TO CART</button>
+		  	<button id="addCart" class="dbtn" type="button" onclick="AddFuction()">ADD TO CART</button>
 		  	<button id="order" class="dbtn" type="button">BUY NOW</button>
 			</div>
+			
 	  </div>
-	  
+	  	
 	  </c:if>
 	  
 	</div>
-	</form>
 	
 	<div class="Detail-container1">
 	  <img src="../image/상세정보/1_샤워기.jpg" alt="jpg1" width="500" height="500">
@@ -190,7 +196,7 @@
 
 
 <!-- bottom -->
-<%@ include file="/layout/bottom.jsp" %>
+<%@ include file="../layout/bottom.jsp" %>
 
 <script>
 
@@ -198,7 +204,7 @@
 var minusBtn = document.getElementById("minus");
 var plusBtn = document.getElementById("plus");
 var pCount = document.getElementById("count"); //주문할 상품 수량
-var stock = document.getElementById("stock").value; //상품재고수량
+var stock = parseInt(document.getElementById("stock").value); //상품재고수량
 var tCount = document.getElementById("totalcount"); //충 구매수량(이건 보여주는것만)
 
 /* 상품수량 감소 */
@@ -215,7 +221,7 @@ minusBtn.addEventListener("click", function() {
 /* 상품수량 증가 */
 plusBtn.addEventListener("click", function() {
 	pCount.value++;
-	if(pCount.value>stock) {
+	if(pCount.value > stock) {
 		alert("재고가 부족합니다.");
 		--pCount.value;
 		pCount.focus();
@@ -223,57 +229,20 @@ plusBtn.addEventListener("click", function() {
 	tCount.textContent=pCount.value;
 }); 
 
-var addBtn = document.getElementById("addCart");
-var pno = document.getElementById("pno").value;
-var count = document.getElementById("count").value;
+/* 장바구니 담기  */
+function AddFuction() {
+	var uno = document.getElementById("uno").value; //회원번호
+	var pno = document.getElementById("pno").value; //상품번호
+	alert("장바구니로 이동");
+	location.href = '../Controller/UserController.jsp?submit=addCart&uno='+uno+'&pno='+pno+'&count='+pCount.value;
+}
 
-addBtn.addEventListener("click", function() {
-	alert("장바구니로 이동?"); // submit 필드 추가
-	document.getElementById("submit").value = "cart";
-	
-	var xhr = new XMLHttpRequest();
-	
-	xhr.open("POST", "../Controller/UserController.jsp", true);
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // 요청 헤더 설정
-	
-	var data = "submit=addCart&pno="+ pno + "&count=" + count;
-	
-	xhr.send(data);
-
-
-});
-/* 장바구니에 담기 
-var addBtn = document.getElementById("addCart");
-
-addBtn.addEventListener("click", function() {
-	
-	alert("장바구니에 담기");	
-	
-	var pno = document.getElementById("pno").value; // 상품번호
-  var count = document.getElementById("count").value; // 주문 수량
-    
-  // AJAX 요청 생성
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "../Controller/ManagerController.jsp", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    
-    // 요청 완료 후 실행될 콜백 함수
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // 서버에서 반환한 응답 처리
-            alert(장바구니 페이지로 이동하시겠습니까?);
-        }
-    };
-    
-    // POST 데이터 생성
-    var data = "submit=addCart&uno=1&pno=" + encodeURIComponent(pno) + "&count=" + encodeURIComponent(count);
-    
-    // 요청 전송
-    xhr.send(data);
-	
-
-	
-});*/
+/* 상품수정  */
+function modifyFunction() {
+	var mpno = document.getElementById("pno").value; //상품번호
+	alert("상품수정 이동");
+	location.href = '../Controller/ManagerController.jsp?submit=pModify_veiw&pno='+mpno;
+}
 
 //주의사항(이게 먼저와야됨)
 var coll = document.getElementsByClassName("collapsible");
@@ -295,10 +264,6 @@ for (i = 0; i < coll.length; i++) {
 /* 상품이미지 선택시 보여주기 */
 let slideIndex = 1;
 showSlides(slideIndex);
-
-/* function plusSlides(n) {
-  showSlides(slideIndex += n);
-} */
 
 function currentSlide(n) {
   showSlides(slideIndex = n); 

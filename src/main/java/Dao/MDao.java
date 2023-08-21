@@ -20,4 +20,9 @@ public interface MDao {
 	//상품상세정보
 	public Product pInfo(int pno);
 	
+	//상품수정
+	public void productModify(Product pd);
+	
+	//상품삭제
+	
 }

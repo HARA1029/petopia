@@ -20,40 +20,65 @@
 		//장바구니 담기
 		case "addCart" :
 			
-			//회원번호, 상품번호, 상품총수량 받기
-			//int uno = Integer.parseInt(request.getParameter("uno"));
+			System.out.println("장바구니 담기 들어옴");
+			int uno = Integer.parseInt(request.getParameter("uno"));
 			int pno = Integer.parseInt(request.getParameter("pno"));
 			int count = Integer.parseInt(request.getParameter("count"));
 			
-			//System.out.println("회원번호 : " + uno);
-			System.out.println("상품번호 : " + pno);
-			System.out.println("총 주문수량 : " + count);
-			
-			Cart cart = new Cart(0,1,pno,count);
-			
 			udao = new UserDao();
-			int result = udao.addCart(cart);
 			
-			if(result == -1) {
-				System.out.println("실패");
+			//장바구니에 이미 상품이 있는지 확인cartCheck
+			int restStock = udao.cartCheck(pno); //-1이면 장바구니에 없고 2이상이면 앞으로 장바구니에 담을수 있는 수량
+			
+			
+			//장바구니에 해당 상품이 없음
+			if(restStock==-1) {
+					udao = new UserDao();
+					int result = udao.addCart(uno, pno, count); //장바구니에 상품 담기
+					if(result == -1) {
+						String alertScript = "<script>alert('Error'); location.href='../view/ProductList_view.jsp';</script>";
+						out.print(alertScript); // out은 JSP 페이지에서 사용 가능한 객체
+					}
+					else {
+						String alertScript = "<script>alert('장바구니 담기 성공'); location.href='UserController.jsp?submit=cartList';</script>";
+						out.print(alertScript); // out은 JSP 페이지에서 사용 가능한 객체
+						}
 			}
+			
+			//장바구니에 이미 동일 상품이 담아있음
 			else {
-				System.out.println("장바구니 성공");
-				//장바구니로 이동하는데 컨트롤러로 이동해서 장바구니로 이동
+				if(restStock<count) { //재고부족(주문가능 수량 < 담을수량)
+					String alertScript = "<script>alert('재고가 부족합니다.'); location.href='ManagerController.jsp?submit=pDetailList&pno="+pno+"';</script>";
+					out.print(alertScript); // out은 JSP 페이지에서 사용 가능한 객체
+				}
+				else { //재고만 수정하기
+					udao = new UserDao();
+					udao.cartModify(count, pno); //담을 수량, 상품번호(장바구니에서 상품번호에 품목 수량을 늘리기)
+					String alertScript = "<script>alert('장바구니 담기 성공'); location.href='UserController.jsp?submit=cartList';</script>";
+					out.print(alertScript); // out은 JSP 페이지에서 사용 가능한 객체
+					System.out.println("재고만 수정");
+				}
 			}
 			
-		break;
-		
+			break;
+			
 		//장바구니 목록
 		case "cartList" :
+			System.out.println("장바구니 목록");
 			
+			udao = new UserDao();
+			ArrayList<Cart> cartlist = new ArrayList<>();
+			cartlist = udao.cartList();
+			System.out.println("장바구니 다 담았다.");
 			
-		break;
-		
-		
-		
+			request.setAttribute("cartlist", cartlist);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../view/Cart_view.jsp");
+			dispatcher.forward(request, response);
 			
-		default :
+			break;
+			
+		
+		default : 
 			break;
 	}
 

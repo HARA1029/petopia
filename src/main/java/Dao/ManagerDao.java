@@ -1,6 +1,7 @@
 package Dao;
 
 import java.io.*;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -20,8 +21,11 @@ public class ManagerDao implements MDao {
 	@Override
 	public int register(Product pd) {
 		
+		System.out.println("상품등록 dao에 들어옴");
 		String sql = "INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.NEXTVAL,?,?,?,?,?)";
-		 		
+		 
+		int check = -1;
+		
 		try {
 			PreparedStatement pst = conn.prepareStatement(sql);
 			
@@ -31,11 +35,10 @@ public class ManagerDao implements MDao {
 			pst.setString(4, pd.getImg());
 			pst.setInt(5, pd.getCateno());
 			
-			//pst.close();
+			check = pst.executeUpdate(); //오라클 product테이블에 데이터 전송(성공하면 1 return)
+			
+			pst.close();
 	        conn.close();
-			
-			return pst.executeUpdate(); //오라클 product테이블에 데이터 전송(성공하면 1 return)
-			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -47,10 +50,11 @@ public class ManagerDao implements MDao {
 	///상품 중복 체크
 	@Override
 	public int pCheck(String pname) {
-		System.out.println("pname : " + pname);
+
 		String sql = "SELECT PNAME FROM PRODUCT WHERE PNAME = " + "'" + pname + "'"; //등록하려는 상품이 이미 존재하는지 보기
-		System.out.println("sql : " + sql);
+
 		int check=0;
+		
 		try {
 			Statement sm = conn.createStatement();
 			ResultSet rs = sm.executeQuery(sql);
@@ -68,6 +72,7 @@ public class ManagerDao implements MDao {
 	public ArrayList<Product> pList(int cateno) {
 		
 		String sql="";
+		
 		if(cateno==0) { //전체보기
 			sql = "SELECT * FROM PRODUCT ORDER BY pno";
 		}
@@ -77,7 +82,6 @@ public class ManagerDao implements MDao {
 		}
 		
 		ArrayList<Product> list = new ArrayList<>(); 
-		System.out.println("list생성");
 		
 		try {
 			
@@ -109,7 +113,6 @@ public class ManagerDao implements MDao {
 	public ArrayList<Product> sList(String pname) {
 		
 		String sql = "SELECT * FROM PRODUCT WHERE PNAME LIKE '%" + pname + "%'";
-		System.out.println("sp; : "+ sql);
 		ArrayList<Product> list = new ArrayList<>(); 
 		
 		try {
@@ -141,7 +144,6 @@ public class ManagerDao implements MDao {
 	@Override
 	public Product pInfo(int pno) {
 		
-		System.out.println("dao는 들어옴");
 		String sql = "SELECT * FROM PRODUCT WHERE PNO =" + pno;
 		
 		Product pd = new Product();
@@ -150,6 +152,7 @@ public class ManagerDao implements MDao {
 			
 			Statement sm = conn.createStatement();
 			ResultSet rs = sm.executeQuery(sql);
+			
 			while(rs.next()) {
 				pd.setPno(rs.getInt(1));
 				pd.setPname(rs.getString(2));//또는 rs.getString("pname");
@@ -158,6 +161,7 @@ public class ManagerDao implements MDao {
 				pd.setImg(rs.getString(5));
 				pd.setCateno(rs.getInt(6));
 			}
+			
 			sm.close();
 			conn.close();
 		} catch(Exception e) { e.printStackTrace(); }
@@ -166,6 +170,33 @@ public class ManagerDao implements MDao {
 		
 		return pd;
 	}
-
+	
+	//상품수정
+	@Override
+	public void productModify(Product pd) {
+		
+		String sql = "UPDATE PRODUCT SET PRICE=?, STOCK=?, IMG=?,CATENO=? WHERE PNO="+pd.getPno(); //기존 장바구니수량 + 새로 담을 장바구니 수량
+		
+		try {
+			
+			PreparedStatement pst = conn.prepareStatement(sql);
+	
+		    //pst.setString(1, pd.getPname()); // 첫 번째 매개변수에는 pname
+		    pst.setInt(1, pd.getPrice());   // 두 번째 매개변수에는 price 순서대로 작성
+		    pst.setInt(2, pd.getStock());
+		    pst.setString(3, pd.getImg());
+		    pst.setInt(4, pd.getCateno());
+			
+		    pst.executeUpdate();
+		    
+			pst.close();
+	        conn.close();
+			
+		} 
+		catch(Exception e) { e.printStackTrace(); }
+		
+		System.out.println("상품수정완료");
+		
+	}
 
 }

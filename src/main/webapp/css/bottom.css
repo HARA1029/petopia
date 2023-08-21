@@ -1,88 +1,37 @@
 @charset "UTF-8";
 
-	.container {
-		display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-	}	
-	
-	header{
-	padding-top:1px;
-	height:100px;
-
-	}
-	
-	nav{
-    padding-top: 10px;
-    padding-left: 50px;
-    height: 40px;
-    color: white;
-    background: lightcoral;
-	}
-
-	 img {
-		display: block;
-    width: 400px;
-    height: 100px;
-    /* margin-left: auto; */
-    margin-right: auto;
-    padding-left: 275px;
-	}
-	
-	#login {
-		text-align:center;
-		color:white;
-		background:lightcoral;
-		width:150px;
-		height:30px;
-	}
-
-	#join {
-		text-align:center;
-		color:white;
-		background:lightcoral;
-		width:150px;
-		height:30px;
-	}
-	
-	#search {
-    color: white;
-    background: white;
-    text-align: center;
-    width: 250px;
-    height: 30px;
-	}
-	
-	#search-btn {
-		text-align:center;
-		color:white;
-		background:lightcoral;
-		width:150px;
-		height:30px;
-	
-	}
+footer {
+   bottom: 0;
+   background-color: silver;
+   margin-top: 20px;
+   position: absoulte;/*  8월 17일 수정(성민) */
+   width: 100%;
+}
 
 
-	a:link
-	{
-		color:white;
-		text-decoration:none;
-	}
-	a:visited
-	{
-		color:white;
-		text-decoration:none;
-	}
-	a:active
-	{
-		color:white;
-		text-decoration:none;
-	}
-	a:hover
-	{
-		color:#000000;
-		text-decoration:underline;
-	}
+.footer-tel {
+   padding-bottom : 15px;
+   color: black;
+   font-size: 24px;
+   /* margin-bottom: 10px; */
+   font-weight: bold;
+}
+
+.footer-text {
+   color: black;
+   font-size: 13px; 
+   opacity: 0.56;
+   font-weight: 500;
+}
+
+.footer-link-company {
+   margin-top: 10px;
+   color: black;
+   font-weight: bold;
+   font-size: 18px;
+   text-decoration: none;
+}
+
+.footer-sep {
+   font-size: 13px;
+}

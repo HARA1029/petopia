@@ -27,19 +27,32 @@ plusBtn.addEventListener("click", function() {
 	tCount.textContent=pCount.value;
 }); 
 
+var uno = document.getElementById("uno").value; //회원번호
+var pno = document.getElementById("pno").value; //상품번호
+
 /* 장바구니 담기  */
 function AddFuction() {
-	var uno = document.getElementById("uno").value; //회원번호
-	var pno = document.getElementById("pno").value; //상품번호
 	alert("장바구니로 이동");
 	location.href = '../Controller/UserController.jsp?submit=addCart&uno='+uno+'&pno='+pno+'&count='+pCount.value;
 }
 
 /* 상품수정  */
 function modifyFunction() {
-	var mpno = document.getElementById("pno").value; //상품번호
-	alert("상품수정 이동");
-	location.href = '../Controller/ManagerController.jsp?submit=pModify_veiw&pno='+mpno;
+	//var mpno = document.getElementById("pno").value; //상품번호
+	location.href = '../Controller/ManagerController.jsp?submit=pModify_veiw&pno='+pno;
+}
+
+/* 상품 삭제 */
+function delectFunction() {
+	var dimg = document.getElementById("dimg").value; //상품이미지
+	var confirmation = confirm("삭제하시겠습니까?");
+				    
+  // 사용자의 선택에 따라 다른 동작을 수행합니다.
+  if (confirmation) {
+  	location.href = '../Controller/ManagerController.jsp?submit=delete&pno='+pno +"&dimg=" + dimg;
+  } else {
+  	location.reload();//페이지 새로고침
+  }
 }
 
 //주의사항(이게 먼저와야됨)

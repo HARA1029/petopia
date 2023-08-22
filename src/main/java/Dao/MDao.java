@@ -24,5 +24,6 @@ public interface MDao {
 	public void productModify(Product pd);
 	
 	//상품삭제
+	public int productDelete(int pno);
 	
 }

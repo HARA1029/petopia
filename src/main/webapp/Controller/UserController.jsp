@@ -7,6 +7,7 @@
  
 <%
 	
+	
 	System.out.println("UserController 들어 옴");//
 	request.setCharacterEncoding("UTF-8");
 	

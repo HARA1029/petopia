@@ -45,7 +45,10 @@
 	      </table>
 		</td>
 		<td class="cart-check">
+			 <!-- 
        <input type="checkbox" value="${cart.cno}" name="cno-${loop.index}">
+       -->
+       <input type="checkbox" value="${cart.cno}" name="cno[]">
     </td>
      <td class="cart-delete">
        <button type="button" id="delete">삭제</button>
@@ -54,10 +57,17 @@
   </c:forEach>
 </table>
 <div class="orderBtn">
-	<button id="order" type="button">주문</button>
+	<button id="order" type="button" onclick="orderFunction()" style="cursor: pointer;">주문</button>
 </div>
 
 <!-- bottom -->
 <%@ include file="../layout/bottom.jsp" %>
+
+<script>
+function orderFunction() {
+	/* 체크한 값만 삭제 */
+}
+
+</script>
 
 </html>

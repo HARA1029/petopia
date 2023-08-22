@@ -125,7 +125,6 @@
 		case "pModify_veiw" :
 			System.out.println("상품수정페이지 들어옴");
 			int mpno = Integer.parseInt(request.getParameter("pno"));
-			//System.out.println("mpno : " + mpno);
 			
 			mdao = new ManagerDao();
 			Product mpInfo = mdao.pInfo(mpno); //
@@ -133,7 +132,7 @@
 			request.setAttribute("product",mpInfo);
 			dispatcher = request.getRequestDispatcher("../view/ProductModify.jsp");
 			dispatcher.forward(request, response);
-			
+			System.out.println("상품수정페이지 들어가기");
 			break;
 			
 		//상품수정
@@ -176,6 +175,33 @@
 			break;
 		
 		//상품삭제
+		case "delete" :
+			
+			int d_pno = Integer.parseInt(request.getParameter("pno"));
+			
+			//파일 경로 및 크기,인코딩 설정
+			String dImg = request.getParameter("dimg");
+			System.out.println("dImg : " + dImg);
+			
+			//파일삭제
+			directory = "C:/Eclipse-Jsp-workspace/petopia/src/main/webapp/image/";
+			File fi = new File(directory+dImg);
+			fi.delete();
+			
+			mdao = new ManagerDao();
+			
+			result = mdao.productDelete(d_pno);
+			
+			if(result==-1) {//실패
+				alertScript = "<script>alert('삭제실패'); location.href='ManagerController.jsp?submit=pList&cateno=0';</script>";
+				out.print(alertScript); // out은 JSP 페이지에서 사용 가능한 객체
+			}
+			else { //삭제 성공
+				alertScript = "<script>alert('삭제성공'); location.href='ManagerController.jsp?submit=pList&cateno=0';</script>";
+				out.print(alertScript); // out은 JSP 페이지에서 사용 가능한 객체
+			}
+			
+			break;
 			
 		default :
 			break;

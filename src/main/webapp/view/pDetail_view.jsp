@@ -26,7 +26,9 @@
 	<!-- 객체를 JSTL 변수에 할당 -->
 	<c:set var="product" value="${product}" />
 	
-	<input id="stock" type="hidden" value="${product.stock}"><!-- 상품재고 -->
+	<input id="stock" type="hidden" value="${product.stock}" /><!-- 상품재고 -->
+	<input id="dimg" type="hidden" value="${product.img}" /> <!-- 상품이미지 -->
+	
 	<!--
 	<input id="img" type="hidden" value="${product.img}">상품이미지
 	<input id="pname" type="hidden" value="${product.pname}">상품명
@@ -39,7 +41,7 @@
 	<input id="uno" type="hidden" value=7> <!-- 회원번호 -->
 	<div class="btn-container" style="text-align:right; margin-top:35px;">
 		<button id="modify" type="button" onclick="modifyFunction()">상품수정</button>
-		<button id="delete" type="button">상품삭제</button>
+		<button id="delete" type="button" onclick="delectFunction()">상품삭제</button>
 	</div>
 	<div id="nosold" class="Detail-row"><!-- display:flex -->
 	 	

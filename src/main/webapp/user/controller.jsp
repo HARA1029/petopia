@@ -125,9 +125,9 @@
 	
 	// 로그아웃 처리
 	if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
-        session.invalidate();
+		session.invalidate();
         response.sendRedirect("main.jsp"); // Redirect to the main page after logout
-    }
+    }	
 	
 	// 공지사항 제목 클릭 -> 조회수 증가 -> 상세페이지이동
 	if (request.getParameter("action") != null && request.getParameter("action").equals("viewNotice")) {

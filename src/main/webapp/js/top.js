@@ -1,4 +1,4 @@
-// Check local storage on page load and set the active tab
+/*// Check local storage on page load and set the active tab
 document.addEventListener('DOMContentLoaded', function() {
   var activeTabId = localStorage.getItem('activeTab');
   if (activeTabId) {
@@ -28,4 +28,4 @@ navLinks.forEach(function(link) {
     e.preventDefault();
     setActiveLink(this);
   });
-});
+});*/

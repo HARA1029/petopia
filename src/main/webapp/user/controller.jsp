@@ -264,6 +264,56 @@
         conn.close();
     } 
 	
+	// 리뷰 삭제 처리
+	if (request.getParameter("action") != null && request.getParameter("action").equals("deleteReview")) {
+		System.out.println("리뷰 삭제 처리 시작");
+		
+		int reviewNumber = Integer.parseInt(request.getParameter("rno"));
+	    
+	    String sql = "DELETE FROM review WHERE rno = ?";
+	    
+	    pstmt = conn.prepareStatement(sql);
+	    pstmt.setInt(1, reviewNumber);
+	    
+	    int count = pstmt.executeUpdate();
+	   
+	    if (count == 1) {
+        	System.out.println("답글 삭제 성공!");
+            response.sendRedirect("/petopia/admin/reviewManagement.jsp"); // 등록 후 페이지로 리다이렉트
+        } else {
+        	System.out.println("답글 삭제 실패!");
+        }
+
+        pstmt.close();
+        conn.close();
+	}
+	
+	// 주문 상태 변경 처리
+	if (request.getParameter("action") != null && request.getParameter("action").equals("updateOrderStatus")) {
+	    System.out.println("주문 상태 업데이트 처리 시작");
+	
+	    int orderNumber = Integer.parseInt(request.getParameter("orderNumber"));
+	    int newStatus = Integer.parseInt(request.getParameter("newStatus"));
+	
+	    // 적절한 SQL 쿼리를 작성하여 주문 상태를 업데이트
+	    String sql = "UPDATE product_order SET state = ? WHERE ono = ?";
+	    pstmt = conn.prepareStatement(sql);
+	    pstmt.setInt(1, newStatus);
+	    pstmt.setInt(2, orderNumber);
+	
+	    int count = pstmt.executeUpdate();
+	
+	    if (count == 1) {
+	        System.out.println("주문 상태 업데이트 성공!");
+	        response.sendRedirect("/petopia/admin/orderManagement.jsp");
+	    } else {
+	        System.out.println("주문 상태 업데이트 실패!");
+	    }
+	
+	    pstmt.close();
+	    conn.close();
+	}
+
 	
 
 %>

@@ -48,7 +48,11 @@
 			<td class="td_5"><%= reviewDate %></td>
 			<td class="td_6">
 				<button type="button" class="answer-btn" data-rno="<%= reviewNumber %>">답글</button>
-				<button type="button" class="delete-btn" data-rno="<%= reviewNumber %>">삭제</button>
+				<form action="/petopia/user/controller.jsp" method="post">
+		            <input type="hidden" name="action" value="deleteReview">
+		            <input type="hidden" name="rno" value="<%= reviewNumber %>">
+		            <input type="submit" value="삭제" class="delete-btn">
+		        </form>
 			</td>
 		</tr>
 		<%

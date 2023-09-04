@@ -11,7 +11,8 @@
 }
 
 .plist {
-  height: 50px;
+	background-color : #EAEAEA;
+  height: 100%;
   width: calc(19.8% - 40px); /* 화면을 5등분해서 각 항목의 너비 설정 (여백 고려) */
   margin: 10px;
 }
@@ -24,7 +25,7 @@
 }
 .pImg {
 	max-width: 100%;
-  max-height: 100%;
+  height: 200px;
 }
 .pImg:hover{
 	 filter: brightness(50%); 
@@ -35,7 +36,7 @@
 }
 
 #registerBtn {
-	margin : 20px 0 0 100px;
+	margin : 100px 68px 0 auto;
 	width : 100px;
 	height : 50px;
 	border : none;

@@ -22,18 +22,26 @@
 
 <!-- top -->
 <%@ include file="../layout/top.jsp" %>
-
+<input id="id" type="hidden" value="<%=sessionID%>">
+				       
 <!-- 카테고리 메뉴바 -->
 <%@ include file="categoryBar.jsp" %>
-	<button id="registerBtn" type="button" onclick="registerFunction()">상품등록</button>
+
+	<br><button id="registerBtn" type="button" onclick="registerFunction()">상품등록</button>
 	<div class="plist-container">
 	
 			<!-- plist ArrayList가 비어있지 않을 때 실행할 내용 -->
 			<c:if test="${not empty plist}">
 				<c:forEach items="${plist}" var="dto">
 			  	<div class="plist">
-			  		<a class="apImg" href="ManagerController.jsp?submit=pDetailList&pno=${dto.pno}">
-			  			<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+			  		<a class="apImg" href="ManagerController.jsp?Submit=ProductDetail&pno=${dto.pno}">
+			  			<img name="pimg" id="pimg" class="pImg" src="../image/${dto.cateno == 1 ? '목욕' 
+																															  			: dto.cateno == 2 ? '배변위생'
+																															  			: dto.cateno == 3 ? '미용케어'
+																															  			: dto.cateno == 4 ? '홈리빙'
+																															  			: dto.cateno == 5 ? '산책놀이'
+																															  			: dto.cateno == 6 ? '간식영양제' 
+																															  			: '의류악세서리'}/${dto.img}" alt="None" />
 			  		</a>
 			  		<p>${dto.pname} : <fmt:formatNumber value="${dto.price}" type="number" pattern="###,###,###원"/></p>
 			  		<input type="hidden" id="pno" value="${dto.pno}">
@@ -55,10 +63,7 @@
 <!-- bottom -->
 <%@ include file="../layout/bottom.jsp" %>
 
-<script>
-function registerFunction() {
-	location.href = '../view/ProductRegister_view.jsp';
-}
-</script>
+<!-- ProductList js -->
+<script src="../js/ProductList.js"></script>
 
 </html>

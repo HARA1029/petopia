@@ -71,7 +71,7 @@ main{
 
 /* 상품등록 버튼 */
 .rbutton {
-	background-color : #4CAF50;
+	background-color : lightcoral;
 	border : none;
   font-size: 18px;
   cursor: pointer;

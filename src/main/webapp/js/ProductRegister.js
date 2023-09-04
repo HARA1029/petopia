@@ -1,9 +1,9 @@
 //전체적인 모든요소 체크(이게 최종적으로 true가 되어야 제출가능) + 아이디 중복체크까지
-var formcheck = false;
+var formcheck = false;	
 
 //상품중복체크 버튼을 클릭하면 이벤트로 중복체크하는 function 만들기
 var Inputpname = document.getElementById("p_name");
-var Inputpname1 = document.getElementById("p_name1");
+var Inputpname1 = document.getElementById("p_name1");	
 
 //상품을 다시입력하려고 하는순간 무조건 false로 제출못하게함
 Inputpname.addEventListener("input", function() {
@@ -19,9 +19,6 @@ Inputpname.addEventListener("blur", function() {
 				formcheck = false;//중복체크하고 지웠을경우 다시 중복체크하게 false로 하기
         return;
   }
-	
-	//상품중복체크 전 form도 같이 제출되는 거 막기
-	//event.preventDefault(); // 기본 동작(폼 제출) 막기
 	
 	//ajax로 상품중복체크
 	var xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
@@ -54,7 +51,8 @@ Inputpname.addEventListener("blur", function() {
       }
   };
   
-  var formData = "pname="+ Inputpname.value + "&submit=pCheck"; // 상품명과 중복체크를 실행키기기 위한 값만 전송
+  var formData = "pname="+ document.getElementById("p_name").value + "&Submit=pCheck"; // 상품명과 중복체크를 실행키기기 위한 값만 전송
+  
   xhr.send(formData); // 생성한 폼 데이터를 서버로 전송
 	
 });
@@ -96,7 +94,13 @@ registerBtn.addEventListener("click", function() {
 				    
 			    // 사용자의 선택에 따라 다른 동작을 수행합니다.
 			    if (confirmation) {
-			    	alert("등록성공");
+			    	//alert("등록성공");
+			    	// 기존 action 값
+						var action = document.getElementById("rForm").getAttribute("action");
+						var cno = document.getElementById("p_cateno").value;
+						action += cno;
+						// Form의 action 속성 설정
+						document.getElementById("rForm").setAttribute("action", action);
 			    	document.getElementById("rForm").submit();
 			    } else {
 			    	document.getElementById("rForm").reset();
@@ -128,3 +132,35 @@ function stockSelect() {
     	Inputstock.value = select.value;
     }
 }
+
+//다중 선택 메소드(다중선택한 파일들의 이름을 문자열 한개로 만들어 전송)
+var Inputfile = document.getElementById("p_img");
+var ImgError = document.getElementById("ImgError");
+
+//상품 등록개수 최대5개
+Inputfile.addEventListener("blur", function() {
+	
+		var selectedFiles = Inputfile.files; // 선택한 파일들을 나타내는 FileList 객체
+	
+    var fileNames = ""; // 파일 이름을 저장할 배열
+    
+    if(selectedFiles.length > 5) {
+				ImgError.style.color = "red";
+	      ImgError.innerHTML ="이미지는 5개를 초과할 수 없습니다.";
+				Inputfile.value="";//초기화
+				document.getElementById("Img").value = "";
+				Inputfile.focus();
+		}
+		else {
+			// 선택한 파일들의 이름을 배열에 추가
+	    for (var i = 0; i < selectedFiles.length; i++) {
+	        fileNames += selectedFiles[i].name;
+	        fileNames += i == (selectedFiles.length-1) ? "" : ",";
+	    }
+	  	ImgError.innerHTML=""; //주의 문구 초기화
+	    document.getElementById("Img").value = fileNames; //올린 파일명 보여줌
+		
+		}
+    console.log(fileNames);
+	
+});

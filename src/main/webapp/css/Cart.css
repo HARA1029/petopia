@@ -1,8 +1,9 @@
 @charset "UTF-8";
+
 .cart-table {
 	/* border : 1px solid black; */
 	margin: 0 auto;
-	margin-top: 10%;
+	margin-top: 7%;
   width: 1000px;
   height : 150px;
 }
@@ -10,6 +11,7 @@
 .orderBtn {
 	width:1000px;
 	margin : 0 auto;
+	margin-top : 30px;
 	text-align : right;
 }
 
@@ -17,6 +19,12 @@
 	width: 150px;
 	height: 150px;
 }
+
+.cart-img {
+	width: 100%;
+	height: 100%;
+}
+
 .product-table {
 	padding : 0 0 0 50px;
 }
@@ -30,11 +38,6 @@
 	width:75px;
 }
 
-.cart-delete {
-	text-align : center;
-	width:75px;
-}
-
 /* 주문 버튼 */
 #order,#delete {
 	border : none;
@@ -42,4 +45,5 @@
 	height :40px;
 	background-color : lightcoral;
 	color : white;
+	cursor: pointer; /* 추가된거 */
 }

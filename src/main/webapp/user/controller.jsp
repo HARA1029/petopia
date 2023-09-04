@@ -3,6 +3,8 @@
 <script src="../js/function.js"></script>
 <%
 	request.setCharacterEncoding("UTF-8");
+	
+	System.out.println("일단 들어온다!!!!");
 
  	// 아이디 중복 확인
 	 if (request.getParameter("action") != null && request.getParameter("action").equals("checkID")){
@@ -225,6 +227,7 @@
 
 	// 로그아웃 처리
 	if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
+				System.out.println("로그아웃처리 들어옴");			
         session.invalidate();
         response.sendRedirect("main.jsp"); // Redirect to the main page after logout
     }

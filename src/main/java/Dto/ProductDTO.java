@@ -1,19 +1,20 @@
 package Dto;
 
-public class Product {
+public class ProductDTO {
 	
-	private int pno;
-	private String pname;
-	private int price;
-	private int stock;
-	private String img;
-	private int cateno;
+	private int pno; //상품번호
+	private String pname; //상품명
+	private int price; //상품가격
+	private int stock; //상품재고
+	private String img; //상품이미지
+	private int cateno; //상품카테고리 
+	private int sell; //판매여부(판매중/판매중지)
 	
-	public Product() {
+	public ProductDTO() {
 		super();
 	}
 
-	public Product(int pno, String pname, int price, int stock, String img, int cateno) {
+	public ProductDTO(int pno, String pname, int price, int stock, String img, int cateno, int sell) {
 		super();
 		this.pno = pno;
 		this.pname = pname;
@@ -21,6 +22,7 @@ public class Product {
 		this.stock = stock;
 		this.img = img;
 		this.cateno = cateno;
+		this.sell = sell;
 	}
 
 	public int getPno() {
@@ -71,4 +73,12 @@ public class Product {
 		this.cateno = cateno;
 	}
 
+	public int getSell() {
+		return sell;
+	}
+
+	public void setSell(int sell) {
+		this.sell = sell;
+	}
+	
 }

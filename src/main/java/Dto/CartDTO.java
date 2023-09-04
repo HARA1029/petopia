@@ -1,21 +1,21 @@
 package Dto;
 
-public class Cart {
-	
-	private int cno; //카트번호
-	private String img; //상품이미지
-	private String pname;//상품명
-	private int price; //상품가격
-	private int count; //총 구매수량
-	
-	private int uno; //외래키(회원테이블)
-	private int pno; //외래키(상품테이블)
-	
-	public Cart() {
+public class CartDTO {
+
+	private int cno; // 카트번호
+	private String img; // 상품이미지
+	private String pname;// 상품명
+	private int price; // 상품가격
+	private int count; // 총 구매수량
+
+	private int uno; // 외래키(회원테이블)
+	private int pno; // 외래키(상품테이블)
+
+	public CartDTO() {
 		super();
 	}
 
-	public Cart(int cno, String img, String pname, int price, int count, int uno, int pno) {
+	public CartDTO(int cno, String img, String pname, int price, int count, int uno, int pno) {
 		super();
 		this.cno = cno;
 		this.img = img;

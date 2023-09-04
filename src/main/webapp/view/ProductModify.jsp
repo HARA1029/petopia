@@ -23,20 +23,50 @@
 <c:set var="product" value="${product}" />
 
 <div class="p_modify-container">
-  <form class="p_modifyForm" action="../Controller/ManagerController.jsp?submit=pModify&oldImg=${product.img}" method="post" enctype="multipart/form-data">
+  
+  <form class="p_modifyForm" action="../Controller/ManagerController.jsp?Submit=pModify&oldImg=${product.img}&cateno=${product.cateno}" method="post" enctype="multipart/form-data">
   	<input type="hidden" name="pno" value="${product.pno }"/>
+  	<input type="hidden" id="imgName" name="img" />
   	
-  	<label>상품명 : ${product.pname}</label><br><br>
+  	<label>상품명 : ${product.pname} &nbsp;&nbsp;
+  				 카테고리 : ${product.cateno == 1 ? '목욕' 
+					  		 : product.cateno == 2 ? '배변/위생'
+					  		 : product.cateno == 3 ? '미용/케어'
+					  		 : product.cateno == 4 ? '홈/리빙'
+					  		 : product.cateno == 5 ? '산책/놀이'
+					  		 : product.cateno == 6 ? '간식/영양제' 
+					  		 : '의류악세서리'}
+  	</label><br><br>
+  
   	<label>상품사진</label><br>
-  	<div class="img-container">
-  		<img src="../image/${product.img}" style="width:100%;"/>
-  		<input id="inputImg" type="file" name="img" onchange="previewImage()"/>
-  		<img id="preview" src="#" alt="이미지 미리 보기" style="display:none; width:100%;"/>
-  	</div>
+  	
+  
+  	<c:forEach items="${mpImg}" var="mpImg" varStatus="loop">
+	  	
+	  	<div class="img-container">
+	  		<img src="../image/${product.cateno == 1 ? '목욕' 
+										  			: product.cateno == 2 ? '배변위생'
+										  			: product.cateno == 3 ? '미용케어'
+										  			: product.cateno == 4 ? '홈리빙'
+										  			: product.cateno == 5 ? '산책놀이'
+										  			: product.cateno == 6 ? '간식영양제' 
+										  			: '의류악세서리'}/${mpImg}" style="width:100%; height:100%;"/>
+	  	</div>
+  	
+  	</c:forEach>
+  	
+  	<div class="file-container">
+	  		<input multiple="multiple" id="inputImg" type="file" name="img" required/>
+	  </div>
+	  	
+  	<div id="preview" class="preview" ></div>
+  
+    <br><br>
     
     <label>상품가격 :  <fmt:formatNumber value="${product.price}" type="number" pattern="###,###,###원"/></label>
-    <input type="text" id="p_price" name="price" placeholder="1,000~100,000" value="${product.price}">
-
+    <input type="number" id="p_price" name="price" placeholder="1,000~100,000" value="${product.price}" required><br>
+		
+		
     <label>상품재고 : <fmt:formatNumber value="${product.stock}" type="number" pattern="###,###,###개"/></label>
     <select id="p_stock" class="stock" onchange="stockSelect()">
       <option value="0">직접입력</option>
@@ -44,20 +74,18 @@
       <option value="20">20</option>
       <option value="30">30</option>
     </select>
-    <input id="p_stock_input" type="text" name="stock" value="${product.stock}">
-
-    <label>카테고리 : ${product.cateno}</label>
-    <select id="p_cateno" class="cateno" name="cateno">
-      <option value="1">목욕</option>
-      <option value="2">배변/위생</option>
-      <option value="3">미용/케어</option>
-      <option value="4">홈/리빙</option>
-      <option value="5">산책/놀이</option>
-      <option value="6">간식/영양제</option>
-      <option value="7">의류/악세서리</option>
+    <input id="p_stock_input" type="number" name="stock" value="${product.stock}" required><br>
+		
+		<label>판매여부 : ${product.sell==1 ? '판매중' : '판매중지'}</label>
+		<select id="sell" name="sell" >
+      <option value="1">판매중</option>
+      <option value="0">판매중지</option>
     </select>
-  
-    <input class="p_modify" type="submit" value="수정">
+   	
+  	<br>
+    
+    <input class="p_modify" type="submit" value="수정" />
+    
   </form>
 </div>
 

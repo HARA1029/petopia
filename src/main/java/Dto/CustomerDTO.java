@@ -1,21 +1,23 @@
 package Dto;
 
-public class Customer {
+public class CustomerDTO {
 	
-	private int uno; //시퀀스로 자동 생성
-	private String uname;
-	private String id;
-	private String pw;
-	private String mail;
-	private String addr;
-	private String tel;
-	private String grade;
+	private int uno; //회원번호 -> 시퀀스로 자동 생성
+	private String uname; // 회원이름
+	private String id; //아이디
+	private String pw; //이름
+	private String mail; //이메일
+	private String addr; //주소
+	private String tel; //전화번호
+	private String grade;//회원등급
+	private int zipcode;//우편번호
 	
-	public Customer() {
+	public CustomerDTO() {
 		super();
 	}
 
-	public Customer(int uno, String uname, String id, String pw, String mail, String addr, String tel, String grade) {
+	public CustomerDTO(int uno, String uname, String id, String pw, String mail, String addr, String tel, String grade,
+			int zipcode) {
 		super();
 		this.uno = uno;
 		this.uname = uname;
@@ -25,6 +27,7 @@ public class Customer {
 		this.addr = addr;
 		this.tel = tel;
 		this.grade = grade;
+		this.zipcode = zipcode;
 	}
 
 	public int getUno() {
@@ -89,6 +92,14 @@ public class Customer {
 
 	public void setGrade(String grade) {
 		this.grade = grade;
+	}
+
+	public int getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
 	}
 	
 }

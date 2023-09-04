@@ -12,103 +12,68 @@
 <title>상품상세정보</title>
 
 <!-- pDetail.css -->
-<link rel="stylesheet" href="../css/pDetail.css">
-
+<link rel="stylesheet" href="../css/ProductDetail.css">
 <!-- 아이콘 사용 링크 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 </head>
+
 <!-- top -->
 <%@ include file="../layout/top.jsp" %>
 
+<!-- 아이디 -->
+<input id="id" type="hidden" value="<%=sessionID%>">
+
+
 <div style="margin:0 10%;">
-	
+
 	<!-- 객체를 JSTL 변수에 할당 -->
-	<c:set var="product" value="${product}" />
+	<c:set value="${product}" var="product" />
 	
 	<input id="stock" type="hidden" value="${product.stock}" /><!-- 상품재고 -->
 	<input id="dimg" type="hidden" value="${product.img}" /> <!-- 상품이미지 -->
-	
-	<!--
-	<input id="img" type="hidden" value="${product.img}">상품이미지
-	<input id="pname" type="hidden" value="${product.pname}">상품명
-	<input id="price" type="hidden" value="${product.price}">상품가격
-	<input id="pno" type="hidden" value="${product.pno}"> 상품번호
-	<input id="uno" type="hidden" value="21"> 회원번호
-	-->
-	
+	<input id="dcateno" type="hidden" value="${product.cateno}" /> <!-- 카테고리번호 -->
 	<input id="pno" type="hidden" value="${product.pno}"> <!-- 상품번호 -->
-	<input id="uno" type="hidden" value=7> <!-- 회원번호 -->
-	<div class="btn-container" style="text-align:right; margin-top:35px;">
-		<button id="modify" type="button" onclick="modifyFunction()">상품수정</button>
+	<input id="userid" type="hidden" value="<%=sessionID%>"> <!-- 회원아이디 이걸로 회원번호 찾기 -->
+	
+	<div id="modifyContainer" class="btn-container" style="text-align:right; margin-top:35px;">
+ 		<button id="modify" type="button" onclick="modifyFunction()">상품수정</button>
 		<button id="delete" type="button" onclick="delectFunction()">상품삭제</button>
 	</div>
+	
 	<div id="nosold" class="Detail-row"><!-- display:flex -->
 	 	
-	 	<!-- 품절화면 -->
-		<c:if test="${product.stock == 0}">
-			<div id="sold" class="sold-container">
-				<img src="../image/${product.img}" alt="사진없음">
-		  	<div class="comment">품절된 상품입니다.</div>
-			</div>
-		</c:if>
-	 	
-	 	<!-- 품절 아닌 화면 -->
-	 	<c:if test="${product.stock > 0}">
-	 	
 	 	<div class="column1">	 	
-	 		<div class="mySlides">
-		    <div class="numbertext">1 / 5</div>
-		    <img class="img1" src="../image/${product.img}" alt="사진없음" >
-  		</div>
-
-		  <div class="mySlides">
-		    <div class="numbertext">2 / 5</div>
-		    <img class="img1" src="../image/상세정보/2_${product.img}" alt="사진없음">
-		  </div>
-		
-		  <div class="mySlides">
-		    <div class="numbertext">3 / 5</div>
-		    <img class="img1" src="../image/상세정보/3_${product.img}" alt="사진없음">
-		  </div>
-		    
-		  <div class="mySlides">
-		    <div class="numbertext">4 / 5</div>
-		    <img class="img1" src="../image/상세정보/4_${product.img}" alt="사진없음">
-		  </div>
-		
-		  <div class="mySlides">
-		    <div class="numbertext">5 / 5</div>
-		    <img class="img1" src="../image/상세정보/5_${product.img}" alt="사진없음">
-		  </div>
-
+	 	
+	 		<c:forEach items="${pImg}" var="pImg" varStatus="loop">
+		 		<div class="mySlides">
+			    <img class="img1" src="../image/${product.cateno == 1 ? '목욕' 
+																	  			: product.cateno == 2 ? '배변위생'
+																	  			: product.cateno == 3 ? '미용케어'
+																	  			: product.cateno == 4 ? '홈리빙'
+																	  			: product.cateno == 5 ? '산책놀이'
+																	  			: product.cateno == 6 ? '간식영양제' 
+																	  			: '의류악세서리'}/${pImg}" alt="사진없음" >
+	  		</div>
+  		</c:forEach>
+			
 		  <div class="row">
+		  	<c:forEach items="${pImg}" var="pImg" varStatus="loop">
 		    <div class="column">
-		      <img class="demo cursor" src="../image/${product.img}" onclick="currentSlide(1)" alt="사진없음">
+		      <img class="demo cursor"  src="../image/${product.cateno == 1 ? '목욕' 
+																	  			: product.cateno == 2 ? '배변위생'
+																	  			: product.cateno == 3 ? '미용케어'
+																	  			: product.cateno == 4 ? '홈리빙'
+																	  			: product.cateno == 5 ? '산책놀이'
+																	  			: product.cateno == 6 ? '간식영양제' 
+																	  			: '의류악세서리'}/${pImg}" alt="사진없음" 
+																	  			onclick="currentSlide(${loop.index + 1})">
 		    </div>
-		    
-		    <div class="column">
-		      <img class="demo cursor" src="../image/상세정보/2_${product.img}" onclick="currentSlide(2)" alt="사진없음">
-		    </div>
-		    
-		    <div class="column">
-		      <img class="demo cursor" src="../image/상세정보/3_${product.img}" onclick="currentSlide(3)" alt="사진없음">
-		    </div>
-		    
-		    <div class="column">
-		      <img class="demo cursor" src="../image/상세정보/4_${product.img}" onclick="currentSlide(4)" alt="사진없음">
-		    
-		    </div>
-		    
-		    <div class="column">
-		      <img class="demo cursor" src="../image/상세정보/5_${product.img}" onclick="currentSlide(5)" alt="사진없음">
-		    </div>
-		    
+		    </c:forEach>
 		  </div>
 	 	
 	 	</div>
-	 	
-	 	
+		
 	  <div class="column2">
 	  	
 	  	<h2 style="margin:0 auto;">${product.pname}</h2>
@@ -124,9 +89,6 @@
 		  		<span id="minus" class="material-symbols-outlined">indeterminate_check_box</span>
 					<input id="count" name="count" class="count" type="number" value="1"> <!-- 주문 상품수량 이 값을 전송-->
 					<span id="plus" class="material-symbols-outlined">add_box</span>
-					<!--
-					<span class="material-symbols-outlined">disabled_by_default</span>
-					-->
 		  	</div><br>
 		  	<b class="c2-items"><fmt:formatNumber value="${product.price}" type="number" pattern="###,###,###원"/></b>
 	  	</div>
@@ -137,16 +99,22 @@
 	  		(<span id="totalcount">1</span>개)
  	  	</p> 
 	  	
-	  	
-	  	<div class="dbtn-group">
-		  	<button id="addCart" class="dbtn" type="button" onclick="AddFuction()">ADD TO CART</button>
-		  	<button id="order" class="dbtn" type="button">BUY NOW</button>
-			</div>
+	  	<!-- 품절 혹은 판매중지 -->
+	  	<c:if test="${product.stock == 0 || product.sell==0}">
+		  	<div id="dbtn1" class="dbtn-group">
+		  		<button type="button">일시 품절</button>
+		  	</div>
+	  	</c:if>
 			
+			<!-- 품절 x and 판매중 -->
+	  	<c:if test="${product.stock > 0 && product.sell==1}">
+		  	<div id="dbtn2" class="dbtn-group">
+			  	<button id="addCart" class="dbtn" type="button" onclick="AddFuction('<%=sessionID%>')">ADD TO CART</button>
+			  	<button id="order" class="dbtn" type="button" onclick="OrderFunction('<%=sessionID%>')">BUY NOW</button>
+				</div>
+			</c:if>
 	  </div>
 	  	
-	  </c:if>
-	  
 	</div>
 	
 	<div class="Detail-container1">
@@ -193,14 +161,22 @@
 			</p>  
 		</div>
 	</div>
+	
+	<!-- 리뷰 테이블 -->
+	<div>
+		<table>
+		
+		</table>
+	</div>
 
 </div>
+
 
 
 <!-- bottom -->
 <%@ include file="../layout/bottom.jsp" %>
 
 <!-- 상품상세 js -->
-<script src="../js/pDetail.js"></script>
+<script src="../js/ProductDetail.js"></script>
 
 </html>

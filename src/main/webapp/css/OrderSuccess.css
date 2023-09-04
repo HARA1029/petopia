@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.orderSucess-container {
+	margin : 5% auto;
+	width : 80%;
+}
+
+.orderSucess-container1 {
+	margin : auto;
+	text-align : center;
+	width : 65%;
+}
+
+.grade {
+	background-color: blue;
+  color : white;
+  border-radius: 30%;
+  font-size:30px;
+
+}
+
+.userName {
+	color:white;
+	background-color:blue;
+	font-size : 20px;
+}
+.orderSucess-container2 {
+	padding : 25px;
+	margin : 5% auto;
+	text-align : center;
+	width : 65%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: left;
+  font-family: arial;
+}
+
+.orderSucess-container3 {
+	margin : 3% auto 0 auto;
+	text-align : center;
+	width : 65%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: left;
+  font-family: arial;
+}
+
+.orderInfo-Btn {
+	background-color : white;
+	color : lightcoral;
+	border : 1px solid #AAAAAA;
+	float:right;
+	width:100px;
+	height:30px;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s; /* 부드러운 애니메이션 효과를 위한 transition 추가 */
+}
+
+.orderInfo-Btn:hover {
+  background-color: lightcoral;
+  color: white;
+}

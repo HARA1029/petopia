@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <title>상품등록</title>
-<link rel="stylesheet" href="../css/register.css">
+<link rel="stylesheet" href="../css/ProductRegister.css">
 
 </head>
 
@@ -21,14 +21,14 @@
 	
 			<div class="register-content">
 		
-		  <form action="../Controller/ManagerController.jsp?submit=register" method="post" id="rForm" enctype="multipart/form-data">
+		  <form action="../Controller/ManagerController.jsp?Submit=register&cno=" method="post" id="rForm" enctype="multipart/form-data">
 		  
 			  <div class="registerRow">
 			    <div class="r-col-25">
 			      <label class="r-label" for="p_name">상품 이름</label>
 			    </div>
 			    <div class="r-col-75">
-			      <input type="text" class="pname" id="p_name" name="pname" placeholder="상품명..">
+			      <input type="text" class="pname" id="p_name" name="pname" placeholder="상품명.." required>
 			      <b><span id="p_name1"></span></b>
 			    </div>
 			  </div>
@@ -38,7 +38,7 @@
 			      <label class="r-label" for="p_price">상품 가격</label>
 			    </div>
 			    <div class="r-col-75">
-			      <input type="text" class="price" id="p_price" name="price" placeholder="1,000~100,000">
+			      <input type="number" class="price" id="p_price" name="price" placeholder="1,000~100,000" required>
 			    </div>
 			  </div>
 			  
@@ -53,7 +53,7 @@
 			        <option value="20">20</option>
 			        <option value="30">30</option>
 			      </select>
-			      <input id="p_stock_input" type="text" name="stock">
+			      <input id="p_stock_input" type="number" name="stock" required>
 			   </div>
 			  </div>
 			  
@@ -62,7 +62,9 @@
 			      <label class="r-label">상품 사진</label>
 			    </div>
 			    <div class="r-col-75">
-			      <input id="p_img" type="file" name="img">
+			      <input multiple="multiple" id="p_img" type="file" name="img" onclick="fileNameFunction()" required> <!-- multiple="multiple" -->
+			    	<br><span id="ImgError"></span>
+			    	<input type="text" id="Img" name="Img" style="border:none; color:green;" readonly/>
 			    </div>
 			  </div>
 			  

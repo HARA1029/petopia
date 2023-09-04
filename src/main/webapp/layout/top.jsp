@@ -20,7 +20,7 @@
 				    	<table>
 				        <tr>
 				        	<td>
-				            <b>관리자</b> 님 안녕하세요.
+				            <b><%=sessionName%></b> 님 안녕하세요.
 				        	</td>
 				        	&emsp;
 				        	<td>
@@ -69,8 +69,8 @@
 					                </form>
 					            </td>
 					            <td>
-					                <form action="/petopia/user/controller.jsp" method="get">
-					                    <input type="hidden" name="action" value="logout">
+					                <form id="logoutForm" action="/petopia/user/controller.jsp?action=logout" method="get">
+					                    <!--<input type="hidden" name="action" value="logout">-->
 					                    <button type="submit" class="user-button">로그아웃</button>
 					                </form>
 					            </td>
@@ -109,7 +109,8 @@
 		<nav id=nav>
 			<div class=container>
 				<a href="/petopia/user/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
-			    <a href="../Controller/ManagerController.jsp?submit=pList&cateno=0" >상품목록</a> &emsp;
+			    <a href="../Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">상품목록</a> &emsp;
+			    <a href="../Controller/UserController.jsp?Submit=OrderInfo&id=<%=sessionID%>">주문상세</a>
 			    <a href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
 				<form action="../Controller/ManagerController.jsp">
 					<table>
@@ -118,7 +119,7 @@
 					  &emsp;<input id="search" type="search" placeholder="검색어를 입력해주세요"  name="pname" style="color:black;">&emsp;
 				   </td>
 				   <td>
-					  <input id="search-btn" type="submit" name="submit"value="search">
+					  <input id="search-btn" type="submit" name="Submit" value="search">
 				   </td>
 				</tr>
 			 </table>

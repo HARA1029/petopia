@@ -174,24 +174,23 @@
 				<th>작성날짜</th>
 			</tr>
 			<c:forEach items="${reviewList}" var="reviewList">	
-				<tr class="review-tr" >
-					<td style="text-align : center;">${reviewList.rno}</td>
-					<td style="text-align : center;">${reviewList.uno}</td>
-					<td style="text-align : center;">${reviewList.content}</td>
-					<td style="text-align : center;">${reviewList.nowdate}</td>
+				<tr class="review-tr">
+					<td>${reviewList.rno}</td>
+					<td>${reviewList.uno}</td>
+					<td>${reviewList.content}</td>
+					<td>${reviewList.nowdate}</td>
 				</tr>
 				
 				<c:forEach items="${reviewList.reply}" var="reply">	
 					<tr class="reply-tr">
 						<td colspan="2">관리자</td>
-						<td colspan="2">
-							<div class="chip">
+						<td colspan="2" style="text-align:left; padding-left:75px;">
+							<div class="chip" style="text-align:center;">
 							  <span class="reply-span">ㄴRE</span>${reply.content}(${reply.nowdate})
 							</div>
 						</td>
 					</tr>
 				</c:forEach>
-				
 			</c:forEach>
 			
 		</table>

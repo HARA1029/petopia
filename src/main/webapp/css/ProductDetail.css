@@ -266,7 +266,6 @@ color : lightcoral;
 
 .review-table {
 	width : 100%;
-	/* text-align : center; */
 	border : 3px solid gray;
 }
 
@@ -276,13 +275,16 @@ color : lightcoral;
 	height: 50px;
 }
 
-.review-tr {
+.review-tr td {
 	height: 50px;
-	background-color:black;
-	opacity:0.05;
+	text-align : center;
+	border : 1px solid gray;
+	border-color:gray;
 }
+
 .reply-tr {
 	text-align : center;
+	height: 75px;
 }
 
 .chip {

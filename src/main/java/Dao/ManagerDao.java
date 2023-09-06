@@ -205,7 +205,7 @@ public class ManagerDao implements MDao {
 			pst.close();
 	        conn.close();
 			
-		} 
+		}
 		catch(Exception e) { e.printStackTrace(); }
 		
 		System.out.println("상품수정완료");
@@ -245,7 +245,7 @@ public class ManagerDao implements MDao {
 		
 		String sql = "SELECT RNO, UNO, CONTENT, NOWDATE "
 				   + "FROM REVIEW "
-				   + "WHERE PNO = " + pno + "ORDER BY NOWDATE";
+				   + "WHERE PNO = " + pno + "ORDER BY RNO";
 		
 		ArrayList<ReviewDTO> review = new ArrayList<>(); //리뷰정보 리스트
 		

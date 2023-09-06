@@ -26,4 +26,10 @@ public interface MDao {
 	//상품삭제
 	public int productDelete(int pno);
 	
+	//리뷰정보
+	public ArrayList<ReviewDTO> reviewInfo(int pno);
+	
+	//리뷰답글정보
+	public ArrayList<ReplyDTO> replyInfo(int rno);
+	
 }

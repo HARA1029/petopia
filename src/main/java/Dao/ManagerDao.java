@@ -1,13 +1,14 @@
 package Dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.*;
 
 import DBconn.OracleConn;
-import Dto.ProductDTO;
+import Dto.*;
 
 public class ManagerDao implements MDao {
 	
@@ -175,8 +176,8 @@ public class ManagerDao implements MDao {
 				pd.setSell(rs.getInt(7));
 			}
 			
-			sm.close();
-			conn.close();
+//			sm.close();
+//			conn.close();
 		} catch(Exception e) { e.printStackTrace(); }
 		
 		return pd;
@@ -236,6 +237,85 @@ public class ManagerDao implements MDao {
 		catch(Exception e) { e.printStackTrace(); }
 		
 		return check;
+	}
+
+	//리뷰정보
+	@Override
+	public ArrayList<ReviewDTO> reviewInfo(int pno) {
+		
+		String sql = "SELECT RNO, UNO, CONTENT, NOWDATE "
+				   + "FROM REVIEW "
+				   + "WHERE PNO = " + pno + "ORDER BY NOWDATE";
+		
+		ArrayList<ReviewDTO> review = new ArrayList<>(); //리뷰정보 리스트
+		
+		try {
+			
+			Statement sm = conn.createStatement();
+			ResultSet rs = sm.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				ReviewDTO reviewdto = new ReviewDTO(); //리뷰정보
+				ArrayList<ReplyDTO> replyList = new ArrayList<>(); //해당 리뷰 답글 리스트
+				
+				reviewdto.setRno(rs.getInt(1));
+				reviewdto.setUno(rs.getInt(2));
+				reviewdto.setContent(rs.getString(3));
+				reviewdto.setNowdate(rs.getDate(4));
+				reviewdto.setPno(pno);
+				
+				MDao mdao = new ManagerDao();
+				replyList = mdao.replyInfo(reviewdto.getRno());
+				
+				reviewdto.setReply(replyList); //리뷰정보에서 답글정보에 해당 답글 리스트 추가
+				
+				review.add(reviewdto); // 리뷰정보리스트에 추가
+				
+			}
+			
+			sm.close();
+			conn.close();
+			
+		} catch(Exception e) { e.printStackTrace(); }
+		
+		return review;
+	}
+	
+	//리뷰답글정보
+	@Override
+	public ArrayList<ReplyDTO> replyInfo(int rno) {
+		
+		String sql = "SELECT ANO, CONTENT, NOWDATE "
+				   + "FROM REVIEW_REPLY "
+				   + "WHERE RNO = " + rno + "ORDER BY NOWDATE DESC";
+		
+		ArrayList<ReplyDTO> replyList = new ArrayList<>();
+		
+		
+		try {
+			
+			Statement sm = conn.createStatement();
+			ResultSet rs = sm.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				ReplyDTO replydto = new ReplyDTO();
+				
+				replydto.setAno(rs.getInt(1));
+				replydto.setRno(rno);
+				replydto.setContent(rs.getString(2));
+				replydto.setNowdate(rs.getDate(3));
+				
+				replyList.add(replydto);
+				replyList.add(replydto);
+				
+			}
+			
+		} catch(Exception e) { e.printStackTrace();}
+				
+		
+		return replyList;
 	}
 
 }

@@ -263,3 +263,45 @@ color : lightcoral;
 .demo:hover {
   opacity: 1;
 }
+
+.review-table {
+	width : 100%;
+	/* text-align : center; */
+	border : 3px solid gray;
+}
+
+.review-th {
+	background-color : #AAAAAA;
+	color : white;
+	height: 50px;
+}
+
+.review-tr {
+	height: 50px;
+	background-color:black;
+	opacity:0.05;
+}
+.reply-tr {
+	text-align : center;
+}
+
+.chip {
+	width:500px;
+  display: inline-block;
+  padding: 0 25px;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+}
+
+.reply-span {
+  float: left;
+  margin: 0 10px 0 -25px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border : 1px solid white;
+  color : red;
+}

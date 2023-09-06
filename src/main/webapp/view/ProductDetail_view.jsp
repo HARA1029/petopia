@@ -160,12 +160,40 @@
 				※ 단순 변심으로 인한 교환, 반품하실 경우 상품 반송 비용은 고객님께서 부담하셔야 합니다. (색상 및 사이즈 교환 등 포함)
 			</p>  
 		</div>
-	</div>
+	</div><br><br>
 	
 	<!-- 리뷰 테이블 -->
-	<div>
-		<table>
+	<div class="review-container">
 		
+		<table class="review-table">
+		
+			<tr class="review-th">
+				<th>리뷰번호</th>
+				<th>회원번호</th>
+				<th>리뷰내용</th>
+				<th>작성날짜</th>
+			</tr>
+			<c:forEach items="${reviewList}" var="reviewList">	
+				<tr class="review-tr" >
+					<td style="text-align : center;">${reviewList.rno}</td>
+					<td style="text-align : center;">${reviewList.uno}</td>
+					<td style="text-align : center;">${reviewList.content}</td>
+					<td style="text-align : center;">${reviewList.nowdate}</td>
+				</tr>
+				
+				<c:forEach items="${reviewList.reply}" var="reply">	
+					<tr class="reply-tr">
+						<td colspan="2">관리자</td>
+						<td colspan="2">
+							<div class="chip">
+							  <span class="reply-span">ㄴRE</span>${reply.content}(${reply.nowdate})
+							</div>
+						</td>
+					</tr>
+				</c:forEach>
+				
+			</c:forEach>
+			
 		</table>
 	</div>
 

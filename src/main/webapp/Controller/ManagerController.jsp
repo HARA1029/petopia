@@ -110,12 +110,16 @@
 		int pno = Integer.parseInt(request.getParameter("pno"));
 	
 		mdao = new ManagerDao();
-		ProductDTO pInfo = mdao.pInfo(pno);
-	
+		
+		ProductDTO pInfo = mdao.pInfo(pno); //상품정보
+		ArrayList<ReviewDTO> reviewList = mdao.reviewInfo(pno);
+			
 		String[] pImg = pInfo.getImg().split(",");
 	
 		request.setAttribute("product", pInfo); //상품정보
 		request.setAttribute("pImg", pImg); //상품 이미지
+		request.setAttribute("reviewList",reviewList); //리뷰정보
+		
 	
 		dispatcher = request.getRequestDispatcher("../view/ProductDetail_view.jsp");
 		dispatcher.forward(request, response);

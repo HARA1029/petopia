@@ -270,7 +270,7 @@ color : lightcoral;
 }
 
 .review-th {
-	background-color : #AAAAAA;
+	background-color : lightcoral;
 	color : white;
 	height: 50px;
 }
@@ -285,25 +285,5 @@ color : lightcoral;
 .reply-tr {
 	text-align : center;
 	height: 75px;
-}
-
-.chip {
-	width:500px;
-  display: inline-block;
-  padding: 0 25px;
-  height: 50px;
-  font-size: 16px;
-  line-height: 50px;
-  border-radius: 25px;
-  background-color: #f1f1f1;
-}
-
-.reply-span {
-  float: left;
-  margin: 0 10px 0 -25px;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  border : 1px solid white;
-  color : red;
+	background-color:#EAEAEA;
 }

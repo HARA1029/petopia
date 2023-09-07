@@ -183,12 +183,11 @@
 				
 				<c:forEach items="${reviewList.reply}" var="reply">	
 					<tr class="reply-tr">
-						<td colspan="2">관리자</td>
-						<td colspan="2" style="text-align:left; padding-left:75px;">
-							<div class="chip" style="text-align:center;">
-							  <span class="reply-span">ㄴRE</span>${reply.content}(${reply.nowdate})
-							</div>
+						<td colspan="1">관리자</td>
+						<td colspan="2" style="text-align:left; padding-left:50px;">
+							ㄴRE&nbsp;&nbsp;${reply.content}
 						</td>
+						<td>${reply.nowdate}</td>
 					</tr>
 				</c:forEach>
 			</c:forEach>

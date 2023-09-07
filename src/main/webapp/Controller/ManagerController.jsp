@@ -230,6 +230,10 @@
 		int d_pno = Integer.parseInt(request.getParameter("pno"));
 		
 		/* 상품번호로 주문상세테이블에서 count(*)조회해서 1개라도 있으면 삭제 불가 0개 일때만 삭제 가능 */
+		//mdao에서 상품번호를 가지고 주문상세테이블에서 count(*)를 개수 구하기
+		//int result = count(*)
+		//result(0) -> 삭제 실행
+		//result>0 -> 삭제 불가 alert창 띄우고 다시 상세페이지
 	
 		int dcateno = Integer.parseInt(request.getParameter("cateno"));
 	

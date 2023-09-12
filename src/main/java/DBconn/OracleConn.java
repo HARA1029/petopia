@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class OracleConn {
 	
-private Connection conn = null;
+	private Connection conn = null;
 	
 	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 	String user = "petopia";

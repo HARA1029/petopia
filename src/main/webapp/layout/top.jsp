@@ -107,9 +107,9 @@
 	
 		<nav id=nav>
 			<div class=container>
-				<a href="/petopia/user/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
-			    <a href="#" onclick="setActiveLink(this)">상품목록</a> &emsp;
-			    <a href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
+				<a class="navA" href="/petopia/user/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
+			    <a class="navA" href="#" onclick="setActiveLink(this)">상품목록</a> &emsp;
+			    <a class="navA" href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
 				<table>
 					<tr>
 						<td>

@@ -21,7 +21,8 @@
 			비밀번호 : <br> <input type="password" size="16" name="userPW"><br>
 			<br>
 			<div class="button-container">
-				<button type="button" class="withdrawal-button" onclick="withdrawal(event)">탈퇴하기</button>
+				<button class="withdrawal-button" onclick="withdrawal(event)">탈퇴하기</button>
+				<button class="mainpage-button" onclick="/petopia/user/main.jsp">메인화면</button>
 			</div>
 		</div>
 	</form>

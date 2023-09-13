@@ -1,11 +1,12 @@
 @charset "UTF-8";
 
 footer {
-   bottom: 0;
-   background-color: silver;
-   margin-top: 20px;
-   position: absoulte;/*  8월 17일 수정(성민) */
-   width: 100%;
+	bottom: 0;
+	background-color: silver;
+	margin-top: 20px;	
+  background-color: silver;
+  position: absoulte;/*  8월 17일 수정(성민) */
+  width: 100%;
 }
 
 

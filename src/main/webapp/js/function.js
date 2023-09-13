@@ -32,3 +32,8 @@ function withdrawErrorId() {
       u_id.focus();
 }
 
+function editConfirmErrorPw() {
+      alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+      location.href = "withdrawal.jsp"
+      u_pw.focus();
+}

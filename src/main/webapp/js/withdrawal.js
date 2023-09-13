@@ -1,10 +1,10 @@
 function withdrawal(e) {
-    e.preventDefault(); // 폼의 기본 동작 막음
+    //e.preventDefault(); // 폼의 기본 동작 막음
 
     var result = confirm("탈퇴하시겠습니까?");
     if (result == true) { 
         alert("탈퇴가 완료되었습니다.");
-        document.withdrawalForm.action = "controller.jsp";
+        document.withdrawalForm.action = "controller.jsp?action=withdrawal"; // 탈퇴 액션을 호출
         document.withdrawalForm.submit();
     } else {
         alert("탈퇴가 취소되었습니다.");

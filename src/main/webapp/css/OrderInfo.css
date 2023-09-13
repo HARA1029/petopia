@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.OrderInfo-container {
+	width : 80%;
+	margin : 5% auto;
+	border : 5px solid red;
+	text-align : center;
+}
+
+.orderInfo-table {
+	margin : 5% auto;
+	width : 80%;
+	border : 1px solid gray;
+}
+
+.title-tr{
+	background-color: lightcoral;
+	color : white;
+	height:70px;
+} 
+
+.content-tr {
+	height : 70px;
+}
+
+.title-tr > th, .content-tr > td {
+	border : 1px solid gray;
+}
+
+#odBtn {
+	cursor : pointer;
+	background-color :lightcoral;
+	color : white;
+	border : 1px solid gray;
+	padding : 10px;
+}
+#odBtn:hover {
+	filter: brightness(70%);
+}

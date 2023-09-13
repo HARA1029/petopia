@@ -13,8 +13,7 @@
 </head>
 <%@ include file="../layout/top.jsp"%>
 <%@ include file="../layout/nav.jsp"%>
-
-
+	
 	<br>
 	<br>
 	<div class="orderList">
@@ -31,11 +30,12 @@
                 <th>총 합계</th>
             </tr>
 		<%
-   			String u_id = (String) session.getAttribute("userID");
+		
+   			sessionID = (String) session.getAttribute("userID");
         String o_sql = "SELECT o.ono, o.uno, o.title, o.total, o.orderdate FROM product_order o" 
    										+ " WHERE o.uno = (SELECT uno FROM customer WHERE id = ?)";
-        pstmt = conn.prepareStatement(o_sql);
-        pstmt.setString(1, u_id);
+       	pstmt = conn.prepareStatement(o_sql);
+        pstmt.setString(1, sessionID);
         rs = pstmt.executeQuery();
         
         while (rs.next()) {
@@ -80,7 +80,7 @@
                     "AS total FROM cart c JOIN product p ON c.pno = p.pno " +
                     "WHERE c.uno = (SELECT uno FROM customer WHERE id = ?)";
 			    pstmt = conn.prepareStatement(cart_sql);
-			    pstmt.setString(1, u_id);
+			    pstmt.setString(1, sessionID);
 			    rs = pstmt.executeQuery();
             
             while (rs.next()) {

@@ -4,10 +4,12 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
+
  	// 아이디 중복 확인
 	 if (request.getParameter("action") != null && request.getParameter("action").equals("checkID")){
-		 String u_id = request.getParameter("id");
-		 
+		
+			 String u_id = request.getParameter("id");
+			 
 			 String sql = "SELECT * FROM customer WHERE id = ?";
 		    PreparedStatement sm = conn.prepareStatement(sql);
 		    sm.setString(1, u_id);
@@ -116,6 +118,45 @@
 	    sm.close();
 	    conn.close();
 	}
+	
+	//회원 정보 수정 전 고객 확인
+	if (request.getParameter("action") != null && request.getParameter("action").equals("editConfirm")) {
+			System.out.println("수정 전 확인 시작");
+			
+			String u_id = request.getParameter("userID");
+		  String u_pw = request.getParameter("userPW");
+		  
+		  try{
+			// 입력한 아이디와 일치하는 사용자 조회
+		    String sql = "SELECT * FROM customer WHERE id = ?";
+		    pstmt = conn.prepareStatement(sql);
+		    pstmt.setString(1, u_id);
+		   	rs = pstmt.executeQuery();
+		   	
+		   	if (rs.next()) {
+	            String dbPW = rs.getString("pw"); // db에 저장된 비밀번호 가져오기
+	            if (u_pw != null && u_pw.equals(dbPW)) {
+	    	        // 비밀번호가 일치하는 경우
+	            	session.setAttribute("userID", u_id); // 세션에 사용자 ID 저장
+	            	System.out.println(u_id);
+	                response.sendRedirect("edit.jsp"); // 회원 정보 수정 탭으로 이동
+	            } else {
+	                // 비밀번호가 일치하지 않는 경우
+	                out.println("<script>alert('비밀번호가 일치하지 않습니다.'); history.go(-1);</script>");
+	            }
+	            pstmt.close();
+	        } else {
+	            // 사용자 정보가 없는 경우
+	            out.println("<script>alert('사용자 정보를 찾을 수 없습니다.'); history.go(-1);</script>");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        out.println("<script>alert('회원 정보 확인 중 오류가 발생했습니다.'); history.go(-1);</script>");
+	    } finally {
+	        conn.close();
+	    }
+	}
+
 	
 	//회원 정보 수정
 	if (request.getParameter("action") != null && request.getParameter("action").equals("edit")) {
@@ -250,6 +291,5 @@
 
         sm.close();
         conn.close();
-    
 }
 %>

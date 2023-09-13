@@ -1,42 +1,41 @@
-
 /* withdrawal Form container */
 .withdrawal {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 60%;
-  margin: 20px auto;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 60%;
+	margin: 20px auto;
 }
 
-.withdrawal input[type="text"],
-.withdrawal input[type="password"] {
-  width: 90%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.withdrawal input[type="text"], .withdrawal input[type="password"] {
+	width: 90%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
 }
 
 /* withdrawal and main screen button */
 .button-container {
-  text-align: center;
-  margin-top: 20px;
+	text-align: center;
+	margin-top: 20px;
 }
 
-.withdrawal-button, .mainpage-button{
-  background-color: lightcoral;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 10px;
-  cursor: pointer;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: background-color 0.3s ease;
+.withdrawal-button, .mainpage-button {
+	background-color: lightcoral;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	margin: 0 10px;
+	cursor: pointer;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: background-color 0.3s ease;
+	border-radius: 4px;
 }
 
 .withdrawal-button:hover, .main-screen-button:hover {
-  background-color: #ff7f50; /* Slightly darker shade when hovering */
+	background-color: #ff7f50; /* Slightly darker shade when hovering */
 }

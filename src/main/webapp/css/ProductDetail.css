@@ -1,0 +1,289 @@
+@charset "UTF-8";
+/* 상품수정,삭제 버튼  */
+#modify,#delete {
+	margin : 20px 0 0 0;
+	width : 100px;
+	height : 50px;
+	border : none;
+	background-color: lightcoral;
+	color : white;
+	cursor: pointer;
+}
+/* 풀절된 상품의 화면 내용 */
+/* .sold-container {
+	width:100%;
+	height:450px;
+	position: relative;
+  text-align: center;
+} 
+
+.sold-container img {
+	width:75%;
+	height:100%;
+	filter: brightness(30%);
+}
+
+.comment {
+  color : white;
+  font-weight: bold; 
+  font-size: 35px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* 맨위 상품이미지, 주문선택 공간*/
+.Detail-row {
+	margin : 0 auto;
+	display: flex;
+	margin-top:5%;
+	/* height : 650px; */
+}
+
+.Detail-row:after {
+  content: "";
+  display: table;
+  clear: both;
+  /* margin : 10px; */
+}
+
+/* 상품 이미지 */
+.column1 {
+	float: left;
+	width: 500px;
+  height: 500px;
+	position: relative;
+  margin:0 auto;
+}
+
+/* 상품 구매 선택 */
+.column2 {
+  float: right;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  margin:0 auto;
+}
+
+.column2 > h2 {
+	width:100%;
+	height:10%;
+	text-align : left;
+	font-size : 45px;
+}
+
+.dprice {
+	width : 100%;
+	height : 20%;
+	padding : 20% 0 0 0;
+	font-size : 25px;
+	font-weight: bold; /* 글씨를 진하게 만듦 */
+}
+
+.c2 { /* 상품명 체크박스 상품가격  */
+	width : 100%;
+	height : 20%;
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+.count::-webkit-inner-spin-button,
+.count::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	appearance: none;
+}
+.count {
+	width:30px;
+  text-align: center; /* 텍스트를 가운데 정렬합니다. */
+}
+.c2-items {
+	display: flex;
+}
+
+.material-symbols-outlined {
+	cursor: pointer; /* 커서 모양을 손가락으로 설정 */
+}
+
+.totoal-price {
+		width : 100%;
+		height : 20%;
+		padding : 30px 0 0 0; 
+}
+
+/* 버튼 */
+.dbtn-group {
+	width : 100%;
+}
+.dbtn-group .dbtn {
+  background-color: lightcoral; /* Green */
+  width:50%;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+  bottom : 0;
+}
+
+#dbtn1 > button {
+	background-color: lightcoral; /* Green */
+  width:100%;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  bottom : 0;
+  filter: brightness(70%);
+}
+
+
+#addCart {
+background-color : white;
+color : lightcoral;
+}
+
+.Detail-container1 {
+	margin : 7%;
+  overflow: auto;
+  white-space: nowrap;
+  /* padding: 10px; */
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.Detail-container1 img {
+  margin: 0 auto;
+  margin-top : 3%;
+  margin-bottom : 3%;
+  vertical-align: middle;
+  align-items: center; 
+}
+
+
+/* Style the 주의사항 */
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column {
+    width: 100%; 
+    
+  }
+}
+
+/*상품목록 이미지 선택하면 보여주기*/
+.mySlides img {
+	width:100%;
+	height:100%; 
+	object-fit:cover;
+}
+
+.column img {
+	vertical-align: middle;
+	width : 100%;
+ 	height : 100px;
+}
+
+/* Hide the images by default */
+.mySlides {
+	width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+	margin-top:10px;
+  float: left;
+  width: 20%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.review-table {
+	width : 100%;
+	border : 3px solid gray;
+}
+
+.review-th {
+	background-color : lightcoral;
+	color : white;
+	height: 50px;
+}
+
+.review-tr td {
+	height: 50px;
+	text-align : center;
+	border : 1px solid gray;
+	border-color:gray;
+}
+
+.reply-tr {
+	text-align : center;
+	height: 75px;
+	background-color:#EAEAEA;
+}

@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+.cart-table {
+	/* border : 1px solid black; */
+	margin: 0 auto;
+	margin-top: 7%;
+  width: 1000px;
+  height : 150px;
+}
+
+.orderBtn {
+	width:1000px;
+	margin : 0 auto;
+	margin-top : 30px;
+	text-align : right;
+}
+
+.img-td {
+	width: 150px;
+	height: 150px;
+}
+
+.cart-img {
+	width: 100%;
+	height: 100%;
+}
+
+.product-table {
+	padding : 0 0 0 50px;
+}
+.cart-list {
+	width: 500px;
+	height: 100%;
+}
+
+.cart-check {
+	text-align : center;
+	width:75px;
+}
+
+/* 주문 버튼 */
+#order,#delete {
+	border : none;
+	width : 75px;
+	height :40px;
+	background-color : lightcoral;
+	color : white;
+	cursor: pointer; /* 추가된거 */
+}

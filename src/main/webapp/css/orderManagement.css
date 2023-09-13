@@ -4,14 +4,14 @@ h1 {
     text-align: center;
     padding: 20px;
 }
-.reviewTable {
+.orderTable {
     width: 80%;
     border-collapse: collapse;
     margin: 20px auto;
     
 }
 
-.reviewTable th {
+.orderTable th {
     background-color: #333;
     color: white;
     padding: 10px;
@@ -19,28 +19,28 @@ h1 {
     border: 1px solid #ddd;
 }
 
-.reviewTable td {
+.orderTable td {
     padding: 10px; 
     text-align: center;
     border: 1px solid #ddd;
 }
 
-.td_1 /*리뷰번호*/{
+.td_1 /*주문번호*/{
     width: 10%;
 }
 
-.td_2 /*사용자ID*/{
+.td_2 /*상품명*/{
     width: 15%;
 }
 
-.td_3 /*상품명*/{
+.td_3 /*총합계주문날짜*/{
     width: 15%;
 }
-.td_4 /*리뷰내용*/{
-   width: 30%;
+.td_4 /*주문날짜*/{
+   width: 15%;
 }
 
-.td_5 /*작성날짜*/{
+.td_5 /*상태*/{
    width: 15%;
 }
 
@@ -48,21 +48,17 @@ h1 {
    width: 15%;
 }
 
-button, input[type="submit"]{
+/*button, input[type="submit"]{
 	color: white;
     background: lightcoral;
     border: none;
     cursor: pointer;
     padding: 5px 10px;
-    display: inline-block; /* 추가: 버튼 가로 배열을 위해 inline-block으로 설정 */
-    margin: 0; /* 추가: 기본 마진 제거 */
+    display: inline-block;  추가: 버튼 가로 배열을 위해 inline-block으로 설정 
+    margin: 0;  추가: 기본 마진 제거 
     margin-right: 5px;
     width:60px;
     text-align:center;
 	height:30px;
 	border-radius: 4px; 
-}
-
-.td_6 form{
-	display: inline-block;
-}
+}*/

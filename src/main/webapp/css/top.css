@@ -62,7 +62,7 @@ nav{
     background-color: #ff6b6b;
 }
 
-#nav a {
+.navA {
 	overflow:hidden;
 	background-color : inherit;
 }

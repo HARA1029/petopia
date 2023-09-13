@@ -41,11 +41,11 @@
 
 <h1>BEST ITEM</h1>
 <div class="button-container">
-    <button class="more-button" onclick="goProductView()">+ 더보기</button>
+    <a class="more-button" href="../Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">+ 더보기</a>
 </div>
 <div class="plist-container">
     <%
-        String sql = "SELECT p.pname, p.price, p.img " +
+        String sql = "SELECT p.pname, p.price, p.img, p.cateno " +
                      "FROM product p " +
                      "INNER JOIN ( " +
                      "    SELECT o.pno, SUM(o.count) AS total_count " +
@@ -64,9 +64,31 @@
                 String productName = rs.getString("pname");
                 double productPrice = rs.getDouble("price");
                 String productImage = rs.getString("img");
+                int productCateno = rs.getInt("cateno");
+                
+                String[] image = productImage.split(",");
+                String imgSrc = image[0];
+
+                String cateSrc = "";
+                if (productCateno == 1) {
+                	cateSrc = "목욕";
+                } else if (productCateno == 2) {
+                	cateSrc = "배변위생";
+                } else if (productCateno == 3) {
+                	cateSrc = "미용케어";
+                } else if (productCateno == 4) {
+                	cateSrc = "홈리빙";
+                } else if (productCateno == 5) {
+                	cateSrc = "산책놀이";
+                } else if (productCateno == 6) {
+                	cateSrc = "간식영양제";
+                }
+
+                // 이미지 경로 생성
+                String imagePath = "../image/" + cateSrc + "/" + imgSrc;
     %>
     <div class="plist">
-        <img class="pImg" src="../image/product/<%= productImage %>" alt="<%= productName %>">
+        <img class="pImg" src="<%= imagePath %>" alt="<%= productName %>">
         <p><%= productName %></p>
         <p>가격: <%= productPrice %>원</p>
     </div>
@@ -84,11 +106,11 @@
 
 <h1>NEW ITEM</h1>
 <div class="button-container">
-    <button class="more-button" onclick="goProductView()">+ 더보기</button>
+    <a class="more-button" href="../Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">+ 더보기</a>
 </div>
 <div class="plist-container">
     <%
-        sql = "SELECT pname, price, img " +
+        sql = "SELECT pname, price, img, cateno " +
               "FROM product  " +
               "ORDER BY pno DESC " + 
               "FETCH FIRST 5 ROWS ONLY"; 
@@ -101,9 +123,31 @@
                 String productName = rs.getString("pname");
                 double productPrice = rs.getDouble("price");
                 String productImage = rs.getString("img");
+				int productCateno = rs.getInt("cateno");
+                
+                String[] image = productImage.split(",");
+                String imgSrc = image[0];
+
+                String cateSrc = "";
+                if (productCateno == 1) {
+                	cateSrc = "목욕";
+                } else if (productCateno == 2) {
+                	cateSrc = "배변위생";
+                } else if (productCateno == 3) {
+                	cateSrc = "미용케어";
+                } else if (productCateno == 4) {
+                	cateSrc = "홈리빙";
+                } else if (productCateno == 5) {
+                	cateSrc = "산책놀이";
+                } else if (productCateno == 6) {
+                	cateSrc = "간식영양제";
+                }
+
+                // 이미지 경로 생성
+                String imagePath = "../image/" + cateSrc + "/" + imgSrc;
     %>
     <div class="plist">
-        <img class="pImg" src="../image/product/<%= productImage %>" alt="<%= productName %>">
+        <img class="pImg" src="<%= imagePath %>" alt="<%= productName %>">
         <p><%= productName %></p>
         <p>가격: <%= productPrice %>원</p>
     </div>

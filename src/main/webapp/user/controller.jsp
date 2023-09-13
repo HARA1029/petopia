@@ -16,10 +16,10 @@
 		   	rs = sm.executeQuery();
 		
 		    if (rs.next()) {
-		    	out.println("중복된 id입니다.");
+		    	System.out.println("중복된 id입니다.");
 		    }
 		    else{
-		    	 out.println("사용 가능한 id입니다.");
+		    	System.out.println("사용 가능한 id입니다.");
 		    }
 		 
 		    pstmt.close();
@@ -29,7 +29,7 @@
 
     // 회원 가입 처리
     if (request.getParameter("action") != null && request.getParameter("action").equals("signup")) {
-        out.println("회원가입 처리 시작");
+    	System.out.println("회원가입 처리 시작");
         
         String u_name = request.getParameter("uname");
         String u_id = request.getParameter("id");
@@ -67,7 +67,7 @@
 
         if (count == 1) {
         	
-            out.println("회원가입 성공!");
+        	System.out.println("회원가입 성공!");
             
             request.setAttribute("u_name", u_name);
             request.setAttribute("u_id", u_id);
@@ -78,7 +78,7 @@
             request.getRequestDispatcher("joinSuccess.jsp").forward(request, response);
             
         } else {
-            out.println("회원가입 실패!");
+        	System.out.println("회원가입 실패!");
             response.sendRedirect("main.jsp");
         }
         pstmt.close();
@@ -266,9 +266,9 @@
 
 	// 로그아웃 처리
 	if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
-        session.invalidate();
+		session.invalidate();
         response.sendRedirect("main.jsp"); // Redirect to the main page after logout
-    }
+    }	
 	
 	// 공지사항 제목 클릭 -> 조회수 증가 -> 상세페이지이동
 	if (request.getParameter("action") != null && request.getParameter("action").equals("viewNotice")) {
@@ -285,7 +285,7 @@
 	        int count = pstmt.executeUpdate();
 	
 	        if (count > 0) {
-	            out.println("조회수 증가 처리 완료");
+	        	System.out.println("조회수 증가 처리 완료");
 	        }
 	        
 	        response.sendRedirect("../notice/noticeDetail.jsp?postNumber=" + postNumber);
@@ -297,7 +297,7 @@
 	
 	// 공지사항 등록 처리
 	if (request.getParameter("action") != null && request.getParameter("action").equals("noticeWrite")) {
-        out.println("공지사항 등록 처리 시작");
+		System.out.println("공지사항 등록 처리 시작");
         
         String n_title = request.getParameter("title");
         String n_content = request.getParameter("content");
@@ -312,10 +312,10 @@
         int count = pstmt.executeUpdate();
 
         if (count == 1) {
-            out.println("공지사항 등록 성공!");
+        	System.out.println("공지사항 등록 성공!");
             response.sendRedirect("../notice/notice.jsp"); // 공지사항 목록 페이지로 리다이렉트
         } else {
-            out.println("공지사항 등록 실패!");
+        	System.out.println("공지사항 등록 실패!");
         }
         
         pstmt.close();
@@ -324,7 +324,7 @@
 	
 	// 공지사항 수정 처리
 	if (request.getParameter("action") != null && request.getParameter("action").equals("noticeEdit")) {
-        out.println("공지사항 수정 처리 시작");
+		System.out.println("공지사항 수정 처리 시작");
 
         int postNumber = Integer.parseInt(request.getParameter("postNumber"));
         String n_title = request.getParameter("title");
@@ -340,10 +340,10 @@
         int count = pstmt.executeUpdate();
 
         if (count == 1) {
-            out.println("공지사항 수정 성공!");
+        	System.out.println("공지사항 수정 성공!");
             response.sendRedirect("../notice/notice.jsp"); 
         } else {
-            out.println("공지사항 수정 실패!");
+        	System.out.println("공지사항 수정 실패!");
         }
 
         pstmt.close();
@@ -352,7 +352,7 @@
 	
 	// 공지사항 삭제 처리
 	if (request.getParameter("action") != null && request.getParameter("action").equals("noticeDelete")) {
-	    out.println("공지사항 삭제 처리 시작");
+		System.out.println("공지사항 삭제 처리 시작");
 	
 	    String postNumberParam = request.getParameter("postNumber");
 	
@@ -365,10 +365,10 @@
 	        int deleteResult = deleteSm.executeUpdate();
 	
 	        if (deleteResult > 0) {
-	            out.println("공지사항 삭제 성공!");
+	        	System.out.println("공지사항 삭제 성공!");
 	            response.sendRedirect("../notice/notice.jsp"); // 공지사항 목록 페이지로 리다이렉트
 	        } else {
-	            out.println("공지사항 삭제 실패: 해당 공지사항을 찾을 수 없습니다.");
+	        	System.out.println("공지사항 삭제 실패! ");
 	        }
 	
 	        deleteSm.close();
@@ -379,6 +379,83 @@
         pstmt.close();
         conn.close();	       
 	}
+	
+	// 리뷰 답글 등록 처리
+	if (request.getParameter("action") != null && request.getParameter("action").equals("reply")) {
+		System.out.println("답글 등록 처리 시작");
+		
+        int reviewNumber = Integer.parseInt(request.getParameter("rno"));
+        String content = request.getParameter("content");
+
+        String sql = "INSERT INTO review_reply VALUES (REVIEW_REPLY_SEQ.NEXTVAL, ?, ?, sysdate)";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, reviewNumber);
+        pstmt.setString(2, content);
+
+        int count = pstmt.executeUpdate();
+
+        if (count == 1) {
+        	System.out.println("답글 등록 성공!");
+            response.sendRedirect("/petopia/admin/reviewManagement.jsp"); // 등록 후 페이지로 리다이렉트
+        } else {
+        	System.out.println("답글 등록 실패!");
+        }
+
+        pstmt.close();
+        conn.close();
+    } 
+	
+	// 리뷰 삭제 처리
+	if (request.getParameter("action") != null && request.getParameter("action").equals("deleteReview")) {
+		System.out.println("리뷰 삭제 처리 시작");
+		
+		int reviewNumber = Integer.parseInt(request.getParameter("rno"));
+	    
+	    String sql = "DELETE FROM review WHERE rno = ?";
+	    
+	    pstmt = conn.prepareStatement(sql);
+	    pstmt.setInt(1, reviewNumber);
+	    
+	    int count = pstmt.executeUpdate();
+	   
+	    if (count == 1) {
+        	System.out.println("답글 삭제 성공!");
+            response.sendRedirect("/petopia/admin/reviewManagement.jsp"); // 등록 후 페이지로 리다이렉트
+        } else {
+        	System.out.println("답글 삭제 실패!");
+        }
+
+        pstmt.close();
+        conn.close();
+	}
+	
+	// 주문 상태 변경 처리
+	if (request.getParameter("action") != null && request.getParameter("action").equals("updateOrderStatus")) {
+	    System.out.println("주문 상태 업데이트 처리 시작");
+	
+	    int orderNumber = Integer.parseInt(request.getParameter("orderNumber"));
+	    int newStatus = Integer.parseInt(request.getParameter("newStatus"));
+	
+	    // 적절한 SQL 쿼리를 작성하여 주문 상태를 업데이트
+	    String sql = "UPDATE product_order SET state = ? WHERE ono = ?";
+	    pstmt = conn.prepareStatement(sql);
+	    pstmt.setInt(1, newStatus);
+	    pstmt.setInt(2, orderNumber);
+	
+	    int count = pstmt.executeUpdate();
+	
+	    if (count == 1) {
+	        System.out.println("주문 상태 업데이트 성공!");
+	        response.sendRedirect("/petopia/admin/orderManagement.jsp");
+	    } else {
+	        System.out.println("주문 상태 업데이트 실패!");
+	    }
+	
+	    pstmt.close();
+	    conn.close();
+	}
+
+	
 
 
 	//회원 탈퇴 처리

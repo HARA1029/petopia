@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+/* 페이지 타이틀(ORDER) */
+#order-title {
+	margin : 0 auto;
+	text-align : center;
+	margin-top : 3%;
+	border-bottom : 1px solid gray;
+	width:12%;
+}
+
+/* 주문내역, 주문 정보 title */
+.orderInfo-title {
+	text-align : left;
+	margin-bottom : -10px;
+	margin-top : 150px;
+}
+
+/* 주문정보 div */
+.order-container {
+	margin-top : 3%;
+	width:80%;
+	margin : 0 auto;
+}
+
+/* 주문 정보 테이블 틀*/
+.order-table {
+	border-bottom : 1px solid #BDBDBD;
+	border-collapse: collapse;
+	text-align : center;
+	width: 100%;
+	margin: 0 auto;
+	margin-top : 1%;
+}
+
+/* 주문정보 제목틀 */
+#info-title {
+	background-color: #f2f2f2;
+	height : 50px;
+}
+
+/* 주문하려는 상품정보 이미지 크기 */
+#oimage {
+	width : 120px;
+	height : 120px;
+}
+
+/* 주문가격 div */
+#order-intfo {
+	text-align:right; 
+	margin-top : 20px;
+}
+
+/* 주문 버튼  */
+#order-button {
+	border : none;
+	width : 75px;
+	height :40px;
+	background-color : lightcoral;
+	color : white;
+	cursor: pointer; /* 커서 모양을 손가락으로 설정 */
+	position: absolute; /* 절대 위치 지정 */
+  right: 0; /* 왼쪽 끝에 위치하도록 설정 */
+  margin-top : 20px;
+  margin-right: 190px;
+}					
+
+/* 주문자 정보 컨테이너  */
+.customerInfo-container {
+	width : 80%;
+	margin : 0 auto;
+}
+
+/* 주문정보 테이블  */
+.customerInfo-table {
+	border-top : 1px solid #BDBDBD;
+	border-collapse: collapse;
+	width: 100%;
+	margin: 0 auto;
+	text-align : left;
+}							
+
+/* 배송 메시지  */
+#message {
+	resize: none; /* 크기 조절 x */
+}
+
+/* 테이블 각 행(tr) 간격 주기 */
+.customerInfo-table tr {
+    height: 50px;
+    border-bottom : 1px dashed #BDBDBD;
+}

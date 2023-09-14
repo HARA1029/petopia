@@ -4,7 +4,7 @@
 <div class="container">
 
 		    <%
-		    		String sessionID = (String) session.getAttribute("userID");
+		    		String uid = (String) session.getAttribute("userID");
 		        String sessionName = (String) session.getAttribute("userName");
 		        String sessionGrade = (String) session.getAttribute("userGrade");
 		        String level = "";
@@ -35,7 +35,7 @@
 		   <div class="list">
 			    &emsp;<a href="/petopia/user/editConfirm.jsp" onclick="setActiveLink(this)">정보 수정</a> &emsp; &emsp; 
 			    <a href="/petopia/mypage/myList.jsp"onclick="setActiveLink(this)">내가 쓴 글</a> &emsp; &emsp; 
-			    <a href="../Controller/UserController.jsp?Submit=OrderInfo&id=<%=sessionID%>" onclick="setActiveLink(this)">주문 내역</a> &emsp; &emsp; 
+			    <a href="../Controller/UserController.jsp?Submit=OrderInfo&id=<%=uid%>" onclick="setActiveLink(this)">주문 내역</a> &emsp; &emsp; 
 			    <a href="/petopia/user/withdrawal.jsp"onclick="setActiveLink(this)">회원 탈퇴</a> &emsp;
 			</div>
 		    <%

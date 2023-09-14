@@ -224,61 +224,6 @@
 		
 		break;
 	
-	//상품삭제-보류
-	case "delete":
-	
-		int d_pno = Integer.parseInt(request.getParameter("pno"));
-		
-		/* 상품번호로 주문상세테이블에서 count(*)조회해서 1개라도 있으면 삭제 불가 0개 일때만 삭제 가능 */
-		//mdao에서 상품번호를 가지고 주문상세테이블에서 count(*)를 개수 구하기
-		//int result = count(*)
-		//result(0) -> 삭제 실행
-		//result>0 -> 삭제 불가 alert창 띄우고 다시 상세페이지
-	
-		int dcateno = Integer.parseInt(request.getParameter("cateno"));
-	
-		if (dcateno == 1) {
-			categoryName = "목욕";
-		} else if (dcateno == 2) {
-			categoryName = "배변위생";
-		} else if (dcateno == 3) {
-			categoryName = "미용케어";
-		} else if (dcateno == 4) {
-			categoryName = "홈리빙";
-		} else if (dcateno == 5) {
-			categoryName = "산책놀이";
-		} else if (dcateno == 6) {
-			categoryName = "간식영양제";
-		} else {
-			categoryName = "의류악세서리";
-		}
-	
-		//파일 경로 및 크기,인코딩 설정
-		String[] dImg = request.getParameter("dimg").split(",");
-	
-		//삭제하려는 파일경로(위치)
-		directory = "C:/Eclipse-Jsp-workspace/petopia/src/main/webapp/image/" + categoryName + "/";
-	
-		//파일삭제
-		for (String dimg : dImg) {
-			File fi = new File(directory + dimg);
-			fi.delete();
-		}
-	
-		mdao = new ManagerDao();
-	
-		result = mdao.productDelete(d_pno);
-	
-		if (result == -1) {//실패
-			alertScript = "<script>alert('삭제실패'); location.href='ManagerController.jsp?Submit=pList&cateno=0';</script>";
-			out.print(alertScript); // out은 JSP 페이지에서 사용 가능한 객체
-		} else { //삭제 성공
-			alertScript = "<script>alert('삭제성공'); location.href='ManagerController.jsp?Submit=pList&cateno=0';</script>";
-			out.print(alertScript); // out은 JSP 페이지에서 사용 가능한 객체
-		}
-	
-		break;
-	
 	default:
 		break;
 	}

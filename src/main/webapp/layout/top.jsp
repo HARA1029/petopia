@@ -110,7 +110,6 @@
 			<div class=container>
 				<a href="/petopia/user/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
 			    <a href="../Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">상품목록</a> &emsp;
-			    <a href="../Controller/UserController.jsp?Submit=OrderInfo&id=<%=sessionID%>">주문상세</a>
 			    <a href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
 				<form action="../Controller/ManagerController.jsp">
 					<table>

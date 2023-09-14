@@ -23,9 +23,6 @@ public interface MDao {
 	//상품수정
 	public void productModify(ProductDTO pd);
 	
-	//상품삭제
-	public int productDelete(int pno);
-	
 	//리뷰정보
 	public ArrayList<ReviewDTO> reviewInfo(int pno);
 	

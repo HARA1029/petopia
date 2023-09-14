@@ -15,7 +15,7 @@ function goLogin() {
 }
     
 function goMain() {
-      window.location.href = "main.jsp";
+      window.location.href = "../main.jsp";
 }
 
 // 공지 삭제 alert

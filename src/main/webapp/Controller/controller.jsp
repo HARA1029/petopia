@@ -77,7 +77,7 @@
             
         } else {
         	System.out.println("회원가입 실패!");
-            response.sendRedirect("main.jsp");
+            response.sendRedirect("../main.jsp");
         }
         pstmt.close();
         conn.close();
@@ -111,7 +111,7 @@
 	            session.setAttribute("userGrade", grade); // 세션에 등급 저장
 	            
 	            
-	            response.sendRedirect("main.jsp");
+	            response.sendRedirect("../main.jsp");
 	        } else { // 비번 틀림
 	        	out.println("<script>loginerror1();</script>");
 	        }
@@ -126,7 +126,7 @@
 	// 로그아웃 처리
 	if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
 		session.invalidate();
-        response.sendRedirect("main.jsp"); // Redirect to the main page after logout
+        response.sendRedirect("../main.jsp"); // Redirect to the main page after logout
     }	
 	
 	// 공지사항 제목 클릭 -> 조회수 증가 -> 상세페이지이동

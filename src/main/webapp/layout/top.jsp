@@ -6,7 +6,7 @@
 		<header id=header>
 			<div class=container>
 				<div>
-				 	<a href="/petopia/user/main.jsp"><img class="topImg" src="../image/logo.png"></a>
+				 	<a href="/petopia/main.jsp"><img class="topImg" src="../image/logo.png"></a>
 			 	</div>
 			 	<div class="user-info">
 				    <%
@@ -107,7 +107,7 @@
 	
 		<nav id=nav>
 			<div class=container>
-				<a class="navA" href="/petopia/user/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
+				<a class="navA" href="/petopia/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
 			    <a class="navA" href="#" onclick="setActiveLink(this)">상품목록</a> &emsp;
 			    <a class="navA" href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
 				<table>

@@ -117,11 +117,11 @@
 	</div>
 	
 	<div class="Detail-container1">
-	  <img src="../image/상세정보/1_샤워기.jpg" alt="jpg1" width="500" height="500">
-	  <img src="../image/상세정보/2_샤워기.jpg" alt="jpg2" width="500" height="500">
-	  <img src="../image/상세정보/3_샤워기.jpg" alt="jpg3" width="500" height="500">
-	  <img src="../image/상세정보/4_샤워기.jpg" alt="jpg4" width="500" height="500">
-	  <img src="../image/상세정보/5_샤워기.jpg" alt="jpg5" width="500" height="500">
+	  <img src="../image/상세정보/1_${product.pname}.jpg" alt="jpg1" width="500" height="500">
+	  <img src="../image/상세정보/2_${product.pname}.jpg" alt="jpg2" width="500" height="500">
+	  <img src="../image/상세정보/3_${product.pname}.jpg" alt="jpg3" width="500" height="500">
+	  <img src="../image/상세정보/4_${product.pname}.jpg" alt="jpg4" width="500" height="500">
+	  <img src="../image/상세정보/5_${product.pname}.jpg" alt="jpg5" width="500" height="500">
 	</div>
 	
 	<div class="Detail-container2">

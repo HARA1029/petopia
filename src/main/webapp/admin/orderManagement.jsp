@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../user/dbConn.jsp"%>
+<%@ include file="../Controller/dbConn.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -52,7 +52,7 @@
 			    %>
 			</td>
 			<td class="td_6">
-			    <form action="/petopia/user/controller.jsp" method="post">
+			    <form action="/petopia/Controller/controller.jsp" method="post">
 				    <input type="hidden" name="action" value="updateOrderStatus">
 				    <input type="hidden" name="orderNumber" value="<%= orderNumber %>">
 				    <input type="radio" name="newStatus" value="0" <%= state.equals("0") ? "checked" : "" %> onchange="this.form.submit()"> 결제완료

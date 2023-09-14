@@ -26,7 +26,7 @@ function deleteNotice(event) {
 	
 	if(result){
 		alert("삭제가 완료되었습니다.");
-		document.noticeDeleteForm.action = "/petopia/user/controller.jsp";
+		document.noticeDeleteForm.action = "/petopia/Controller/controller.jsp";
 		document.noticeDeleteForm.submit();
 	} else{
 		alert("삭제가 취소되었습니다.");

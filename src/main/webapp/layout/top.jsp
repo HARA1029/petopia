@@ -29,7 +29,7 @@
 					            </form>
 			            	</td>
 			            	<td>
-					            <form action="#" method="get">
+					            <form action="/petopia/admin/orderManagement.jsp" method="get">
 					                <button type="submit">주문관리</button>
 					            </form>
 					       </td>
@@ -39,7 +39,7 @@
 					            </form>
 					       </td>
 				            <td>
-					            <form action="/petopia/user/controller.jsp" method="get">
+					            <form action="/petopia/Controller/controller.jsp" method="get">
 					                <input type="hidden" name="action" value="logout">
 					                <button type="submit">로그아웃</button>
 					            </form>
@@ -69,7 +69,7 @@
 				            </form>
 			         		</td>
 			         		<td>
-				            <form action="/petopia/user/controller.jsp" method="get">
+				            <form action="/petopia/Controller/controller.jsp" method="get">
 				                <input type="hidden" name="action" value="logout">
 				                <button type="submit">로그아웃</button>
 				            </form>

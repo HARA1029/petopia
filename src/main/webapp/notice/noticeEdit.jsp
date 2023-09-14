@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../user/dbConn.jsp" %>
+<%@ include file="../Controller/dbConn.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -28,7 +28,7 @@
                     String title = rs.getString("ntitle");
                     String content = rs.getString("ncontent");
         %>
-        <form class="noticeform" action="/petopia/user/controller.jsp" method="post">
+        <form class="noticeform" action="/petopia/Controller/controller.jsp" method="post">
         	<input type="hidden" name="action" value="noticeEdit">
             <label for="title">제목:</label>
             <input type="text" id="title" name="title" value="<%= title %>" required>

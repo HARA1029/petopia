@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../user/dbConn.jsp"%>
+<%@ include file="../Controller/dbConn.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -84,7 +84,7 @@
 		<tr class="modal-row" data-rno="<%= reviewNumber %>">
 			<td colspan="6">
 				<div class="modal-content">
-					<form name="replyForm" action="/petopia/user/controller.jsp" method="post">
+					<form name="replyForm" action="/petopia/Controller/controller.jsp" method="post">
 						<input type="hidden" name="action" value="reply">
 						<input type="hidden" name="rno" value="<%= reviewNumber %>">
 						<label for="content_<%= reviewNumber %>">답글</label> <br>

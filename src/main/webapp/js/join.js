@@ -9,14 +9,14 @@ document.addEventListener("DOMContentLoaded", function() {
         const id = idInput.value.trim();
 
         if (!/^[a-zA-Z0-9]{2,8}$/.test(id)) {
-            alert("아이디는 영문과 숫자로 이루어진 2자에서 8자 사이여야 합니다.");
+            alert("아이디는 2자에서 8자 사이여야 합니다.");
             idInput.focus();
             return;
         }
 
         // AJAX를 사용하여 서버에 아이디 중복 확인 요청 보내기
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "controller.jsp?action=checkID&id=" + id, true);
+        xhr.open("GET", "../Controller/controller.jsp?action=checkID&id=" + id, true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {

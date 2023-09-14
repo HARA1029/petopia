@@ -11,7 +11,7 @@
 
 <%@ include file="/layout/top.jsp" %>
 		<div class="signup">
-			<form name="signupForm" action="controller.jsp" method="post" accept-charset="UTF-8">
+			<form name="signupForm" action="/petopia/Controller/controller.jsp" method="post" accept-charset="UTF-8">
 				<div>
 					<input type="hidden" name="action" value="signup">
 					

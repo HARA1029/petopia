@@ -69,7 +69,7 @@
 			%>
             <tr>
                 <td class="td_1"><%= postNumber %></td>
-                <td class="td_2"><a class="notice-title" href="../user/controller.jsp?action=viewNotice&postNumber=<%= postNumber %>"><%= title %></a></td>
+                <td class="td_2"><a class="notice-title" href="/petopia/Controller/controller.jsp?action=viewNotice&postNumber=<%= postNumber %>"><%= title %></a></td>
                 <td class="td_3"><%= date %></td>
                 <td class="td_4"><%= views %></td>
             </tr>

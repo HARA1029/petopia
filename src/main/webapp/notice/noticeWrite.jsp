@@ -13,7 +13,7 @@
     <div class="notice-write">
         <h1>공지사항 작성</h1>
         
-        <form class="noticeform" action="/petopia/user/controller.jsp" method="post">
+        <form class="noticeform" action="/petopia/Controller/controller.jsp" method="post">
         	<input type="hidden" name="action" value="noticeWrite">
         	
             <label for="title">제목:</label>

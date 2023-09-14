@@ -38,7 +38,6 @@
 	
 	<div id="modifyContainer" class="btn-container" style="text-align:right; margin-top:35px;">
  		<button id="modify" type="button" onclick="modifyFunction()">상품수정</button>
-		<button id="delete" type="button" onclick="delectFunction()">상품삭제</button>
 	</div>
 	
 	<div id="nosold" class="Detail-row"><!-- display:flex -->

@@ -212,33 +212,6 @@ public class ManagerDao implements MDao {
 		
 	}
 
-	//상품삭제
-	@Override
-	public int productDelete(int pno) {
-		
-		//테이블
-		//String sql = "DELETE FROM PRODUCT WHERE pno = ?";
-		
-		//뷰
-		String sql = "DELETE FROM PRODUCTVIEW WHERE pno = ?";
-		
-		int check = -1;
-		
-		try {
-			PreparedStatement pst = conn.prepareStatement(sql);
-        	pst.setInt(1, pno); // ? 에 해당하는 값 설정
-        	
-        	check = pst.executeUpdate();
-        	
-        	pst.close();
-	        conn.close();
-        	
-		}
-		catch(Exception e) { e.printStackTrace(); }
-		
-		return check;
-	}
-
 	//리뷰정보
 	@Override
 	public ArrayList<ReviewDTO> reviewInfo(int pno) {

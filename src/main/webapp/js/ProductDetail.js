@@ -121,22 +121,6 @@ function modifyFunction() {
 	location.href = '../Controller/ManagerController.jsp?Submit=pModify_veiw&pno='+mpno;
 }
 
-/* 상품 삭제 */
-function delectFunction() {
-	
-	var dimg = document.getElementById("dimg").value; //상품이미지
-	var dcateno = document.getElementById("dcateno").value; //카테고리 번호
-	var confirmation = confirm("삭제하시겠습니까?" + dcateno);
-				    
-  // 사용자의 선택에 따라 다른 동작을 수행합니다.
-  if (confirmation) {
-  	location.href = '../Controller/ManagerController.jsp?Submit=delete&pno='+pno +"&dimg=" + dimg + "&cateno=" + dcateno;
-  } else {
-  	location.reload();//페이지 새로고침
-  }
-}
-
-
 /* 상품이미지 선택시 보여주기 */
 let slideIndex = 1;
 showSlides(slideIndex);

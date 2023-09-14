@@ -32,7 +32,7 @@
 		else {categoryName = "의류악세서리";}
 	
 		//파일 경로 및 크기,인코딩 설정
-		String directory = "C:/Eclipse-Jsp-workspace/petopia/src/main/webapp/image/" + categoryName;
+		String directory = "C:/Petopia/petopia/src/main/webapp/image/" + categoryName;
 		int size = 10 * 1024 * 1024;
 		String encoding = "UTF-8";
 	

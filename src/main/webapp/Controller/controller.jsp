@@ -75,7 +75,7 @@
             request.setAttribute("u_addr", u_addr);
             request.setAttribute("u_tel", u_tel);
             
-            request.getRequestDispatcher("joinSuccess.jsp").forward(request, response);
+            request.getRequestDispatcher("../joinSuccess.jsp").forward(request, response);
             
         } else {
             out.println("회원가입 실패!");
@@ -126,7 +126,7 @@
 	            String grade = rs.getString("grade");
 	            session.setAttribute("userGrade", grade); // 세션에 등급 저장
 	            
-	            response.sendRedirect("main.jsp");
+	            response.sendRedirect("../main.jsp");
 	        } else { // 비번 틀림
 	        	out.println("<script>loginerror1();</script>");
 	        }

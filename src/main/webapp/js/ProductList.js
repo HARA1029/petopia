@@ -15,5 +15,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function registerFunction() {
-	location.href = '../view/ProductRegister_view.jsp';
+	location.href = '../Product/ProductRegister_view.jsp';
 }

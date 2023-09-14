@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="../css/top.css" />
-<script src="../js/top.js"></script>
+<link rel="stylesheet" href="/petopia/css/top.css" />
+<script src="/petopia/js/top.js"></script>
 <body>
 		<header id=header>
 			<div class=container>
 				<div>
-				 	<a href="/petopia/user/main.jsp"><img class="topImg" src="../image/logo.png"></a>
+				 	<a href="/petopia/user/main.jsp"><img class="topImg" src="/petopia/image/logo.png"></a>
 			 	</div>
 			 	<div class="user-info">
 				    <%
@@ -109,9 +109,9 @@
 		<nav id=nav>
 			<div class=container>
 				<a href="/petopia/user/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
-			    <a href="../Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">상품목록</a> &emsp;
+			    <a href="/petopia/Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">상품목록</a> &emsp;
 			    <a href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
-				<form action="../Controller/ManagerController.jsp">
+				<form action="/petopia/Controller/ManagerController.jsp">
 					<table>
 				<tr>
 				   <td>

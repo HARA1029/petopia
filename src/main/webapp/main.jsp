@@ -6,25 +6,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> MAIN </title>
-	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 
-<%@ include file="/layout/top.jsp" %>
+<%@ include file="../layout/top.jsp" %>
 
 	<!-- Slideshow container -->
 	<div class="slideshow-container">
 	
 	  <!-- Full-width images with number and caption text -->
 	  <div class="mySlides fade">
-	    <img src="../image/img1.jpg" style="width:100%">
+	    <img src="image/img1.jpg" style="width:100%">
 	  </div>
 	
 	  <div class="mySlides fade">
-	    <img src="../image/img2.jpg" style="width:100%">
+	    <img src="image/img2.jpg" style="width:100%">
 	  </div>
 	
 	  <div class="mySlides fade">
-	    <img src="../image/img3.jpg" style="width:100%">
+	    <img src="image/img3.jpg" style="width:100%">
 	  </div>
 	
 	  <!-- Next and previous buttons -->
@@ -46,27 +46,27 @@
 	</div>
 	<div class="plist-container">
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>	  		  
@@ -78,32 +78,32 @@
 	</div>
 	<div class="plist-container">
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>
 	  	<div class="plist">
-	  		<img name="pimg" id="pimg" class="pImg" src="../image/${dto.img}" alt="None" />
+	  		<img name="pimg" id="pimg" class="pImg" src="image/${dto.img}" alt="None" />
 	  		<p>상품정보</p>
 	  		<input type="hidden" id="pno">
 	  	</div>	  		  
 	</div>
 	
-	<script src="../js/main.js"></script>
+	<script src="js/main.js"></script>
 
-<%@ include file="/layout/bottom.jsp" %>
+<%@ include file="layout/bottom.jsp" %>

@@ -25,7 +25,7 @@
 <input id="id" type="hidden" value="<%=sessionID%>">
 				       
 <!-- 카테고리 메뉴바 -->
-<%@ include file="categoryBar.jsp" %>
+<%@ include file="../layout/categoryBar.jsp" %>
 
 	<br><button id="registerBtn" type="button" onclick="registerFunction()">상품등록</button>
 	<div class="plist-container">

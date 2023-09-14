@@ -8,11 +8,9 @@
  
 <%
  
-  	System.out.println("UserController 들어 옴");//*******
   	request.setCharacterEncoding("UTF-8");
   	
   	String action = request.getParameter("Submit");
-  	System.out.println("action : " + action);//*******
   	
   	UDao udao;
   	CustomerDTO customer;
@@ -21,7 +19,7 @@
   	
   	switch(action) {
   	
-  		//장바구니 담기
+  		//장바구니 담기 *** ok
   		case "addCart" :
   	
  		 	System.out.println("장바구니 담기 들어옴");//*******
@@ -79,7 +77,7 @@
  		 	break;
   	
  		 	
-  		//장바구니 목록
+  		//장바구니 목록 *** ok
   		case "cartList" :
   			
  		 	System.out.println("장바구니 목록");//*******
@@ -94,13 +92,13 @@
  		 	System.out.println("장바구니 다 담았다.");//*******
  		 	
  		 	request.setAttribute("cartlist", cartlist);
- 		 	dispatcher = request.getRequestDispatcher("../view/Cart_view.jsp");
+ 		 	dispatcher = request.getRequestDispatcher("../Order/Cart_view.jsp");
  		 	dispatcher.forward(request, response);
  		 	
  		 	break;
   	
  		 	
-  		//주문페이지 이동 
+  		//주문페이지 이동 *** ok
   		case "orderView" :
   	
  		 	System.out.println("주문페이지 이동");
@@ -141,13 +139,13 @@
  		 	request.setAttribute("cartdto", cartdto); //구매할 상품 내역
  		 	request.setAttribute("customer", customer); //주문자정보
  		 	
- 		 	dispatcher = request.getRequestDispatcher("../view/Order_view.jsp"); //주문페이지 이동
+ 		 	dispatcher = request.getRequestDispatcher("../Order/Order_view.jsp"); //주문페이지 이동
  		 	dispatcher.forward(request, response);
  		 	
  		 	break;
   	
  		 	
-  		//장바구니 삭제
+  		//장바구니 삭제 *** ok
   		case "delete" :
   	
  		 	System.out.println("장바구니 삭제 들어옴");//*******
@@ -179,7 +177,7 @@
  		 	break;
  		 	
  		 	
- 	 	//주문하기
+ 	 	//주문하기 *** ok
  		case "order" :
  			
  			System.out.println("주문하기 들어옴");
@@ -296,14 +294,14 @@
  				request.setAttribute("order", order); //주문내역
  	 		 	request.setAttribute("cusdto", cusdto); //주문자정보
  	 		 	
- 	 		 	dispatcher = request.getRequestDispatcher("../view/OrderSuccess_view.jsp"); //주문페이지 이동
+ 	 		 	dispatcher = request.getRequestDispatcher("../Order/OrderSuccess_view.jsp"); //주문페이지 이동
  	 		 	dispatcher.forward(request, response);
 		 	}
   			
  			break;
  			
  			
-		//주문 내역
+		//주문 내역 *** ok
 		case "OrderInfo" :
 			System.out.println("주문내역");
 			
@@ -317,11 +315,11 @@
 			
 			request.setAttribute("orderList", orderList); //주문내역
  		 	
- 		 	dispatcher = request.getRequestDispatcher("../view/OrderInfo_view.jsp"); //주문페이지 이동
+ 		 	dispatcher = request.getRequestDispatcher("../Order/OrderInfo_view.jsp"); //주문페이지 이동
  		 	dispatcher.forward(request, response);
 		break;
  			
- 		//주문상세내역
+ 		//주문상세내역 *** ok
 		case "OrderDetailInfo" :
 			System.out.println("상세정보에 들어옴");
 			ono = Long.parseLong(request.getParameter("ono")); //주문번호
@@ -334,7 +332,7 @@
 			
 			request.setAttribute("odList", odList); //구매할 상품 내역
  		 	
- 		 	dispatcher = request.getRequestDispatcher("../view/OrderDetail_view.jsp"); //주문페이지 이동
+ 		 	dispatcher = request.getRequestDispatcher("../Order/OrderDetail_view.jsp"); //주문페이지 이동
  		 	dispatcher.forward(request, response);
 			
 			break;

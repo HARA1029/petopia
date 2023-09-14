@@ -6,7 +6,7 @@
 <%@ page import="Dto.*, Dao.*"%>
 
 <%
-	//System.out.println("들어 옴");//
+
 	request.setCharacterEncoding("UTF-8");
 	
 	String action = request.getParameter("Submit");
@@ -16,7 +16,7 @@
 	
 	switch (action) {
 	
-	//상품등록
+	//상품등록 *** ok
 	case "register":
 	
 		int cateno = Integer.parseInt(request.getParameter("cno"));
@@ -65,8 +65,9 @@
 	
 		break;
 	
-	//상품 중복체크	
+	//상품 중복체크	*** ok
 	case "pCheck":
+		
 		System.out.println("상품중복체크 들어옴");
 		String pName = request.getParameter("pname");
 		System.out.println("name : " + pName);
@@ -83,7 +84,7 @@
 		}
 		break;
 	
-	//상품목록
+	//상품목록 ***ok
 	case "pList":
 		
 		int category = Integer.parseInt(request.getParameter("cateno"));
@@ -99,12 +100,12 @@
 		ArrayList<ProductDTO> plist = mdao.pList(category,id); //카테고리별 목록 출력()
 	
 		request.setAttribute("plist", plist);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("../view/ProductList_view.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("../Product/ProductList_view.jsp");
 		dispatcher.forward(request, response);
 	
 		break;
 	
-	//상품상세목록
+	//상품상세목록 *** ok
 	case "ProductDetail":
 	
 		int pno = Integer.parseInt(request.getParameter("pno"));
@@ -121,30 +122,28 @@
 		request.setAttribute("reviewList",reviewList); //리뷰정보
 		
 	
-		dispatcher = request.getRequestDispatcher("../view/ProductDetail_view.jsp");
+		dispatcher = request.getRequestDispatcher("../Product/ProductDetail_view.jsp");
 		dispatcher.forward(request, response);
 	
 		break;
 	
-	//상품검색
+	//상품검색 *** ok
 	case "search":
 	
 		String sname = request.getParameter("pname");
-		System.out.println("sname : " + sname);
 	
 		mdao = new ManagerDao();
 		ArrayList<ProductDTO> slist = mdao.sList(sname); //카테고리별 목록 출력()
 	
 		request.setAttribute("plist", slist);
-		/* RequestDispatcher */ dispatcher = request.getRequestDispatcher("../view/ProductList_view.jsp");
+		dispatcher = request.getRequestDispatcher("../Product/ProductList_view.jsp");
 		dispatcher.forward(request, response);
 	
 		break;
 	
-	//상품수정페이지
+	//상품수정페이지 *** ok
 	case "pModify_veiw":
-		System.out.println("상품수정페이지 들어옴");
-	
+		
 		int mpno = Integer.parseInt(request.getParameter("pno"));
 	
 		mdao = new ManagerDao();
@@ -155,12 +154,12 @@
 		request.setAttribute("product", mpInfo); //상품정보
 		request.setAttribute("mpImg", mpImg); //상품 이미지
 	
-		dispatcher = request.getRequestDispatcher("../view/ProductModify.jsp");
+		dispatcher = request.getRequestDispatcher("../Product/ProductModify.jsp");
 		dispatcher.forward(request, response);
 	
 		break;
 	
-	//상품수정
+	//상품수정 *** ok
 	case "pModify":
 	
 		System.out.println("상품 수정하기");

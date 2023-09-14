@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="../css/top.css" />
-<script src="../js/top.js"></script>
+<link rel="stylesheet" href="/petopia/css/top.css" />
+<script src="/petopia/js/top.js"></script>
 <body>
 		<header id=header>
 			<div class=container>
 				<div>
-				 	<a href="/petopia/main.jsp"><img class="topImg" src="../image/logo.png"></a>
+				 	<a href="/petopia/main.jsp"><img class="topImg" src="/petopia/image/logo.png"></a>
 			 	</div>
 			 	<div class="user-info">
 				    <%

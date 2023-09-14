@@ -1,29 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../Controller/dbConn.jsp" %>
+<%@ include file="Controller/dbConn.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title> MAIN </title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
-<%@ include file="/layout/top.jsp" %>
+<%@ include file="layout/top.jsp" %>
 
 <!-- Slideshow container -->
 <div class="slideshow-container">
 
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
-    <img src="../image/img1.jpg" style="width:100%">
+    <img src="image/img1.jpg" style="width:100%">
   </div>
 
   <div class="mySlides fade">
-    <img src="../image/img2.jpg" style="width:100%">
+    <img src="image/img2.jpg" style="width:100%">
   </div>
 
   <div class="mySlides fade">
-    <img src="../image/img3.jpg" style="width:100%">
+    <img src="image/img3.jpg" style="width:100%">
   </div>
 
   <!-- Next and previous buttons -->
@@ -41,7 +41,7 @@
 
 <h1>BEST ITEM</h1>
 <div class="button-container">
-    <a class="more-button" href="../Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">+ 더보기</a>
+    <a class="more-button" href="Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">+ 더보기</a>
 </div>
 <div class="plist-container">
     <%
@@ -85,7 +85,7 @@
                 }
 
                 // 이미지 경로 생성
-                String imagePath = "../image/" + cateSrc + "/" + imgSrc;
+                String imagePath = "image/" + cateSrc + "/" + imgSrc;
     %>
     <div class="plist">
         <img class="pImg" src="<%= imagePath %>" alt="<%= productName %>">
@@ -106,7 +106,7 @@
 
 <h1>NEW ITEM</h1>
 <div class="button-container">
-    <a class="more-button" href="../Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">+ 더보기</a>
+    <a class="more-button" href="Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">+ 더보기</a>
 </div>
 <div class="plist-container">
     <%
@@ -144,7 +144,7 @@
                 }
 
                 // 이미지 경로 생성
-                String imagePath = "../image/" + cateSrc + "/" + imgSrc;
+                String imagePath = "image/" + cateSrc + "/" + imgSrc;
     %>
     <div class="plist">
         <img class="pImg" src="<%= imagePath %>" alt="<%= productName %>">
@@ -163,6 +163,6 @@
     %>
 </div>
 
-<script src="../js/main.js"></script>
+<script src="js/main.js"></script>
 
-<%@ include file="/layout/bottom.jsp" %>
+<%@ include file="layout/bottom.jsp" %>

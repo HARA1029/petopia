@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="../css/top.css" />
-<script src="../js/top.js"></script>
+<link rel="stylesheet" href="/petopia/css/top.css" />
+<script src="/petopia/js/top.js"></script>
 <body>
 		<header id=header>
 			<div class=container>
 				<div>
-				 	<a href="/petopia/user/main.jsp"><img class="topImg" src="../image/logo.png"></a>
+				 	<a href="/petopia/main.jsp"><img class="topImg" src="/petopia/image/logo.png"></a>
 			 	</div>
 			 	<div class="user-info">
 				    <%
@@ -29,7 +29,7 @@
 					            </form>
 			            	</td>
 			            	<td>
-					            <form action="#" method="get">
+					            <form action="/petopia/admin/orderManagement.jsp" method="get">
 					                <button type="submit">주문관리</button>
 					            </form>
 					       </td>
@@ -39,7 +39,7 @@
 					            </form>
 					       </td>
 				            <td>
-					            <form action="/petopia/user/controller.jsp" method="get">
+					            <form action="/petopia/Controller/controller.jsp" method="get">
 					                <input type="hidden" name="action" value="logout">
 					                <button type="submit">로그아웃</button>
 					            </form>
@@ -51,33 +51,32 @@
 				            } else {
 				    %>
 				    <!-- 일반 사용자 로그인 후 -->
-				   <div class="user">
-					    <table>
-					        <tr>
-					            <td class="name"> 
-					                <b><%= sessionName %></b> 님 안녕하세요.			        
-					            </td>
-					            <td></td>
-					            <td>
-					                <form action="/petopia/mypage/myPage.jsp" method="get">
-					                    <button type="submit" class="user-button" >마이페이지</button>
-					                </form>
-					            </td>
-					            <td>
-					                <form action="cart.jsp" method="get">
-					                    <button type="submit" class="user-button">장바구니</button>
-					                </form>
-					            </td>
-					            <td>
-					                <form action="/petopia/user/controller.jsp" method="get">
-					                    <input type="hidden" name="action" value="logout">
-					                    <button type="submit" class="user-button">로그아웃</button>
-					                </form>
-					            </td>
-					        </tr>
-					    </table>
-					</div>
-
+				    <div class="user">
+				    	<table>
+				    		<tr>
+				    			<td class="name"> 
+				            <b><%= sessionName %></b> 님 안녕하세요.			        
+				        	</td>
+				        	<td></td>
+				       		<td>
+				            <form action="/petopia/mypage/myPage.jsp" method="get">
+				                <button type="submit">마이페이지</button>
+				            </form>
+			       			</td>
+			       			<td>
+				            <form action="cart.jsp" method="get">
+				                <button type="submit">장바구니</button>
+				            </form>
+			         		</td>
+			         		<td>
+				            <form action="/petopia/Controller/controller.jsp" method="get">
+				                <input type="hidden" name="action" value="logout">
+				                <button type="submit">로그아웃</button>
+				            </form>
+			           	</td>
+			       		</tr>
+			        </table>
+				    </div>
 				    <%
 				            }
 				        } else {
@@ -108,9 +107,9 @@
 	
 		<nav id=nav>
 			<div class=container>
-				<a href="/petopia/user/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
-			    <a href="#" onclick="setActiveLink(this)">상품목록</a> &emsp;
-			    <a href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
+				<a class="navA" href="/petopia/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
+			    <a class="navA" href="#" onclick="setActiveLink(this)">상품목록</a> &emsp;
+			    <a class="navA" href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
 				<table>
 					<tr>
 						<td>

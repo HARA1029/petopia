@@ -12,7 +12,7 @@
 <%@ include file="/layout/top.jsp" %>
 	
 	<div class="login">
-		<form name="loginForm" action="controller.jsp" method="post">
+		<form name="loginForm" action="/petopia/Controller/controller.jsp" method="post">
 			<div>
 				<input type="hidden" name="action" value="login">
 				

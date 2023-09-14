@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const id = idInput.value.trim();
 
         if (!/^[a-zA-Z0-9]{2,8}$/.test(id)) {
-            alert("아이디는 영문과 숫자로 이루어진 2자에서 8자 사이여야 합니다.");
+            alert("아이디는 2자에서 8자 사이여야 합니다.");
             idInput.focus();
             return;
         }

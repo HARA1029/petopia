@@ -10,7 +10,7 @@
 </head>
 <%@ include file="/layout/top.jsp" %>
 <%@ include file="/layout/nav.jsp" %>
-<%@ include file="/user/controller.jsp" %>
+<%@ include file="/Controller/controller.jsp" %>
 
 <section>
 	<div class="congratulations">

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.plist-container {
+	width: 80%; /* 화면 너비에 맞춰 설정 */
+	height: 90%;
+	padding : 50px 0 0 0;
+	text-align : center;
+	margin : 0 auto; /*가운데 정렬*/
+	display: flex; /* 플렉스 컨테이너로 설정 */
+  flex-wrap: wrap; /* 넘칠 경우 줄바꿈 */
+}
+
+.plist {
+	background-color : #EAEAEA;
+  height: 100%;
+  width: calc(19.8% - 40px); /* 화면을 5등분해서 각 항목의 너비 설정 (여백 고려) */
+  margin: 10px;
+}
+
+.plist-container > div {
+  height : 100%;  
+  margin: 10px; /* 항목 사이 간격 설정 */
+  padding: 10px; /* 내부 여백 설정 */
+  font-size: 15px; /* 글꼴 크기 설정 */
+}
+.pImg {
+	max-width: 100%;
+  height: 200px;
+}
+.pImg:hover{
+	 filter: brightness(50%); 
+}
+.sold {
+	width:100%;
+  text-align: center; /* 가로 가운데 정렬 */
+}
+
+#registerBtn {
+	margin : 100px 68px 0 auto;
+	width : 100px;
+	height : 50px;
+	border : none;
+	background-color: lightcoral;
+	color : white;
+	cursor: pointer;
+}

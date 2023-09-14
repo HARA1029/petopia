@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../user/dbConn.jsp" %>
+<%@ include file="../Controller/dbConn.jsp" %>
+
 
 <!DOCTYPE html>
 <html>

@@ -3,6 +3,8 @@
 <script src="../js/function.js"></script>
 <%
 	request.setCharacterEncoding("UTF-8");
+	
+	System.out.println("일단 들어온다!!!!");
 
  	// 아이디 중복 확인
 	 if (request.getParameter("action") != null && request.getParameter("action").equals("checkID")){
@@ -73,11 +75,11 @@
             request.setAttribute("u_addr", u_addr);
             request.setAttribute("u_tel", u_tel);
             
-            request.getRequestDispatcher("joinSuccess.jsp").forward(request, response);
+            request.getRequestDispatcher("../user/joinSuccess.jsp").forward(request, response);
             
         } else {
-        	System.out.println("회원가입 실패!");
-            response.sendRedirect("../main.jsp");
+            out.println("회원가입 실패!");
+            response.sendRedirect("main.jsp");
         }
         pstmt.close();
         conn.close();
@@ -123,7 +125,6 @@
 	            
 	            String grade = rs.getString("grade");
 	            session.setAttribute("userGrade", grade); // 세션에 등급 저장
-	            
 	            
 	            response.sendRedirect("../main.jsp");
 	        } else { // 비번 틀림

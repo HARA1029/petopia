@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="/petopia/css/bottom.css">
-
 </main>
+
 <footer class="footer-black">
 	
 	<div class="frame">

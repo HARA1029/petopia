@@ -20,7 +20,7 @@
 				    	<table>
 				        <tr>
 				        	<td>
-				            <b>관리자</b> 님 안녕하세요.
+				            <b><%=sessionName%></b> 님 안녕하세요.
 				        	</td>
 				        	&emsp;
 				        	<td>
@@ -86,12 +86,12 @@
 				    	<table>
 				    		<tr>
 				    			<td>
-						        <form action="login.jsp" method="get">
+						        <form action="/petopia/user/login.jsp" method="get">
 						            <button type="submit" onclick="setActiveLink(this)">로그인</button>
 						        </form>
 				        	</td>
 				        	<td>
-						        <form action="join.jsp" method="get">
+						        <form action="/petopia/user/join.jsp" method="get">
 						            <button type="submit" onclick="setActiveLink(this)">회원가입</button>
 						        </form>
 						        </td>
@@ -104,22 +104,24 @@
 				</div>		 	
 	        </div>
 		</header>
-	
+		
 		<nav id=nav>
 			<div class=container>
-				<a class="navA" href="/petopia/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
-			    <a class="navA" href="#" onclick="setActiveLink(this)">상품목록</a> &emsp;
+				<a class="navA" href="/petopia/user/main.jsp" onclick="setActiveLink(this)">메인</a>&emsp;
+			    <a class="navA" href="/petopia/Controller/ManagerController.jsp?Submit=pList&cateno=0&id=<%=sessionID%>">상품목록</a> &emsp;
 			    <a class="navA" href="/petopia/notice/notice.jsp" onclick="setActiveLink(this)">공지사항</a>
-				<table>
-					<tr>
-						<td>
-							&emsp;<input id="search" type="search" placeholder="검색어를 입력해주세요"  >&emsp;
-						</td>
-						<td>
-							<input id="search-btn" type="submit" value="search">
-						</td>
-					</tr>
-				</table>
-			</div>
-		</nav>
-		<main>
+				<form action="/petopia/Controller/ManagerController.jsp">
+					<table>
+				<tr>
+				   <td>
+					  &emsp;<input id="search" type="search" placeholder="검색어를 입력해주세요"  name="pname" style="color:black;">&emsp;
+				   </td>
+				   <td>
+					  <input id="search-btn" type="submit" name="Submit" value="search">
+				   </td>
+				</tr>
+			 </table>
+			 </form>
+				</div>
+			</nav>
+			<main>

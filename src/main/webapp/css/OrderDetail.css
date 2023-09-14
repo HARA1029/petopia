@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.OrderDetail-container {
+	width: 70%;
+	margin : 5% auto;
+}
+.product-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 70%; /* 전체 카드의 최대 너비 */
+  height: 200px;
+  margin: auto;
+  font-family: arial;
+  overflow: hidden; /* 내용이 넘칠 경우 자르기 */
+  display: flex; /* 내부 요소를 가로로 배치 */
+  align-items: center; /* 내부 요소를 수직 중앙 정렬 */
+}
+
+.pImg {
+  float : left;
+  text-align : center;
+  width : 30%;
+}
+
+#pimg {
+  width: 150px; /* 이미지가 부모 요소에 맞게 조절됨 */
+  height: 150px; /* 이미지가 부모 요소에 맞게 조절됨 */
+}
+
+.description {
+  float : right;
+  padding: 20px 0 20px 50px; /* 내부 요소 간격 조정 */
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}

@@ -92,6 +92,7 @@
  		 	System.out.println("장바구니 다 담았다.");//*******
  		 	
  		 	request.setAttribute("cartlist", cartlist);
+ 		 	request.setAttribute("size", cartlist.size());
  		 	dispatcher = request.getRequestDispatcher("../Order/Cart_view.jsp");
  		 	dispatcher.forward(request, response);
  		 	

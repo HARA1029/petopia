@@ -76,14 +76,12 @@ var pno = document.getElementById("pno").value; //상품번호
 /* 장바구니 담기  */
 function AddFuction(id) {
 	
-	alert(id); /*지울거************************************/
-	
 	if(id==="null") {
 		alert("로그인을 먼저해주세요.");
 		return;
 	}
 	else {
-		var confirmation = confirm("장바구니 이동로 이동하시겠습니까?");
+		var confirmation = confirm("장바구니에 담으시겠습니까?");
 		
 		if(confirmation) {
 			location.href = '../Controller/UserController.jsp?Submit=addCart&id='+id+'&pno='+pno+'&count='+pCount.value;

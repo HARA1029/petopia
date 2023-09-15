@@ -31,7 +31,7 @@
 	               rs = pstmt.executeQuery();
 	
 	               while (rs.next()) {
-	                   int orderNumber = rs.getInt("ono");
+	                   long orderNumber = rs.getLong("ono");
 	                   String productName = rs.getString("title");
 	                   String orderDate = rs.getString("orderdate");
 	                   String totalAmount = rs.getString("total");

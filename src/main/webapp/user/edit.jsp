@@ -12,7 +12,7 @@
 <%@ include file="/layout/nav.jsp" %>
 <section>
     <div class="edit">
-        <form name="editForm" action="controller.jsp" method="post" accept-charset="UTF-8" >
+        <form name="editForm" action="../Controller/controller.jsp" method="post" accept-charset="UTF-8" >
             <div>
                 <input type="hidden" name="action" value="edit">
                 <%

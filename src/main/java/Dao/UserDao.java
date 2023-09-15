@@ -262,7 +262,7 @@ public class UserDao implements UDao {
 		return list;
 	}
 
-	// 주문페이지 회원정보 ******* 되는지 확인해야됨
+	// 주문페이지 회원정보 
 	@Override
 	public CustomerDTO cInfo(String id) {
 

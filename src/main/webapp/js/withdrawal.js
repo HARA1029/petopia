@@ -4,7 +4,7 @@ function withdrawal(e) {
     var result = confirm("탈퇴하시겠습니까?");
     if (result == true) { 
         alert("탈퇴가 완료되었습니다.");
-        document.withdrawalForm.action = "controller.jsp";
+        //document.withdrawalForm.action = "../Controller/controller.jsp";
         document.withdrawalForm.submit();
     } else {
         alert("탈퇴가 취소되었습니다.");

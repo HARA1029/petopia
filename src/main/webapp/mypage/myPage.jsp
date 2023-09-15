@@ -37,9 +37,9 @@
         pstmt = conn.prepareStatement(o_sql);
         pstmt.setString(1, u_id);
         rs = pstmt.executeQuery();
-        
+        System.out.println("여기는 되나? -> " + rs);
         while (rs.next()) {
-            int number = rs.getInt("ono");
+            long number = rs.getLong("ono");
             int uno = rs.getInt("uno");
             String title = rs.getString("title");
             int total = rs.getInt("total");
@@ -66,12 +66,10 @@
 
 	<table class="cartTable">
             <tr>
-                <th>이미지</th>
                 <th>상품명</th>
                 <th>가격</th>
                 <th>수량</th>
                 <th>총 합계</th>
-                <th>선택</th>
             </tr>
 		<%
         
@@ -92,15 +90,10 @@
         %>
         
      <tr>
-         <td class="ctd_1"><!-- 이미지 출력 (필요 시 추가) --></td>
          <td class="ctd_2"><%= pro_name %></td>
          <td class="ctd_3"><%= price %></td>
          <td class="ctd_4"><%= cart_count %></td>
          <td class="ctd_5"><%= cart_total %></td>
-         <td class="ctd_6">
-	         <button type="button">수정</button>
-					 <button type="button">삭제</button>
-         </td>
      </tr>
 		<%
             }

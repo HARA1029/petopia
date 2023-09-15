@@ -57,10 +57,12 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 	} else {
 		u_mail = u_mail1 + "@" + u_mail2;
 	}
+	
+	int withdraw = 1;//회원탈퇴여부 초기값은 1
 
 	String sql = "INSERT INTO customer VALUES";
 	sql += "(CUSTOMER_SEQ.NEXTVAL,'" + u_name + "','" + u_id + "','" + u_pw + "','" + u_mail + "','" + u_addr + "','"
-	+ u_tel + "','" + u_grade + "','" + u_zipcode + "')";
+	+ u_tel + "','" + u_grade + "','" + u_zipcode + "','" + withdraw + "')";
 
 	pstmt = conn.prepareStatement(sql);
 
@@ -105,32 +107,38 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 
 	if (rs.next()) {
 		String dbPW = rs.getString("pw"); // db에 저장된 비밀번호 가져오기
+		int dbwithdraw = rs.getInt("withdraw");//회원탈퇴여부 가져오기
+		
+		System.out.println("회원탈퇴 여부 : " + dbwithdraw);
+		
+		if (dbPW.equals(u_pw) && dbwithdraw==1) { // 로그인 성공(회원탈퇴안했을때 1일경우) 
 
-		if (dbPW.equals(u_pw)) { // 로그인 성공 
-
-	// 저장한 정보 top.jsp에서 사용
-	session.setAttribute("userID", u_id); // 세션에 id 저장
-
-	String name = rs.getString("uname");
-	session.setAttribute("userName", name); // 세션에 이름 저장
-
-	String mail = rs.getString("mail");
-	session.setAttribute("userMail", mail); // 세션에 주소 저장
-	out.println(mail);
-
-	String addr = rs.getString("addr");
-	session.setAttribute("userAddr", addr); // 세션에 주소 저장
-
-	String tel = rs.getString("tel");
-	session.setAttribute("userTel", tel); // 세션에 전화번호 저장
-
-	String grade = rs.getString("grade");
-	session.setAttribute("userGrade", grade); // 세션에 등급 저장
-
-	response.sendRedirect("../main.jsp");
-		} else { // 비번 틀림
-	out.println("<script>loginerror1();</script>");
+			// 저장한 정보 top.jsp에서 사용
+			session.setAttribute("userID", u_id); // 세션에 id 저장
+		
+			String name = rs.getString("uname");
+			session.setAttribute("userName", name); // 세션에 이름 저장
+		
+			String mail = rs.getString("mail");
+			session.setAttribute("userMail", mail); // 세션에 주소 저장
+			out.println(mail);
+		
+			String addr = rs.getString("addr");
+			session.setAttribute("userAddr", addr); // 세션에 주소 저장
+		
+			String tel = rs.getString("tel");
+			session.setAttribute("userTel", tel); // 세션에 전화번호 저장
+		
+			String grade = rs.getString("grade");
+			session.setAttribute("userGrade", grade); // 세션에 등급 저장
+		
+			response.sendRedirect("../main.jsp");
+		
+		}	else { // 비번 틀림 or 회원탈퇴
+				System.out.println("여기로 들어옴");
+				out.println("<script>loginerror1();</script>");
 		}
+		
 	} else { // 존재하지 않는 아이디
 		out.println("<script>loginerror2();</script>");
 	}
@@ -203,7 +211,7 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 		session.setAttribute("userAddr", u_addr); // 세션에 변경된 주소 저장
 		session.setAttribute("userTel", u_tel); // 세션에 변경된 번호 저장
 		out.println("<script>alert('회원 정보 수정이 완료되었습니다.'); </script>");
-		response.sendRedirect("editSuccess.jsp");
+		response.sendRedirect("../user/editSuccess.jsp");
 	} else {
 		// 수정 실패
 		out.println("<script>alert('회원 정보 수정에 실패했습니다.'); history.go(-1);</script>");
@@ -390,14 +398,14 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 if (request.getParameter("action") != null && request.getParameter("action").equals("updateOrderStatus")) {
 	System.out.println("주문 상태 업데이트 처리 시작");
 
-	int orderNumber = Integer.parseInt(request.getParameter("orderNumber"));
+	long orderNumber = Long.parseLong(request.getParameter("orderNumber"));
 	int newStatus = Integer.parseInt(request.getParameter("newStatus"));
 
 	// 적절한 SQL 쿼리를 작성하여 주문 상태를 업데이트
 	String sql = "UPDATE product_order SET state = ? WHERE ono = ?";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setInt(1, newStatus);
-	pstmt.setInt(2, orderNumber);
+	pstmt.setLong(2, orderNumber);
 
 	int count = pstmt.executeUpdate();
 
@@ -429,7 +437,8 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 		String dbPW = rs.getString("pw"); // db에 저장된 비밀번호 가져오기
 
 		if (dbPW.equals(u_pw)) { // 비밀번호 일치 - 회원 탈퇴 진행
-	String deleteSql = "DELETE FROM customer WHERE id = ?";
+	//String deleteSql = "DELETE FROM customer WHERE id = ?";
+	String deleteSql = "UPDATE CUSTOMER SET WITHDRAW = 0 WHERE ID = ?"; //회원탈퇴시 회원탈퇴여부 0으로 변경
 	PreparedStatement deleteSm = conn.prepareStatement(deleteSql);
 	deleteSm.setString(1, u_id);
 	int deletedRows = deleteSm.executeUpdate();
@@ -438,9 +447,9 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 	if (deletedRows > 0) {
 		// 세션 해제 등의 작업 수행
 		session.invalidate();
-		response.sendRedirect("withdrawalSuccess.jsp");
+		response.sendRedirect("../user/withdrawalSuccess.jsp");
 	} else {
-		response.sendRedirect("withdrawal.jsp");
+		response.sendRedirect("../user/withdrawal.jsp");
 	}
 		} else { // 비밀번호 틀림
 	out.println("<script>withdrawErrorPw();</script>");

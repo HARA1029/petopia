@@ -15,7 +15,6 @@ public class OracleConn {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password); // url, user, password를 변수로 처리해도됨
-			//System.out.print("데이터베이스 연결이 성공했습니다.");        
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

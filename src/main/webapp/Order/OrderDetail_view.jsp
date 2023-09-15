@@ -32,7 +32,7 @@
 			  <div class="description">
 			    <h1>${odList.pname}</h1>
 			    <p>주문번호 ${odList.dno}</p>
-			    <p>판매가 : ${odList.price}</p>
+			    <p>판매가 : <fmt:formatNumber value="${odList.price}" type="number" pattern="###,###,###원"/></p>
 			    <p>결제금액/${odList.count}개 : 
 			    	<fmt:formatNumber value="${odList.price * odList.count}" type="number" pattern="###,###,###원"/>
 			    	</p>

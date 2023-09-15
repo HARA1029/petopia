@@ -64,7 +64,7 @@
 				            </form>
 			       			</td>
 			       			<td>
-				            <form action="../Controller/UserController.jsp?Submit=cartList&id="+<%=sessionID%> method="post">
+				            <form action="/petopia/Controller/UserController.jsp?Submit=cartList&id=<%=sessionID%>" method="post">
 				                <button type="submit">장바구니</button>
 				            </form>
 			         		</td>

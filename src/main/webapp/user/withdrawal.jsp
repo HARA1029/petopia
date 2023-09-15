@@ -12,7 +12,7 @@
 <%@ include file="/layout/top.jsp"%>
 <%@ include file="/layout/nav.jsp"%>
 <div class="withdrawal">
-	<form name="withdrawalForm" action="controller.jsp" method="post">
+	<form name="withdrawalForm" action="../Controller/controller.jsp" method="post">
 		<div>
 			<input type="hidden" name="action" value="withdrawal"> 
 			아이디 :

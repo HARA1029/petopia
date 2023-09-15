@@ -22,7 +22,7 @@
 <hr style="width:300px;">
 
 <form id="cart-form" action="../Controller/UserController.jsp" method="post">
-
+	<input id="cartsize" type="hidden" value="${size}"/>
 	<table class="cart-table">
 		<!-- 목록1개 이걸 돌리기 -->
 		<c:forEach items="${cartlist}" var="cart">
@@ -47,7 +47,7 @@
 		      </table>
 			</td>
 			<td class="cart-check">
-	       <input type="checkbox" value= "${cart.cno}" name="cno"/>
+	       <input id="productCheck" type="checkbox" value= "${cart.cno}" name="cno"/>
 	    </td>
 	  </tr>
 	  </c:forEach>

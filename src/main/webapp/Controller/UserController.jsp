@@ -281,19 +281,18 @@
  			
  			//회원정보(회원번호로)
  			System.out.println("회원번호 : " + uno);
- 			CustomerDTO cusdto = new CustomerDTO();
- 			cusdto = udao.customerInfo(uno);
- 			System.out.println("cus : " + cusdto.getZipcode());
+ 			CustomerDTO custominfo = new CustomerDTO();
+ 			custominfo = udao.customerInfo(uno);
+ 			System.out.println("cus : " + custominfo.getZipcode());
  			
  			//주문완료페이지로 이동
  			if(ck == 0) { //주문 실패
- 				response.sendRedirect("UserController.jsp?Submit=cartList&id="+cusdto.getId());
+ 				response.sendRedirect("UserController.jsp?Submit=cartList&id="+custominfo.getId());
  			}
 		 	else { //주문 성공()
-		 		System.out.println("주문 성공");
 		 		System.out.println("주문 성공"); //-> 회원정보,주문테이블
  				request.setAttribute("order", order); //주문내역
- 	 		 	request.setAttribute("cusdto", cusdto); //주문자정보
+ 	 		 	request.setAttribute("custominfo", custominfo); //주문자정보
  	 		 	
  	 		 	dispatcher = request.getRequestDispatcher("../Order/OrderSuccess_view.jsp"); //주문페이지 이동
  	 		 	dispatcher.forward(request, response);

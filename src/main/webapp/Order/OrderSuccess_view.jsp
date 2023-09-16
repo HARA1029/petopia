@@ -20,7 +20,7 @@
 
 <div class="orderSucess-container">
 	<c:set value="${order}" var="order" />
-	<c:set value="${cusdto}" var="cusdto" />
+	<c:set value="${custominfo}" var="custominfo" />
 	
 	<h1 style="text-align:center">주문 완료</h1><br><br>
 	
@@ -30,9 +30,10 @@
 	</div><br><br>
 	
 	<div class="orderSucess-container2">
-	  <h2><b class="grade">&nbsp;${cusdto.grade}&nbsp;</b>&nbsp;&nbsp;${cusdto.uname}</h2>
-	  <p>${cusdto.uname} | ${cusdto.tel}</p>
-	  <p>${cusdto.addr}</p>
+	  <h2>고객등급 : <b class="grade">&nbsp;${custominfo.grade.equals('A') ? "대형견" 
+	  													 : custominfo.grade.equals('B') ? "중형견" : "소형견" } &nbsp;</b>&nbsp;&nbsp;${cusdto.uname}</h2>
+	  <p>${custominfo.uname} | ${custominfo.tel}</p>
+	  <p>${custominfo.addr}</p>
 	  <p style="color:#AAAAAA;">${order.message}</p>
 	</div>
 	

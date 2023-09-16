@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         return result;
     }
-
+    
     const updateButtons = document.querySelectorAll(".update-btn");
     updateButtons.forEach(button => {
         button.addEventListener("click", function(e) {

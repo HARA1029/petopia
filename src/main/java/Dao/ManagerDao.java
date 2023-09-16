@@ -218,7 +218,7 @@ public class ManagerDao implements MDao {
 		
 		String sql = "SELECT RNO, UNO, CONTENT, NOWDATE "
 				   + "FROM REVIEW "
-				   + "WHERE PNO = " + pno + "ORDER BY RNO";
+				   + "WHERE PNO = " + pno + "ORDER BY RNO";	
 		
 		ArrayList<ReviewDTO> review = new ArrayList<>(); //리뷰정보 리스트
 		
@@ -261,7 +261,7 @@ public class ManagerDao implements MDao {
 		
 		String sql = "SELECT ANO, CONTENT, NOWDATE "
 				   + "FROM REVIEW_REPLY "
-				   + "WHERE RNO = " + rno + "ORDER BY NOWDATE DESC";
+				   + "WHERE RNO = " + rno + "ORDER BY NOWDATE";
 		
 		ArrayList<ReplyDTO> replyList = new ArrayList<>();
 		
@@ -281,13 +281,11 @@ public class ManagerDao implements MDao {
 				replydto.setNowdate(rs.getDate(3));
 				
 				replyList.add(replydto);
-				replyList.add(replydto);
 				
 			}
 			
 		} catch(Exception e) { e.printStackTrace();}
 				
-		
 		return replyList;
 	}
 

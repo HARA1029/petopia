@@ -375,7 +375,15 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 	System.out.println("리뷰 삭제 처리 시작");
 
 	int reviewNumber = Integer.parseInt(request.getParameter("rno"));
-
+	
+	//먼저 리뷰에 달린 답글 전부 삭제
+	String replySql = "DELETE FROM REVIEW_REPLY WHERE RNO = ?";
+	
+	pstmt = conn.prepareStatement(replySql);
+	pstmt.setInt(1, reviewNumber);
+	pstmt.executeUpdate();
+	
+	//답글 삭제 후 리뷰를 삭제
 	String sql = "DELETE FROM review WHERE rno = ?";
 
 	pstmt = conn.prepareStatement(sql);

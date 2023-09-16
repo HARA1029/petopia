@@ -121,7 +121,6 @@
 		request.setAttribute("pImg", pImg); //상품 이미지
 		request.setAttribute("reviewList",reviewList); //리뷰정보
 		
-	
 		dispatcher = request.getRequestDispatcher("../Product/ProductDetail_view.jsp");
 		dispatcher.forward(request, response);
 	

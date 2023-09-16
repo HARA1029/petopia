@@ -55,7 +55,7 @@
         <td class="td_5"><%= likeCount %></td>
         <td class="td_6">
             <button type="button" class="edit-btn" data-rno="<%= number %>">수정</button>
-            <button type="button" class="delete-btn" data-rno="<%= number %>">삭제</button>
+            <!-- <button type="button" class="delete-btn" data-rno="<%= number %>">삭제</button> -->
         </td>
     </tr>
     <!-- 각 리뷰에 대한 모달 폼 -->
@@ -67,7 +67,7 @@
                 <label for="content_<%= number %>">리뷰 내용</label>
                 <br>
                 <textarea class="review-textarea" name="content" id="content_<%= number %>" 
-                rows="4" cols="50" maxlength="100"><%= content %></textarea>
+                rows="4" cols="50" maxlength="100"><%=content %></textarea>
                 <div class="char-count">
                     <span class="current-count">0</span>/<span class="max-count">100</span> bytes
                 </div>
@@ -80,6 +80,7 @@
 </tr>
 
 <% // update_review.jsp의 내용을 여기에 붙여넣습니다.
+
 String rnoStr = request.getParameter("rno");
 String updateContent = request.getParameter("content");
 
@@ -118,7 +119,6 @@ if (rnoStr != null && !rnoStr.isEmpty() && updateContent != null) {
     pstmt.close();
     conn.close();
 %>
-
 </table>
 
 <br><br>

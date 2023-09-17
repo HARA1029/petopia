@@ -10,12 +10,13 @@ public class OrderDetailDTO {
 	private String pname; //상품명
 	private int price; //판매가
 	private String img; //이미지
+	private int reviewcheck; //리뷰 체크
 	
 	public OrderDetailDTO() {
 		super();
 	}
 
-	public OrderDetailDTO(int dno, long ono, int pno, int count, String pname, int price, String img) {
+	public OrderDetailDTO(int dno, long ono, int pno, int count, String pname, int price, String img, int reviewcheck) {
 		super();
 		this.dno = dno;
 		this.ono = ono;
@@ -24,6 +25,7 @@ public class OrderDetailDTO {
 		this.pname = pname;
 		this.price = price;
 		this.img = img;
+		this.reviewcheck = reviewcheck;
 	}
 
 	public int getDno() {
@@ -80,6 +82,14 @@ public class OrderDetailDTO {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public int getReviewcheck() {
+		return reviewcheck;
+	}
+
+	public void setReviewcheck(int reviewcheck) {
+		this.reviewcheck = reviewcheck;
 	}
 
 }

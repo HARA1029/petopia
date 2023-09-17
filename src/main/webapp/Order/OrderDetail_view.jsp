@@ -24,8 +24,6 @@
 <div class="OrderDetail-container">
 		<c:forEach items="${odList}" var="odList">
 			
-			<button id="reviewregister" onclick="modalOpenFunction('${odList.pno}','<%=sessionID%>','${odList.dno}')">리뷰 작성</button>
-			
 			<div class="product-card">
 			
 			  <div class="pImg">
@@ -39,6 +37,13 @@
 			    <p>결제금액/${odList.count}개 : 
 			    	<fmt:formatNumber value="${odList.price * odList.count}" type="number" pattern="###,###,###원"/>
 			    	</p>
+			  </div>
+			  
+			  <div class="reviewButton">
+			  	<!-- 리뷰가 작성안한 상품만 리뷰작성버튼 보이게하기 0이 미작성 -->
+					<c:if test="${odList.reviewcheck == 0}">
+				  	<button id="reviewregister" onclick="modalOpenFunction('${odList.pno}','<%=sessionID%>','${odList.dno}')">리뷰 작성</button>
+					</c:if>
 			  </div>
 							
 			</div><br>

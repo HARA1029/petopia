@@ -29,6 +29,11 @@
 .description {
   float : right;
   padding: 20px 0 20px 50px; /* 내부 요소 간격 조정 */
+  width:50%;
+}
+
+.reviewButton {
+	width:20%;
 }
 
 .price {
@@ -38,7 +43,7 @@
 
 /*리뷰 작성 버튼*/
 #reviewregister {
-	float:right;
+	/* float:right; */
 	margin-top:10px;
 	margin-right:15%;
 	cursor : pointer;

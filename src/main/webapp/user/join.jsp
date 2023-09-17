@@ -37,7 +37,7 @@
 					<input type="text" name="mail2" class="mail2" >
 					<select id="emailDomainSelect" name="emailDomain" onchange="changeEmailDomain(this)">
 					    <option value="직접입력">직접입력</option>
-					    <option value="google.com">google.com</option>
+					    <option value="gmail.com">gmail.com</option>
 					    <option value="naver.com">naver.com</option>
 					</select><br><br>
 									

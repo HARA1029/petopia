@@ -280,10 +280,10 @@
  			
  			
  			//회원정보(회원번호로)
- 			System.out.println("회원번호 : " + uno);
+ 			//System.out.println("회원번호 : " + uno);
  			CustomerDTO custominfo = new CustomerDTO();
  			custominfo = udao.customerInfo(uno);
- 			System.out.println("cus : " + custominfo.getZipcode());
+ 			//System.out.println("cus : " + custominfo.getZipcode());
  			
  			//주문완료페이지로 이동
  			if(ck == 0) { //주문 실패
@@ -303,11 +303,11 @@
  			
 		//주문 내역 *** ok
 		case "OrderInfo" :
-			System.out.println("주문내역");
+			//System.out.println("주문내역");
 			
 			String userid = request.getParameter("id");
 			
-			System.out.println("userid : " + userid);
+			//System.out.println("userid : " + userid);
 			
 			ArrayList<OrderDTO> orderList = new ArrayList<>();
 			udao = new UserDao();
@@ -321,7 +321,7 @@
  			
  		//주문상세내역 *** ok
 		case "OrderDetailInfo" :
-			System.out.println("상세정보에 들어옴");
+			//System.out.println("상세정보에 들어옴");
 			ono = Long.parseLong(request.getParameter("ono")); //주문번호
 			
 			udao = new UserDao();
@@ -340,21 +340,16 @@
 		//리뷰 작성
 		case "reviewRegister" :
 			
-			System.out.println("리뷰작성 들어옴");
+			//System.out.println("리뷰작성 들어옴");
 			
 			String userID = request.getParameter("uId"); //회원아이디
 			int productNo = Integer.parseInt(request.getParameter("pNo")); //상품번호
 			String content = request.getParameter("reviewContent"); //리뷰내용
 			int detailNo = Integer.parseInt(request.getParameter("dNo"));//주문상세번호
 			
-			System.out.println("회원아이디 : " + userID);
-			System.out.println("상품번호 : " + productNo);
-			System.out.println("리뷰내용 : " + content);
-			System.out.println("주문상세번호 : " + detailNo);
 			
 			udao = new UserDao();
 			int result1 = udao.reviewRegister(userID, productNo, content, detailNo);
-			System.out.println("result1 : " + result1);
 			response.sendRedirect("/petopia/main.jsp"); //메인으로 이동
 		
 			break;

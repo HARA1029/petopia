@@ -350,25 +350,7 @@ public class UserDao implements UDao {
 			pst.setString(6, order.getMessage()); // 배송메시지
 
 			check = pst.executeUpdate(); // 오라클 product테이블에 데이터 전송(성공하면 1 return)
-			/*
-			if(check == 1) { //주문테이블 전송 성공
-				
-				Statement sm = conn.createStatement();
-				ResultSet rs = sm.executeQuery(SQL);
-
-				while (rs.next()) { //구매횟수 구해서 등급 조정
-				
-					int purchase = rs.getInt(1); //총 구매횟수
-					String grade = purchase==1 ? "B" : "A"; //일단 최소 1개부터는 B등급 2개이상은 A
-					
-					pst = conn.prepareStatement(Sql); //회원등급 수정
-					pst.setString(1,grade);
-					pst.setInt(2, order.getUno());
-					
-					check = pst.executeUpdate(); //회원등급 수정
-					
-				}
-			}*/
+			
 
 //			pst.close(); -> 뒤에서 마지막 데이터베이스 사용하는 곳에서 닫을거
 //			conn.close();
@@ -514,7 +496,7 @@ public class UserDao implements UDao {
 	@Override
 	public ArrayList<OrderDetailDTO> ProductDetailInfo(long ono) {
 		
-		String sql = "SELECT D.DNO, D.COUNT, P.PNO, P.PNAME, P.PRICE, P.IMG, C.CATENAME "
+		String sql = "SELECT D.DNO, D.COUNT, P.PNO, P.PNAME, P.PRICE, P.IMG, C.CATENAME, D.REVIEWCHECK "
 				   + "FROM DETAIL D, PRODUCT P, CATEGORY C "
 				   + "WHERE D.PNO = P.PNO AND C.CATENO = P.CATENO AND D.ONO = " + ono;
 		
@@ -540,6 +522,7 @@ public class UserDao implements UDao {
 				img = category + "/" +img; //이미지 경로
 				
 				odDto.setImg(img);
+				odDto.setReviewcheck(rs.getInt(8)); //리뷰작성여부
 				
 				odList.add(odDto);
 				
@@ -560,7 +543,7 @@ public class UserDao implements UDao {
 		
 		String userNosql = "SELECT UNO FROM CUSTOMER WHERE ID = '"+ uid + "'";
 		String sql = "INSERT INTO REVIEW INFO(RNO, PNO, UNO, CONTENT) VALUES(REVIEW_SEQ.NEXTVAL,?,?,?)"; //리뷰작성
-		String reviewcheckSql = "UPDATE DETAIL SET REVIEWCHECK = ?"; //주문상세번호 리뷰작성 여부 변경
+		String reviewcheckSql = "UPDATE DETAIL SET REVIEWCHECK = ? where dno = ?"; //주문상세번호 리뷰작성 여부 변경
 		
 		try {
 			
@@ -584,6 +567,7 @@ public class UserDao implements UDao {
 			
 			pst = conn.prepareStatement(reviewcheckSql);//리뷰작성여부 수정
 			pst.setInt(1, 1);
+			pst.setInt(2, dno);
 			pst.executeUpdate(); //리뷰작성여부 상세정보에서 1로 변경
 		
 		} catch(Exception e) {

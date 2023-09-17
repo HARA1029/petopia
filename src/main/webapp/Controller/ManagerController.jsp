@@ -90,8 +90,6 @@
 		int category = Integer.parseInt(request.getParameter("cateno"));
 		String id = request.getParameter("id");
 		
-		System.out.println("상품목록 실행 로그인 아이디 --> " + id); //지울거*******************************
-		
 		id = id.equals(null) ? "member" : id;
 		
 		//여기서 아이디 값도 받아서 관리자는 all, 고객은 sell=0만

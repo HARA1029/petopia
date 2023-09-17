@@ -78,7 +78,7 @@ public class ManagerDao implements MDao {
 			}
 			else { //카테고리별 목록 출력
 				sql = "SELECT * FROM PRODUCT WHERE CATENO=";
-				sql+= cateno + "ORDER BY cateno";
+				sql+= cateno + "ORDER BY pno";
 			}
 		}
 		
@@ -88,7 +88,7 @@ public class ManagerDao implements MDao {
 			}
 			else { //카테고리별 목록 출력(판매중인상품)
 				sql = "SELECT * FROM PRODUCT WHERE CATENO=";
-				sql+= cateno + "AND SELL=1 ORDER BY cateno";
+				sql+= cateno + "AND SELL=1 ORDER BY pno";
 			}
 		}
 		

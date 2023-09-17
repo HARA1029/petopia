@@ -19,7 +19,7 @@
 				    <div class="user">
 				    	<table>
 				        <tr>
-				        	<td>
+				        	<td class="name">
 				            <b><%=sessionName%></b> 님 안녕하세요.
 				        	</td>
 				        	&emsp;

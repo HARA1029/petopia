@@ -332,9 +332,9 @@ public class UserDao implements UDao {
  
 		String sql = "INSERT INTO PRODUCT_ORDER INFO(ONO, UNO, TITLE, TOTAL, STATE, MESSAGE) VALUES(?,?,?,?,?,?)";
 		
-		String SQL = "SELECT COUNT(*) FROM PRODUCT_ORDER WHERE UNO = " + order.getUno();
+		//String SQL = "SELECT COUNT(*) FROM PRODUCT_ORDER WHERE UNO = " + order.getUno();
 		
-		String Sql = "UPDATE CUSTOMER SET GRADE = ? WHERE UNO = ?";
+		//String Sql = "UPDATE CUSTOMER SET GRADE = ? WHERE UNO = ?";
 
 		int check = -1; // 실패하면 -1
 		
@@ -350,7 +350,7 @@ public class UserDao implements UDao {
 			pst.setString(6, order.getMessage()); // 배송메시지
 
 			check = pst.executeUpdate(); // 오라클 product테이블에 데이터 전송(성공하면 1 return)
-			
+			/*
 			if(check == 1) { //주문테이블 전송 성공
 				
 				Statement sm = conn.createStatement();
@@ -368,7 +368,7 @@ public class UserDao implements UDao {
 					check = pst.executeUpdate(); //회원등급 수정
 					
 				}
-			}
+			}*/
 
 //			pst.close(); -> 뒤에서 마지막 데이터베이스 사용하는 곳에서 닫을거
 //			conn.close();
@@ -385,7 +385,7 @@ public class UserDao implements UDao {
 	@Override
 	public void detailInsert(ArrayList<OrderDetailDTO> detailList) {
 
-		String sql = "INSERT INTO DETAIL VALUES(DETAIL_SEQ.NEXTVAL,?,?,?)";
+		String sql = "INSERT INTO DETAIL VALUES(DETAIL_SEQ.NEXTVAL,?,?,?,?)";
 
 		try {
 
@@ -396,6 +396,7 @@ public class UserDao implements UDao {
 				pst.setLong(1,detail.getOno()); // 주문번호
 				pst.setInt(2, detail.getPno()); // 상품번호
 				pst.setInt(3, detail.getCount()); // 주문 개수
+				pst.setInt(4, 0); // 리뷰작성여부 0으로 초기값 설정
 				
 				pst.executeUpdate(); // 오라클 product테이블에 데이터 전송(성공하면 1 return)
 				
@@ -549,6 +550,48 @@ public class UserDao implements UDao {
 		}
 		
 		return odList;
+	}
+
+	//리뷰 등록
+	@Override
+	public int reviewRegister(String uid, int pno, String content, int dno) {
+		
+		System.out.println("리뷰작성 dao 들어옴");
+		
+		String userNosql = "SELECT UNO FROM CUSTOMER WHERE ID = '"+ uid + "'";
+		String sql = "INSERT INTO REVIEW INFO(RNO, PNO, UNO, CONTENT) VALUES(REVIEW_SEQ.NEXTVAL,?,?,?)"; //리뷰작성
+		String reviewcheckSql = "UPDATE DETAIL SET REVIEWCHECK = ?"; //주문상세번호 리뷰작성 여부 변경
+		
+		try {
+			
+			Statement sm = conn.createStatement();
+			ResultSet rs = sm.executeQuery(userNosql);
+			
+			int userNo=0;
+			
+			while(rs.next()) {
+				userNo = rs.getInt(1); //회원번호
+				System.out.println("회원번호 : " + userNo);
+			}
+			
+			PreparedStatement pst = conn.prepareStatement(sql);//리뷰전송
+			
+			pst.setInt(1, pno);
+			pst.setInt(2, userNo);
+			pst.setString(3, content);
+			
+			pst.executeUpdate(); //리뷰전송
+			
+			pst = conn.prepareStatement(reviewcheckSql);//리뷰작성여부 수정
+			pst.setInt(1, 1);
+			pst.executeUpdate(); //리뷰작성여부 상세정보에서 1로 변경
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
 	}
 
 }

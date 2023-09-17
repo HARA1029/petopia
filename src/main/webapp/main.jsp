@@ -15,15 +15,15 @@
 
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
-    <img src="image/img1.jpg" style="width:100%">
+    <img src="image/메인베너1.gif" style="width:100%">
   </div>
 
   <div class="mySlides fade">
-    <img src="image/img2.jpg" style="width:100%">
+    <img src="image/메인베너2.gif" style="width:100%">
   </div>
 
   <div class="mySlides fade">
-    <img src="image/img3.jpg" style="width:100%">
+    <img src="image/메인베너3.gif" style="width:100%">
   </div>
 
   <!-- Next and previous buttons -->

@@ -131,6 +131,9 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 		
 			String grade = rs.getString("grade");
 			session.setAttribute("userGrade", grade); // 세션에 등급 저장
+			
+			int uno = rs.getInt("uno");
+			session.setAttribute("userNumber", uno); // 세션에 회원 번호 저장
 		
 			response.sendRedirect("../main.jsp");
 		
@@ -408,14 +411,51 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 
 	long orderNumber = Long.parseLong(request.getParameter("orderNumber"));
 	int newStatus = Integer.parseInt(request.getParameter("newStatus"));
-
+	
+	System.out.println("주문상태 : " + newStatus);
+	
 	// 적절한 SQL 쿼리를 작성하여 주문 상태를 업데이트
 	String sql = "UPDATE product_order SET state = ? WHERE ono = ?";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setInt(1, newStatus);
 	pstmt.setLong(2, orderNumber);
-
+	
 	int count = pstmt.executeUpdate();
+	
+	//회원이 주문한 개수(발송완료만) -> 주문테이블에서 주문번호로 회원번호 찾아서 
+//	String ordercountSql="SELECT COUNT(*) FROM PRODUCT_ORDER WHERE STATE = 1 AND UNO = ("
+//												+ "SELECT UNO FROM PRODUCT_ORDER WHERE ONO = " + orderNumber + ")"; //1이 발송완료
+	
+	String ordercountSql = 
+                "SELECT " +
+                "   (SELECT COUNT(*) " +
+                "    FROM PRODUCT_ORDER " +
+                "    WHERE STATE = 1 AND UNO = (SELECT UNO FROM PRODUCT_ORDER WHERE ONO = " + orderNumber +")) AS 주문개수, " +
+                "   (SELECT UNO FROM PRODUCT_ORDER WHERE ONO = " + orderNumber + ") AS 회원번호 " +
+                "FROM DUAL";
+
+	Statement sm = conn.createStatement();
+	rs = sm.executeQuery(ordercountSql);
+	
+	while(rs.next()) {
+		int ordercount = rs.getInt(1); //회원이 주문한 주문 개수(발송완료)
+		int userno = rs.getInt(2); //주문한 회원의 번호
+
+		System.out.println("회원번호 : " + userno);
+		System.out.println("주문개수 : " + ordercount);
+		//회원 등급 수정
+		String gradeSql = "UPDATE CUSTOMER SET GRADE = ? WHERE UNO = ?";
+		
+		pstmt = conn.prepareStatement(gradeSql); //회원등급 수정
+		
+		String grade = ordercount==0 ? "C" : (ordercount == 1 ? "B" : "A"); //일단 최소 1개부터는 B등급 2개이상은 A
+		pstmt.setString(1,grade);
+		pstmt.setInt(2, userno);
+		
+		pstmt.executeUpdate(); //회원등급 수정
+		
+		System.out.println("수정 완료!!!");
+	}
 
 	if (count == 1) {
 		System.out.println("주문 상태 업데이트 성공!");

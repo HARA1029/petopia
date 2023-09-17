@@ -336,6 +336,28 @@
  		 	dispatcher.forward(request, response);
 			
 			break;
+		
+		//리뷰 작성
+		case "reviewRegister" :
+			
+			System.out.println("리뷰작성 들어옴");
+			
+			String userID = request.getParameter("uId"); //회원아이디
+			int productNo = Integer.parseInt(request.getParameter("pNo")); //상품번호
+			String content = request.getParameter("reviewContent"); //리뷰내용
+			int detailNo = Integer.parseInt(request.getParameter("dNo"));//주문상세번호
+			
+			System.out.println("회원아이디 : " + userID);
+			System.out.println("상품번호 : " + productNo);
+			System.out.println("리뷰내용 : " + content);
+			System.out.println("주문상세번호 : " + detailNo);
+			
+			udao = new UserDao();
+			int result1 = udao.reviewRegister(userID, productNo, content, detailNo);
+			System.out.println("result1 : " + result1);
+			response.sendRedirect("/petopia/main.jsp"); //메인으로 이동
+		
+			break;
   	
   		
  		default : 

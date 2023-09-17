@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const updateButtons = document.querySelectorAll(".update-btn");
     updateButtons.forEach(button => {
         button.addEventListener("click", function(e) {
-            e.preventDefault(); // 폼의 기본 동작 막음
+            //e.preventDefault(); // 폼의 기본 동작 막음
 
             var result = confirm("수정하시겠습니까?");
             if (result) { 

@@ -24,7 +24,7 @@
 <div class="OrderDetail-container">
 		<c:forEach items="${odList}" var="odList">
 			
-			<button id="reviewregister">리뷰 작성</button>
+			<button id="reviewregister" onclick="modalOpenFunction('${odList.pno}','<%=sessionID%>','${odList.dno}')">리뷰 작성</button>
 			
 			<div class="product-card">
 			
@@ -50,16 +50,20 @@
 <div id="review-myModal" class="review-modal">
 
   <!-- Modal content -->
-  <form>
+  <form action="../Controller/UserController.jsp">
   <div class="review-modal-content">
     <div class="review-modal-header">
       <span class="close">&times;</span>
       <h2>리뷰 작성</h2>
     </div>
     <div class="review-modal-body">
-    	<textarea id="reviewtext" rows="5" cols="50" placeholder="리뷰를 작성해주세요.(20자 이내)"></textarea>
+    	<textarea name="reviewContent" id="reviewtext" rows="5" cols="50" placeholder="리뷰를 작성해주세요.(20자 이내)"></textarea>
     </div>
     <div class="review-modal-footer">
+    	<input type="hidden" value="reviewRegister" name="Submit"/> <!-- 리뷰작성 controller로 들어가기 위한 조건 값 -->
+    	<input id="userId" type="hidden" name="uId" value=""/> <!-- 회원아이디 -->
+    	<input id="productNo" type="hidden" name="pNo" value=""/> <!--  상품번호 -->
+    	<input id="detailNo" type="hidden" name="dNo" value="" /><!-- 주문 상세 번호 -->
       <input id="review-register-btn" type="submit" value="등록">
     </div>
   </div>
@@ -75,10 +79,20 @@ var btn = document.getElementById("reviewregister");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
+
+function modalOpenFunction(productNo, userId, detailNo) {
+	document.getElementById("userId").value= userId;
+	document.getElementById("productNo").value= productNo;
+	document.getElementById("detailNo").value= detailNo;
+	modal.style.display = "block";
+
+}
+/*
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
 }
+*/
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {

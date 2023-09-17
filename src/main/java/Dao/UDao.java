@@ -47,5 +47,9 @@ public interface UDao {
 	
 	//주문상세정보(상품정보)
 	public ArrayList<OrderDetailDTO> ProductDetailInfo(long ono);
+	
+	//리뷰
+	//리뷰 등록
+	public int reviewRegister(String uid, int pno, String content, int dno);
 
 }

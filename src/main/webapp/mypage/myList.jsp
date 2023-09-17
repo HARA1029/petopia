@@ -33,7 +33,7 @@
 
     String u_id = (String) session.getAttribute("userID");
     String r_sql = "SELECT r.rno, p.pname, r.content, r.nowdate FROM review r JOIN product p ON r.pno = p.pno " +
-            "WHERE r.uno = (SELECT uno FROM customer WHERE id = ?)";
+            "WHERE r.uno = (SELECT uno FROM customer WHERE id = ?) ORDER BY r.nowdate DESC";
     pstmt = conn.prepareStatement(r_sql);
     pstmt.setString(1, u_id);
     rs = pstmt.executeQuery();
@@ -96,6 +96,7 @@ if (rnoStr != null && !rnoStr.isEmpty() && updateContent != null) {
         pstmt.setInt(2, rno);
       
         pstmt.executeUpdate();
+        
     } catch (SQLException e) {
         e.printStackTrace();
     } finally {
@@ -107,8 +108,9 @@ if (rnoStr != null && !rnoStr.isEmpty() && updateContent != null) {
             e.printStackTrace();
         }
     }
-
+    
     response.sendRedirect("myList.jsp"); // 수정 후 목록 페이지로 이동
+    return;
 }
 %>
 

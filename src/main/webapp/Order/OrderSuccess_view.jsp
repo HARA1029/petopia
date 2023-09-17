@@ -17,6 +17,10 @@
 <!-- top -->
 <%@ include file="../layout/top.jsp" %>
 <%String userName = (String) session.getAttribute("userName"); %>
+<%
+String grade = (String) session.getAttribute("userGrade"); // Grade 변수를 request에서 가져오거나 적절한 방법으로 설정
+grade = (grade.equals("A") ? "대형견" : (grade.equals("B") ? "중형견" : "소형견"));
+%>
 
 <div class="orderSucess-container">
 	<c:set value="${order}" var="order" />
@@ -30,8 +34,7 @@
 	</div><br><br>
 	
 	<div class="orderSucess-container2">
-	  <h2>고객등급 : <b class="grade">&nbsp;${custominfo.grade.equals('A') ? "대형견" 
-	  													 : custominfo.grade.equals('B') ? "중형견" : "소형견" } &nbsp;</b>&nbsp;&nbsp;${cusdto.uname}</h2>
+	  <h2>고객등급 : <b class="grade">&nbsp; <%= grade %> &nbsp;</b>&nbsp;&nbsp;${cusdto.uname}</h2>
 	  <p>${custominfo.uname} | ${custominfo.tel}</p>
 	  <p>${custominfo.addr}</p>
 	  <p style="color:#AAAAAA;">${order.message}</p>

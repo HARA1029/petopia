@@ -12,7 +12,7 @@
 
 <%@ include file="/layout/top.jsp"%>
 <h1>주문 관리</h1>
-
+<% int userNumber = (int) session.getAttribute("userNumber"); %>
 <div>
 	<table class="orderTable" border="1">
 		<tr>
@@ -47,7 +47,7 @@
 				    if (state.equals("0")) {
 				        out.println("결제완료");
 				    } else if (state.equals("1")) {
-				        out.println("배송완료");
+				        out.println("발송완료");
 				    }
 			    %>
 			</td>
@@ -55,8 +55,9 @@
 			    <form action="/petopia/Controller/controller.jsp" method="post">
 				    <input type="hidden" name="action" value="updateOrderStatus">
 				    <input type="hidden" name="orderNumber" value="<%= orderNumber %>">
+				    <input type="hidden" name="uno" value="<%=userNumber%>"/>
 				    <input type="radio" name="newStatus" value="0" <%= state.equals("0") ? "checked" : "" %> onchange="this.form.submit()"> 결제완료
-				    <input type="radio" name="newStatus" value="1" <%= state.equals("1") ? "checked" : "" %> onchange="this.form.submit()"> 배송완료
+				    <input type="radio" name="newStatus" value="1" <%= state.equals("1") ? "checked" : "" %> onchange="this.form.submit()"> 발송완료
 				</form>
 			</td>
 

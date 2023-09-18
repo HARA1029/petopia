@@ -57,7 +57,7 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 	} else {
 		u_mail = u_mail1 + "@" + u_mail2;
 	}
-	
+
 	int withdraw = 1;//회원탈퇴여부 초기값은 1
 
 	String sql = "INSERT INTO customer VALUES";
@@ -108,40 +108,40 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 	if (rs.next()) {
 		String dbPW = rs.getString("pw"); // db에 저장된 비밀번호 가져오기
 		int dbwithdraw = rs.getInt("withdraw");//회원탈퇴여부 가져오기
-		
-		System.out.println("회원탈퇴 여부 : " + dbwithdraw);
-		
-		if (dbPW.equals(u_pw) && dbwithdraw==1) { // 로그인 성공(회원탈퇴안했을때 1일경우) 
 
-			// 저장한 정보 top.jsp에서 사용
-			session.setAttribute("userID", u_id); // 세션에 id 저장
-		
-			String name = rs.getString("uname");
-			session.setAttribute("userName", name); // 세션에 이름 저장
-		
-			String mail = rs.getString("mail");
-			session.setAttribute("userMail", mail); // 세션에 주소 저장
-			out.println(mail);
-		
-			String addr = rs.getString("addr");
-			session.setAttribute("userAddr", addr); // 세션에 주소 저장
-		
-			String tel = rs.getString("tel");
-			session.setAttribute("userTel", tel); // 세션에 전화번호 저장
-		
-			String grade = rs.getString("grade");
-			session.setAttribute("userGrade", grade); // 세션에 등급 저장
-			
-			int uno = rs.getInt("uno");
-			session.setAttribute("userNumber", uno); // 세션에 회원 번호 저장
-		
-			response.sendRedirect("../main.jsp");
-		
-		}	else { // 비번 틀림 or 회원탈퇴
-				System.out.println("여기로 들어옴");
-				out.println("<script>loginerror1();</script>");
+		System.out.println("회원탈퇴 여부 : " + dbwithdraw);
+
+		if (dbPW.equals(u_pw) && dbwithdraw == 1) { // 로그인 성공(회원탈퇴안했을때 1일경우) 
+
+	// 저장한 정보 top.jsp에서 사용
+	session.setAttribute("userID", u_id); // 세션에 id 저장
+
+	String name = rs.getString("uname");
+	session.setAttribute("userName", name); // 세션에 이름 저장
+
+	String mail = rs.getString("mail");
+	session.setAttribute("userMail", mail); // 세션에 주소 저장
+	out.println(mail);
+
+	String addr = rs.getString("addr");
+	session.setAttribute("userAddr", addr); // 세션에 주소 저장
+
+	String tel = rs.getString("tel");
+	session.setAttribute("userTel", tel); // 세션에 전화번호 저장
+
+	String grade = rs.getString("grade");
+	session.setAttribute("userGrade", grade); // 세션에 등급 저장
+
+	int uno = rs.getInt("uno");
+	session.setAttribute("userNumber", uno); // 세션에 회원 번호 저장
+
+	response.sendRedirect("../main.jsp");
+
+		} else { // 비번 틀림 or 회원탈퇴
+	System.out.println("여기로 들어옴");
+	out.println("<script>loginerror1();</script>");
 		}
-		
+
 	} else { // 존재하지 않는 아이디
 		out.println("<script>loginerror2();</script>");
 	}
@@ -328,24 +328,26 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 		int postNumber = Integer.parseInt(postNumberParam);
 
 		String deleteSql = "DELETE FROM notice WHERE no = ?";
-		PreparedStatement deleteSm = conn.prepareStatement(deleteSql);
-		deleteSm.setInt(1, postNumber);
-		int deleteResult = deleteSm.executeUpdate();
+		pstmt = conn.prepareStatement(deleteSql);
+		pstmt.setInt(1, postNumber);
+		int deleteResult = pstmt.executeUpdate();
 
 		if (deleteResult > 0) {
-	System.out.println("공지사항 삭제 성공!");
-	response.sendRedirect("../notice/notice.jsp"); // 공지사항 목록 페이지로 리다이렉트
+				System.out.println("공지사항 삭제 성공!");
+				response.sendRedirect("../notice/notice.jsp"); // 공지사항 목록 페이지로 리다이렉트
+				
 		} else {
-	System.out.println("공지사항 삭제 실패! ");
+				System.out.println("공지사항 삭제 실패! ");
 		}
 
-		deleteSm.close();
+		pstmt.close();
 	} else {
 		out.println("잘못된 요청입니다.");
 	}
 
 	pstmt.close();
 	conn.close();
+
 }
 
 // 리뷰 답글 등록 처리
@@ -378,14 +380,14 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 	System.out.println("리뷰 삭제 처리 시작");
 
 	int reviewNumber = Integer.parseInt(request.getParameter("rno"));
-	
+
 	//먼저 리뷰에 달린 답글 전부 삭제
 	String replySql = "DELETE FROM REVIEW_REPLY WHERE RNO = ?";
-	
+
 	pstmt = conn.prepareStatement(replySql);
 	pstmt.setInt(1, reviewNumber);
 	pstmt.executeUpdate();
-	
+
 	//답글 삭제 후 리뷰를 삭제
 	String sql = "DELETE FROM review WHERE rno = ?";
 
@@ -411,33 +413,29 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 
 	long orderNumber = Long.parseLong(request.getParameter("orderNumber"));
 	int newStatus = Integer.parseInt(request.getParameter("newStatus"));
-	
+
 	System.out.println("주문상태 : " + newStatus);
-	
+
 	// 적절한 SQL 쿼리를 작성하여 주문 상태를 업데이트
 	String sql = "UPDATE product_order SET state = ? WHERE ono = ?";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setInt(1, newStatus);
 	pstmt.setLong(2, orderNumber);
-	
+
 	int count = pstmt.executeUpdate();
-	
+
 	//회원이 주문한 개수(발송완료만) -> 주문테이블에서 주문번호로 회원번호 찾아서 
-//	String ordercountSql="SELECT COUNT(*) FROM PRODUCT_ORDER WHERE STATE = 1 AND UNO = ("
-//												+ "SELECT UNO FROM PRODUCT_ORDER WHERE ONO = " + orderNumber + ")"; //1이 발송완료
-	
-	String ordercountSql = 
-                "SELECT " +
-                "   (SELECT COUNT(*) " +
-                "    FROM PRODUCT_ORDER " +
-                "    WHERE STATE = 1 AND UNO = (SELECT UNO FROM PRODUCT_ORDER WHERE ONO = " + orderNumber +")) AS 주문개수, " +
-                "   (SELECT UNO FROM PRODUCT_ORDER WHERE ONO = " + orderNumber + ") AS 회원번호 " +
-                "FROM DUAL";
+	//	String ordercountSql="SELECT COUNT(*) FROM PRODUCT_ORDER WHERE STATE = 1 AND UNO = ("
+	//												+ "SELECT UNO FROM PRODUCT_ORDER WHERE ONO = " + orderNumber + ")"; //1이 발송완료
+
+	String ordercountSql = "SELECT " + "   (SELECT COUNT(*) " + "    FROM PRODUCT_ORDER "
+	+ "    WHERE STATE = 1 AND UNO = (SELECT UNO FROM PRODUCT_ORDER WHERE ONO = " + orderNumber + ")) AS 주문개수, "
+	+ "   (SELECT UNO FROM PRODUCT_ORDER WHERE ONO = " + orderNumber + ") AS 회원번호 " + "FROM DUAL";
 
 	Statement sm = conn.createStatement();
 	rs = sm.executeQuery(ordercountSql);
-	
-	while(rs.next()) {
+
+	while (rs.next()) {
 		int ordercount = rs.getInt(1); //회원이 주문한 주문 개수(발송완료)
 		int userno = rs.getInt(2); //주문한 회원의 번호
 
@@ -445,15 +443,15 @@ if (request.getParameter("action") != null && request.getParameter("action").equ
 		System.out.println("주문개수 : " + ordercount);
 		//회원 등급 수정
 		String gradeSql = "UPDATE CUSTOMER SET GRADE = ? WHERE UNO = ?";
-		
+
 		pstmt = conn.prepareStatement(gradeSql); //회원등급 수정
-		
-		String grade = ordercount==0 ? "C" : (ordercount == 1 ? "B" : "A"); //일단 최소 1개부터는 B등급 2개이상은 A
-		pstmt.setString(1,grade);
+
+		String grade = ordercount == 0 ? "C" : (ordercount == 1 ? "B" : "A"); //일단 최소 1개부터는 B등급 2개이상은 A
+		pstmt.setString(1, grade);
 		pstmt.setInt(2, userno);
-		
+
 		pstmt.executeUpdate(); //회원등급 수정
-		
+
 		System.out.println("수정 완료!!!");
 	}
 
